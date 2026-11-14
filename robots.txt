@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rny0007.github.io/openwrt-router-hardware-explorer/sitemap.xml

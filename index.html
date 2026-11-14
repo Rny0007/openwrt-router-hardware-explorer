@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home — OpenWrt Router Hardware Knowledge Base</title>
+  <meta name="description" content="Independent, evidence-based hardware database, interactive diagrams, and technical recovery guides for OpenWrt compatible routers.">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="brand">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="#1e293b"/>
+          <path d="M6 16C6 10.4772 10.4772 6 16 6C21.5228 6 26 10.4772 26 16" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.5" fill="#f8fafc"/>
+          <rect x="8" y="21" width="16" height="5" rx="2" fill="#334155"/>
+          <circle cx="12" cy="23.5" r="1" fill="#10b981"/>
+          <circle cx="16" cy="23.5" r="1" fill="#06b6d4"/>
+          <circle cx="20" cy="23.5" r="1" fill="#f59e0b"/>
+        </svg>
+        <span class="brand-text">OpenWrt<strong>HardwareKB</strong></span>
+      </a>
+      <nav class="nav-links">
+        <a href="./index.html" class="active">Home</a>
+<a href="./explorer/index.html">Explorer</a>
+<a href="./devices/index.html">Devices</a>
+<a href="./chipsets/index.html">Chipsets</a>
+<a href="./diagrams/index.html">Diagrams</a>
+<a href="./guides/installation/index.html">Installation</a>
+<a href="./guides/recovery/index.html">Recovery</a>
+<a href="./guides/multi-wan/index.html">Failover</a>
+<a href="./methodology/index.html">Methodology</a>
+<a href="./about/index.html">About</a>
+
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Source Repo
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+
+    <section class="hero">
+      <div class="hero-badge">Evidence-Based OpenWrt Knowledge Base v2.0</div>
+      <h1>Global Open-Source Router Hardware Intelligence</h1>
+      <p class="lead">Discover, verify, and compare OpenWrt-compatible routers, switches, and embedded network platforms. Powered by verified upstream device trees, FCC teardowns, and primary research.</p>
+      <div class="hero-cta">
+        <a href="explorer/index.html" class="btn btn-primary">⚡ Launch Interactive Explorer</a>
+        <a href="diagrams/index.html" class="btn btn-outline">📊 View Architecture Diagrams</a>
+        <a href="devices/index.html" class="btn btn-outline">📁 Device Directory (18)</a>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">18</div>
+        <div class="stat-label">Verified Devices</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">11</div>
+        <div class="stat-label">Silicon Platforms</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">15</div>
+        <div class="stat-label">Officially Supported</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">100%</div>
+        <div class="stat-label">Citations Verified</div>
+      </div>
+    </section>
+
+    <div class="section-header">
+      <div>
+        <h2>Featured Router & Hardware Platforms</h2>
+        <p>Explore production and enterprise router platforms verified on OpenWrt mainline.</p>
+      </div>
+      <a href="devices/index.html" class="btn btn-sm btn-outline">Browse All 18 Devices &rarr;</a>
+    </div>
+    <div class="grid-3">
+      
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">ASUS ROG Rapture GT-AX11000</span>
+              <span class="badge badge-info">PARTIALLY VERIFIED</span>
+            </div>
+            <div class="card-meta">SoC: <strong>Broadcom BCM4908</strong> | Arch: aarch64</div>
+            <p class="card-body">RAM: 1024 MB | Flash: 256 MB Raw NAND | Target: <code>bcm4908/generic</code></p>
+          </div>
+          <a href="devices/asus-gt-ax11000/index.html" class="btn btn-sm btn-outline">View Hardware Profile &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">ASUS RT-AX59U</span>
+              <span class="badge badge-success">OFFICIALLY SUPPORTED</span>
+            </div>
+            <div class="card-meta">SoC: <strong>MediaTek MT7986A</strong> | Arch: aarch64</div>
+            <p class="card-body">RAM: 512 MB | Flash: 128 MB SPI-NAND | Target: <code>mediatek/filogic</code></p>
+          </div>
+          <a href="devices/asus-rt-ax59u/index.html" class="btn btn-sm btn-outline">View Hardware Profile &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">Banana Pi BPI-R3</span>
+              <span class="badge badge-success">OFFICIALLY SUPPORTED</span>
+            </div>
+            <div class="card-meta">SoC: <strong>MediaTek MT7986A</strong> | Arch: aarch64</div>
+            <p class="card-body">RAM: 2048 MB | Flash: 8192 MB eMMC | Target: <code>mediatek/filogic</code></p>
+          </div>
+          <a href="devices/banana-pi-bpi-r3/index.html" class="btn btn-sm btn-outline">View Hardware Profile &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">Banana Pi BPI-R4</span>
+              <span class="badge badge-success">OFFICIALLY SUPPORTED</span>
+            </div>
+            <div class="card-meta">SoC: <strong>MediaTek MT7988A</strong> | Arch: aarch64</div>
+            <p class="card-body">RAM: 4096 MB | Flash: 8192 MB eMMC | Target: <code>mediatek/filogic</code></p>
+          </div>
+          <a href="devices/banana-pi-bpi-r4/index.html" class="btn btn-sm btn-outline">View Hardware Profile &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">Cudy WR3000</span>
+              <span class="badge badge-success">OFFICIALLY SUPPORTED</span>
+            </div>
+            <div class="card-meta">SoC: <strong>MediaTek MT7981BA</strong> | Arch: aarch64</div>
+            <p class="card-body">RAM: 256 MB | Flash: 16 MB SPI-NOR | Target: <code>mediatek/filogic</code></p>
+          </div>
+          <a href="devices/cudy-wr3000-v1/index.html" class="btn btn-sm btn-outline">View Hardware Profile &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">FriendlyElec NanoPi R5S</span>
+              <span class="badge badge-success">OFFICIALLY SUPPORTED</span>
+            </div>
+            <div class="card-meta">SoC: <strong>Rockchip RK3568B2</strong> | Arch: aarch64</div>
+            <p class="card-body">RAM: 2048 MB | Flash: 8192 MB eMMC | Target: <code>rockchip/armv8</code></p>
+          </div>
+          <a href="devices/friendlyelec-nanopi-r5s/index.html" class="btn btn-sm btn-outline">View Hardware Profile &rarr;</a>
+        </div>
+        
+    </div>
+
+    <div class="section-header">
+      <div>
+        <h2>Core Networking Silicon Architectures</h2>
+        <p>MediaTek Filogic, Qualcomm IPQ, Rockchip, Realtek DSA, Broadcom, and x86_64.</p>
+      </div>
+      <a href="chipsets/index.html" class="btn btn-sm btn-outline">Browse All 11 Chipsets &rarr;</a>
+    </div>
+    <div class="grid-3">
+      
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">Broadcom BCM4908 / BCM4906</span>
+              <span class="badge badge-info">TIER_4_UNSUPPORTED_PROPRIETARY</span>
+            </div>
+            <div class="card-meta">StrataGX BCM4908 | ARM Cortex-A53</div>
+            <p class="card-body">Cores: 4x @ 1800 MHz | Target: <code>bcm4908</code></p>
+          </div>
+          <a href="chipsets/broadcom-bcm4908/index.html" class="btn btn-sm btn-outline">Explore Silicon Architecture &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">Intel/x86 x86_64 Generic (Intel N100 / J4125 / Core / Xeon)</span>
+              <span class="badge badge-info">TIER_1_MAINSTREAM</span>
+            </div>
+            <div class="card-meta">x86_64 Router Appliance Platform | x86-64 (Intel Gracemont / Tremont / Goldmont)</div>
+            <p class="card-body">Cores: 4x @ 3400 MHz | Target: <code>x86</code></p>
+          </div>
+          <a href="chipsets/intel-x86-64-generic/index.html" class="btn btn-sm btn-outline">Explore Silicon Architecture &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">MediaTek MT7621A / MT7621AT</span>
+              <span class="badge badge-info">TIER_1_MAINSTREAM</span>
+            </div>
+            <div class="card-meta">MT7621 | MIPS 1004Kc (Dual-Core / 4 Threads via VPE)</div>
+            <p class="card-body">Cores: 2x @ 880 MHz | Target: <code>ramips</code></p>
+          </div>
+          <a href="chipsets/mediatek-mt7621a/index.html" class="btn btn-sm btn-outline">Explore Silicon Architecture &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">MediaTek MT7981B</span>
+              <span class="badge badge-info">TIER_1_MAINSTREAM</span>
+            </div>
+            <div class="card-meta">Filogic 820 | ARM Cortex-A53</div>
+            <p class="card-body">Cores: 2x @ 1300 MHz | Target: <code>mediatek</code></p>
+          </div>
+          <a href="chipsets/mediatek-mt7981b/index.html" class="btn btn-sm btn-outline">Explore Silicon Architecture &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">MediaTek MT7986A</span>
+              <span class="badge badge-info">TIER_1_MAINSTREAM</span>
+            </div>
+            <div class="card-meta">Filogic 830 | ARM Cortex-A53</div>
+            <p class="card-body">Cores: 4x @ 2000 MHz | Target: <code>mediatek</code></p>
+          </div>
+          <a href="chipsets/mediatek-mt7986a/index.html" class="btn btn-sm btn-outline">Explore Silicon Architecture &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">MediaTek MT7988A</span>
+              <span class="badge badge-info">TIER_2_STABLE</span>
+            </div>
+            <div class="card-meta">Filogic 880 | ARM Cortex-A73</div>
+            <p class="card-body">Cores: 4x @ 1800 MHz | Target: <code>mediatek</code></p>
+          </div>
+          <a href="chipsets/mediatek-mt7988a/index.html" class="btn btn-sm btn-outline">Explore Silicon Architecture &rarr;</a>
+        </div>
+        
+    </div>
+
+    <section style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 2.5rem; margin-top: 3rem;">
+      <h2 style="color: var(--text-heading); margin-bottom: 1rem;">Architectural Reference & Community Deployments</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem; max-width: 800px;">
+        This knowledge base includes verified field-tested reference architectures, including the <strong>Arcadyan / Jio JIDU6101</strong> (MediaTek MT7986A Filogic 830) two-stage installation, sysfs LED controls, and dual-WAN automatic failover automation blueprints.
+      </p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="guides/installation/index.html" class="btn btn-primary">Two-Stage Installation Guide</a>
+        <a href="guides/recovery/index.html" class="btn btn-outline">TFTP & UART Recovery Guide</a>
+        <a href="guides/multi-wan/index.html" class="btn btn-outline">Multi-WAN Failover Blueprint</a>
+      </div>
+    </section>
+    
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>OpenWrt Hardware Knowledge Base</h3>
+        <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
+        <p class="copyright">Docs: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="./explorer/index.html">Hardware Explorer</a></li>
+          <li><a href="./devices/index.html">Device Directory</a></li>
+          <li><a href="./chipsets/index.html">Silicon Architectures</a></li>
+          <li><a href="./diagrams/index.html">Interactive Diagrams</a></li>
+          <li><a href="./guides/installation/index.html">Two-Stage Installation</a></li>
+          <li><a href="./guides/recovery/index.html">TFTP & UART Recovery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community & Standards</h4>
+        <ul>
+          <li><a href="./methodology/index.html">Research Methodology</a></li>
+          <li><a href="./contributing/index.html">Contributor Handbook</a></li>
+          <li><a href="./about/index.html">Project Governance</a></li>
+          <li><a href="./licensing/index.html">Licensing & Attribution</a></li>
+          <li><a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues" target="_blank" rel="noopener">Submit Hardware Verification</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Independent research project. Not affiliated with or endorsed by OpenWrt, Reliance Jio, MediaTek, Arcadyan, Qualcomm, Broadcom, or ASUS.</p>
+    </div>
+  </footer>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banana Pi BPI-R3 — OpenWrt Router Hardware Knowledge Base</title>
+  <meta name="description" content="Independent, evidence-based hardware database, interactive diagrams, and technical recovery guides for OpenWrt compatible routers.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../index.html" class="brand">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="#1e293b"/>
+          <path d="M6 16C6 10.4772 10.4772 6 16 6C21.5228 6 26 10.4772 26 16" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.5" fill="#f8fafc"/>
+          <rect x="8" y="21" width="16" height="5" rx="2" fill="#334155"/>
+          <circle cx="12" cy="23.5" r="1" fill="#10b981"/>
+          <circle cx="16" cy="23.5" r="1" fill="#06b6d4"/>
+          <circle cx="20" cy="23.5" r="1" fill="#f59e0b"/>
+        </svg>
+        <span class="brand-text">OpenWrt<strong>HardwareKB</strong></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../../index.html">Home</a>
+<a href="../../explorer/index.html">Explorer</a>
+<a href="../../devices/index.html" class="active">Devices</a>
+<a href="../../chipsets/index.html">Chipsets</a>
+<a href="../../diagrams/index.html">Diagrams</a>
+<a href="../../guides/installation/index.html">Installation</a>
+<a href="../../guides/recovery/index.html">Recovery</a>
+<a href="../../guides/multi-wan/index.html">Failover</a>
+<a href="../../methodology/index.html">Methodology</a>
+<a href="../../about/index.html">About</a>
+
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Source Repo
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Banana Pi BPI-R3 OpenWrt Hardware Specifications & Installation",
+  "description": "Verified OpenWrt support status, hardware specs, flash layout, and recovery for Banana Pi BPI-R3.",
+  "author": {
+    "@type": "Person",
+    "name": "Rny0007"
+  },
+  "url": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/banana-pi-bpi-r3/index.html"
+}
+    </script>
+
+    <div style="margin-bottom: 1.5rem;">
+      <a href="../index.html" style="font-size: 0.9rem;">&larr; Back to Device Directory</a>
+    </div>
+
+    <div class="section-header">
+      <div>
+        <h1 style="font-size: 2.2rem; color: var(--text-heading);">Banana Pi BPI-R3</h1>
+        <p style="color: var(--text-muted);">Hardware Revision: <code>v1.2</code> | Internal Board ID: <code>bananapi_bpi-r3</code></p>
+      </div>
+      <div>
+        <span class="badge badge-success" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">OFFICIALLY SUPPORTED</span>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 2rem;">
+      <div>
+        <div class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Core Silicon & Processing Specifications</h2>
+          <table class="spec-table">
+            <tr><th>SoC Vendor & Model</th><td>MediaTek MT7986A (Filogic 830)</td></tr>
+            <tr><th>CPU Architecture</th><td>aarch64 (4 Cores @ 2000 MHz)</td></tr>
+            <tr><th>RAM Memory</th><td>2048 MB</td></tr>
+            <tr><th>Flash Memory</th><td>8192 MB (eMMC)</td></tr>
+            <tr><th>Switch ASIC</th><td>MT7531AE</td></tr>
+          </table>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Networking & Wireless Subsystem</h2>
+          <h3 style="font-size: 1rem; color: var(--text-heading); margin-top: 0.5rem;">Physical Ethernet Ports</h3>
+          <ul style="margin: 0.5rem 0 1rem 1.5rem; font-size: 0.9rem; color: var(--text);">
+            <li><strong>SFP+ 1</strong> (SFP+): 2500 Mbps — Interface <code>sfp1</code></li><li><strong>SFP+ 2</strong> (SFP+): 2500 Mbps — Interface <code>sfp2</code></li><li><strong>WAN</strong> (WAN): 1000 Mbps — Interface <code>wan</code></li><li><strong>LAN1</strong> (LAN): 1000 Mbps — Interface <code>lan1</code></li><li><strong>LAN2</strong> (LAN): 1000 Mbps — Interface <code>lan2</code></li><li><strong>LAN3</strong> (LAN): 1000 Mbps — Interface <code>lan3</code></li><li><strong>LAN4</strong> (LAN): 1000 Mbps — Interface <code>lan4</code></li>
+          </ul>
+          <h3 style="font-size: 1rem; color: var(--text-heading); margin-top: 1rem;">Wireless Radios</h3>
+          <ul style="margin: 0.5rem 0 1rem 1.5rem; font-size: 0.9rem; color: var(--text);">
+            <li><strong>Wi-Fi 6 (2.4 GHz)</strong>: Chipset <code>MT7976C</code>, Streams: 4x4, Max Rate: 1148 Mbps</li><li><strong>Wi-Fi 6 (5.0 GHz)</strong>: Chipset <code>MT7976C</code>, Streams: 4x4, Max Rate: 4804 Mbps</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Known Limitations & Operational Notes</h2>
+          <ul style="margin: 0.5rem 0 1rem 1.5rem; font-size: 0.9rem; color: var(--text);">
+            <li>No critical hardware limitations reported.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">OpenWrt Target Integration</h2>
+          <table class="spec-table">
+            <tr><th>Target</th><td><code>mediatek/filogic</code></td></tr>
+            <tr><th>Subtarget</th><td><code>arm64</code></td></tr>
+            <tr><th>Device Profile</th><td><code>bananapi_bpi-r3</code></td></tr>
+            <tr><th>First Supported</th><td>23.05.0</td></tr>
+            <tr><th>Device Tree File</th><td><code>mt7986a-bananapi-bpi-r3.dts</code></td></tr>
+          </table>
+          <div style="margin-top: 1.25rem;">
+            <a href="https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=bananapi_bpi-r3" target="_blank" rel="noopener" class="btn btn-sm btn-primary" style="width: 100%; justify-content: center;">Download Official Firmware &rarr;</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Installation & Recovery</h2>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Flashing Method:</strong> U-Boot Web Fail-Safe</p>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Installation Risk:</strong> <span class="badge badge-warning">LOW</span></p>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Serial UART:</strong> Available (3.3V TTL)</p>
+          <p style="font-size: 0.9rem;"><strong>Recovery Method:</strong> TFTP Push (Automated)</p>
+        </div>
+
+        <div class="card">
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Primary Evidence & Sources</h2>
+          <ul style="margin: 0.5rem 0 0 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+            <li><a href='https://openwrt.org/toh/sinovoip/banana_pi_bpi-r3' target='_blank' rel='noopener'>OpenWrt ToH: Banana Pi BPI-R3</a> (OPENWRT_TOH)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>OpenWrt Hardware Knowledge Base</h3>
+        <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
+        <p class="copyright">Docs: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="../../explorer/index.html">Hardware Explorer</a></li>
+          <li><a href="../../devices/index.html">Device Directory</a></li>
+          <li><a href="../../chipsets/index.html">Silicon Architectures</a></li>
+          <li><a href="../../diagrams/index.html">Interactive Diagrams</a></li>
+          <li><a href="../../guides/installation/index.html">Two-Stage Installation</a></li>
+          <li><a href="../../guides/recovery/index.html">TFTP & UART Recovery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community & Standards</h4>
+        <ul>
+          <li><a href="../../methodology/index.html">Research Methodology</a></li>
+          <li><a href="../../contributing/index.html">Contributor Handbook</a></li>
+          <li><a href="../../about/index.html">Project Governance</a></li>
+          <li><a href="../../licensing/index.html">Licensing & Attribution</a></li>
+          <li><a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues" target="_blank" rel="noopener">Submit Hardware Verification</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Independent research project. Not affiliated with or endorsed by OpenWrt, Reliance Jio, MediaTek, Arcadyan, Qualcomm, Broadcom, or ASUS.</p>
+    </div>
+  </footer>
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

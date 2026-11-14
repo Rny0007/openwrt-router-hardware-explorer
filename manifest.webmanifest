@@ -1,0 +1,16 @@
+{
+  "name": "OpenWrt Router Hardware Knowledge Base",
+  "short_name": "OpenWrtKB",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#06b6d4",
+  "description": "Evidence-based hardware database, interactive diagrams, and technical recovery guides for OpenWrt compatible routers.",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

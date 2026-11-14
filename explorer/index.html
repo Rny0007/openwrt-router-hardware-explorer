@@ -1,0 +1,3477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global OpenWrt Router Hardware Explorer</title>
+  <meta name="description" content="Explore, compare, and verify OpenWrt-compatible router hardware, chipsets, and installation methods across global vendors.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --card-border: #30363d;
+      --text: #c9d1d9;
+      --text-muted: #8b949e;
+      --text-bright: #f0f6fc;
+      --accent: #2f81f7;
+      --accent-hover: #58a6ff;
+      --success: #238636;
+      --success-text: #3fb950;
+      --warning: #9e6a03;
+      --warning-text: #d29922;
+      --danger-text: #f85149;
+      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      padding: 1.5rem;
+    }
+
+    header {
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1.5rem;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: var(--text-bright);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge-repo {
+      font-size: 0.8rem;
+      background: #21262d;
+      border: 1px solid var(--card-border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      color: var(--accent-hover);
+      text-decoration: none;
+      font-family: var(--font-mono);
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 800px;
+    }
+
+    /* Controls Bar */
+    .controls {
+      max-width: 1200px;
+      margin: 0 auto 1.5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .controls { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 550px) {
+      .controls { grid-template-columns: 1fr; }
+    }
+
+    input, select {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-bright);
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      width: 100%;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.2);
+    }
+
+    /* Comparison Tray */
+    #comparison-tray {
+      max-width: 1200px;
+      margin: 0 auto 1.5rem;
+      background: #1f242c;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 1rem;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .tray-items {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tray-pill {
+      background: #21262d;
+      border: 1px solid var(--card-border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: var(--text-bright);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tray-remove {
+      cursor: pointer;
+      color: var(--danger-text);
+      font-weight: bold;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn:hover { background: var(--accent-hover); }
+    .btn-secondary { background: #21262d; border: 1px solid var(--card-border); color: var(--text-bright); }
+    .btn-secondary:hover { background: #30363d; }
+
+    /* Results Grid */
+    #device-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .card:hover {
+      border-color: #58a6ff;
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      color: var(--text-bright);
+      font-weight: 600;
+    }
+    .card-vendor {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .status-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+    .status-OFFICIALLY_SUPPORTED { background: rgba(35, 134, 54, 0.2); color: var(--success-text); border: 1px solid rgba(63, 185, 80, 0.3); }
+    .status-COMMUNITY_VERIFIED { background: rgba(158, 106, 3, 0.2); color: var(--warning-text); border: 1px solid rgba(210, 153, 34, 0.3); }
+    .status-PARTIALLY_VERIFIED { background: rgba(218, 54, 51, 0.2); color: #ff7b72; border: 1px solid rgba(248, 81, 73, 0.3); }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      margin: 0.75rem 0;
+      background: #0d1117;
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid #21262d;
+    }
+    .spec-label { color: var(--text-muted); }
+    .spec-val { color: var(--text-bright); font-family: var(--font-mono); font-size: 0.8rem; }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #21262d;
+    }
+
+    /* Modal / Drawer */
+    #modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1000;
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      max-width: 850px;
+      margin: 2rem auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .modal-close:hover { color: var(--text-bright); }
+
+    /* Comparison Table View */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+    }
+    .compare-table th, .compare-table td {
+      border: 1px solid var(--card-border);
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+    }
+    .compare-table th { background: #21262d; color: var(--text-bright); }
+
+    .tag-pill {
+      display: inline-block;
+      background: #21262d;
+      border: 1px solid var(--card-border);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      margin-right: 0.3rem;
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <h1>🌐 Global OpenWrt Router Hardware Explorer</h1>
+      <a href="../README.md" class="badge-repo">← Back to Guide</a>
+    </div>
+    <p class="subtitle">
+      Comprehensive, evidence-based hardware database for OpenWrt-compatible routers, single-board gateways, and smart switches. Search by model, chipset, or flash type, view upstream firmware profiles, and compare platforms.
+    </p>
+  </header>
+
+  <!-- Controls -->
+  <section class="controls">
+    <input type="text" id="search-input" placeholder="🔍 Search model, manufacturer, SoC (e.g. JIDU6101, MT7986, BPI-R4)..." autofocus>
+    
+    <select id="status-filter">
+      <option value="ALL">All Support Statuses</option>
+      <option value="OFFICIALLY_SUPPORTED">Officially Supported</option>
+      <option value="COMMUNITY_VERIFIED">Community Verified</option>
+      <option value="PARTIALLY_VERIFIED">Partially Verified</option>
+    </select>
+
+    <select id="wifi-filter">
+      <option value="ALL">All Wi-Fi Generations</option>
+      <option value="Wi-Fi 7">Wi-Fi 7 (802.11be)</option>
+      <option value="Wi-Fi 6">Wi-Fi 6 (802.11ax)</option>
+      <option value="Wi-Fi 5">Wi-Fi 5 (802.11ac)</option>
+      <option value="Ethernet Only">Ethernet / Soft-Router Only</option>
+    </select>
+
+    <select id="soc-filter">
+      <option value="ALL">All SoC Families</option>
+      <option value="Filogic 830">MediaTek Filogic 830 (MT7986A)</option>
+      <option value="Filogic 820">MediaTek Filogic 820 (MT7981B)</option>
+      <option value="Filogic 880">MediaTek Filogic 880 (MT7988A)</option>
+      <option value="MT7621">MediaTek MT7621</option>
+      <option value="Qualcomm">Qualcomm (IPQ807x / IPQ60xx)</option>
+      <option value="Rockchip">Rockchip (RK3568)</option>
+      <option value="Broadcom">Broadcom (BCM4908)</option>
+      <option value="Realtek">Realtek (RTL838x)</option>
+      <option value="Intel/x86">Intel / x86_64</option>
+    </select>
+  </section>
+
+  <!-- Active Comparison Tray -->
+  <div id="comparison-tray">
+    <div style="display:flex; align-items:center; gap: 1rem;">
+      <strong style="color:var(--text-bright); font-size:0.9rem;">Comparing (<span id="compare-count">0</span>/3):</strong>
+      <div class="tray-items" id="tray-pills"></div>
+    </div>
+    <div style="display:flex; gap:0.5rem;">
+      <button class="btn btn-secondary" onclick="clearComparison()">Clear</button>
+      <button class="btn" onclick="showComparisonModal()">Compare Side-by-Side</button>
+    </div>
+  </div>
+
+  <!-- Device Grid -->
+  <main id="device-grid"></main>
+
+  <!-- Details / Comparison Modal -->
+  <div id="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" id="modal-body" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+      <div id="modal-inner"></div>
+    </div>
+  </div>
+
+  <script id="embedded-data" type="application/json">\n{
+  "metadata": {
+    "title": "Global OpenWrt Router Hardware Knowledge Base Index",
+    "generated_at": "2026-11-14T18:12:52Z",
+    "total_devices": 18,
+    "total_chipsets": 11,
+    "status_summary": {
+      "OFFICIALLY_SUPPORTED": 15,
+      "COMMUNITY_VERIFIED": 2,
+      "PARTIALLY_VERIFIED": 1,
+      "EXPERIMENTAL": 0,
+      "UNSUPPORTED": 0,
+      "UNKNOWN": 0
+    }
+  },
+  "devices": [
+    {
+      "id": "asus-gt-ax11000",
+      "manufacturer": "ASUS",
+      "model": "ROG Rapture GT-AX11000",
+      "hardware_revision": "A1",
+      "regional_variant": "Global",
+      "internal_board_name": "gt-ax11000",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM4908",
+        "family": "StrataGX",
+        "cores": 4,
+        "frequency_mhz": 1800
+      },
+      "architecture": "aarch64",
+      "ram_mb": 1024,
+      "flash": {
+        "type": "Raw NAND",
+        "capacity_mb": 256
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "BCM43684",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 1148,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "BCM43684",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 4804,
+          "channel_width_mhz": 160
+        },
+        {
+          "radio_id": "radio2",
+          "chipset": "BCM43684",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 4804,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "BCM53134",
+        "ports": [
+          {
+            "name": "2.5G Gaming Port",
+            "type": "LAN",
+            "speed_mbps": 2500,
+            "dsa_port": "eth1"
+          },
+          {
+            "name": "WAN",
+            "type": "WAN",
+            "speed_mbps": 1000,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          },
+          {
+            "name": "LAN4",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan4"
+          }
+        ]
+      },
+      "usb_ports": [
+        {
+          "type": "USB 3.0 Type-A",
+          "count": 2
+        }
+      ],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "CFE (Broadcom Common Firmware Environment)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "4-pin 3.3V header on motherboard."
+      },
+      "openwrt": {
+        "target": "bcm4908/generic",
+        "subtarget": "generic",
+        "profile": "asus_gt-ax11000",
+        "support_status": "PARTIALLY_VERIFIED",
+        "first_supported_version": "22.03.0",
+        "latest_tested_version": "23.05.4",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=23.05.4&target=bcm4908%2Fgeneric&id=asus_gt-ax11000",
+        "device_tree_file": "bcm4908-asus-gt-ax11000.dts",
+        "known_limitations": [
+          "Broadcom Wi-Fi constraint: BCM43684 transceivers lack open-source mac80211 drivers; wireless radios are non-functional under pure OpenWrt.",
+          "Ethernet routing, VLAN, and wired packet forwarding function normally, but device acts essentially as a wired-only router."
+        ]
+      },
+      "installation": {
+        "method": "OEM Web GUI Flash",
+        "risk": "MEDIUM",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/asus/gt-ax11000"
+      },
+      "recovery": {
+        "method": "U-Boot Recovery Webpage",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://openwrt.org/toh/asus/gt-ax11000"
+      },
+      "verification": {
+        "status": "PARTIALLY_VERIFIED",
+        "evidence": [
+          "Upstream OpenWrt bcm4908 target support present in Git tree",
+          "OpenWrt forum confirmations that Wi-Fi does not initialize without closed proprietary blobs"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: bcm4908",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/bcm4908",
+          "type": "OPENWRT_GIT",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "asus-rt-ax59u",
+      "manufacturer": "ASUS",
+      "model": "RT-AX59U",
+      "hardware_revision": "A1",
+      "regional_variant": "Global",
+      "internal_board_name": "rt-ax59u",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830",
+        "cores": 4,
+        "frequency_mhz": 2000
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash": {
+        "type": "SPI-NAND",
+        "capacity_mb": 128
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7976C",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 1148,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7976C",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 2402,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "MT7531AE",
+        "ports": [
+          {
+            "name": "WAN",
+            "type": "WAN",
+            "speed_mbps": 1000,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          }
+        ]
+      },
+      "usb_ports": [
+        {
+          "type": "USB 3.0 Type-A",
+          "count": 1
+        },
+        {
+          "type": "USB 2.0 Type-A",
+          "count": 1
+        }
+      ],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2022.04 (ASUS CFE-style Web Recovery)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "4-pin 3.3V header on bottom corner of motherboard."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "asus_rt-ax59u",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "23.05.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=asus_rt-ax59u",
+        "device_tree_file": "mt7986a-asus-rt-ax59u.dts",
+        "known_limitations": []
+      },
+      "installation": {
+        "method": "OEM Web GUI Flash",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/asus/rt-ax59u"
+      },
+      "recovery": {
+        "method": "U-Boot Recovery Webpage",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://openwrt.org/toh/asus/rt-ax59u"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit: mediatek: add support for ASUS RT-AX59U",
+          "Official ASUS firmware upgrade allows direct OpenWrt TRX/BIN flash"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: ASUS RT-AX59U",
+          "url": "https://openwrt.org/toh/asus/rt-ax59u",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "banana-pi-bpi-r3",
+      "manufacturer": "Banana Pi",
+      "model": "BPI-R3",
+      "hardware_revision": "v1.2",
+      "regional_variant": "Global",
+      "internal_board_name": "bananapi_bpi-r3",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830",
+        "cores": 4,
+        "frequency_mhz": 2000
+      },
+      "architecture": "aarch64",
+      "ram_mb": 2048,
+      "flash": {
+        "type": "eMMC",
+        "capacity_mb": 8192
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7976C",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 1148,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7976C",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 4804,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "MT7531AE",
+        "ports": [
+          {
+            "name": "SFP+ 1",
+            "type": "SFP+",
+            "speed_mbps": 2500,
+            "dsa_port": "sfp1"
+          },
+          {
+            "name": "SFP+ 2",
+            "type": "SFP+",
+            "speed_mbps": 2500,
+            "dsa_port": "sfp2"
+          },
+          {
+            "name": "WAN",
+            "type": "WAN",
+            "speed_mbps": 1000,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          },
+          {
+            "name": "LAN4",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan4"
+          }
+        ]
+      },
+      "usb_ports": [
+        {
+          "type": "USB 3.0 Type-A",
+          "count": 1
+        }
+      ],
+      "poe": {
+        "supported": true,
+        "standard": "802.3at (PoE+)",
+        "type": "PoE-In"
+      },
+      "bootloader": "U-Boot 2023.07 (ATF/FIP via SD/NAND/eMMC selector switch)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "Dedicated 3-pin standard header (GND, RX, TX)."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "bananapi_bpi-r3",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "23.05.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=bananapi_bpi-r3",
+        "device_tree_file": "mt7986a-bananapi-bpi-r3.dts",
+        "known_limitations": []
+      },
+      "installation": {
+        "method": "U-Boot Web Fail-Safe",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/sinovoip/banana_pi_bpi-r3"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://openwrt.org/toh/sinovoip/banana_pi_bpi-r3"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "Official OpenWrt reference board for Filogic 830",
+          "Upstream DTS maintained directly by Daniel Golle"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: Banana Pi BPI-R3",
+          "url": "https://openwrt.org/toh/sinovoip/banana_pi_bpi-r3",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "banana-pi-bpi-r4",
+      "manufacturer": "Banana Pi",
+      "model": "BPI-R4",
+      "hardware_revision": "v1.1",
+      "regional_variant": "Global",
+      "internal_board_name": "bananapi_bpi-r4",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7988A",
+        "family": "Filogic 880",
+        "cores": 4,
+        "frequency_mhz": 1800
+      },
+      "architecture": "aarch64",
+      "ram_mb": 4096,
+      "flash": {
+        "type": "eMMC",
+        "capacity_mb": 8192
+      },
+      "wireless": [],
+      "ethernet": {
+        "switch_chip": "MT7531AE",
+        "ports": [
+          {
+            "name": "10G SFP+ 1",
+            "type": "SFP+",
+            "speed_mbps": 10000,
+            "dsa_port": "eth1"
+          },
+          {
+            "name": "10G SFP+ 2",
+            "type": "SFP+",
+            "speed_mbps": 10000,
+            "dsa_port": "eth2"
+          },
+          {
+            "name": "WAN",
+            "type": "WAN",
+            "speed_mbps": 2500,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          }
+        ]
+      },
+      "usb_ports": [
+        {
+          "type": "USB 3.0 Type-A",
+          "count": 2
+        }
+      ],
+      "poe": {
+        "supported": true,
+        "standard": "802.3bt (PoE++)",
+        "type": "PoE-In"
+      },
+      "bootloader": "U-Boot 2024.04 (MediaTek ATF/FIP)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "Standard 3-pin UART console."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "bananapi_bpi-r4",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "SNAPSHOT",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=SNAPSHOT&target=mediatek%2Ffilogic&id=bananapi_bpi-r4",
+        "device_tree_file": "mt7988a-bananapi-bpi-r4.dts",
+        "known_limitations": [
+          "Wi-Fi 7 requires optional MT7996 PCIe NIC module."
+        ]
+      },
+      "installation": {
+        "method": "U-Boot Web Fail-Safe",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/sinovoip/banana_pi_bpi-r4"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://openwrt.org/toh/sinovoip/banana_pi_bpi-r4"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit 5f0c9780a1: mediatek: add support for Banana Pi BPI-R4",
+          "Mainline master testing with 10G SFP+ modules"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: Banana Pi BPI-R4",
+          "url": "https://openwrt.org/toh/sinovoip/banana_pi_bpi-r4",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "cudy-wr3000-v1",
+      "manufacturer": "Cudy",
+      "model": "WR3000",
+      "hardware_revision": "v1",
+      "regional_variant": "Global",
+      "internal_board_name": "cudy_wr3000-v1",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981BA",
+        "family": "Filogic 820",
+        "cores": 2,
+        "frequency_mhz": 1300
+      },
+      "architecture": "aarch64",
+      "ram_mb": 256,
+      "flash": {
+        "type": "SPI-NOR",
+        "capacity_mb": 16
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7976CN",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 574,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7976CN",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "3x3",
+          "max_phy_rate_mbps": 2402,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "MT7531AE",
+        "ports": [
+          {
+            "name": "WAN",
+            "type": "WAN",
+            "speed_mbps": 1000,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          }
+        ]
+      },
+      "usb_ports": [],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2022.04 (MediaTek ATF/FIP)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "Standard 4-pin 3.3V TTL header."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "cudy_wr3000-v1",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "23.05.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=cudy_wr3000-v1",
+        "device_tree_file": "mt7981ba-cudy-wr3000-v1.dts",
+        "known_limitations": [
+          "16 MB flash requires careful package selection (recommend using extroot or imagebuilder if installing heavy python/AdGuard packages)."
+        ]
+      },
+      "installation": {
+        "method": "OEM Web GUI Flash",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/cudy/wr3000"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://openwrt.org/toh/cudy/wr3000"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit: mediatek: add support for Cudy WR3000 v1",
+          "Direct OEM web flash compatibility verified"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: Cudy WR3000",
+          "url": "https://openwrt.org/toh/cudy/wr3000",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "friendlyelec-nanopi-r5s",
+      "manufacturer": "FriendlyElec",
+      "model": "NanoPi R5S",
+      "hardware_revision": "v1.0",
+      "regional_variant": "Global",
+      "internal_board_name": "nanopi_r5s",
+      "soc": {
+        "vendor": "Rockchip",
+        "model": "RK3568B2",
+        "family": "RK3568",
+        "cores": 4,
+        "frequency_mhz": 2000
+      },
+      "architecture": "aarch64",
+      "ram_mb": 2048,
+      "flash": {
+        "type": "eMMC",
+        "capacity_mb": 8192
+      },
+      "wireless": [],
+      "ethernet": {
+        "switch_chip": null,
+        "ports": [
+          {
+            "name": "2.5G WAN",
+            "type": "WAN",
+            "speed_mbps": 2500,
+            "dsa_port": "eth1"
+          },
+          {
+            "name": "2.5G LAN",
+            "type": "LAN",
+            "speed_mbps": 2500,
+            "dsa_port": "eth2"
+          },
+          {
+            "name": "1G LAN",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "eth0"
+          }
+        ]
+      },
+      "usb_ports": [
+        {
+          "type": "USB 3.0 Type-A",
+          "count": 2
+        }
+      ],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2023.04 (Rockchip TPL/SPL)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 1500000,
+        "pinout_documented": true,
+        "notes": "Dedicated 3-pin debug UART header (1.5 Mbps baud rate)."
+      },
+      "openwrt": {
+        "target": "rockchip/armv8",
+        "subtarget": "generic",
+        "profile": "friendlyarm_nanopi-r5s",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "23.05.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=rockchip%2Farmv8&id=friendlyarm_nanopi-r5s",
+        "device_tree_file": "rk3568-nanopi-r5s.dts",
+        "known_limitations": []
+      },
+      "installation": {
+        "method": "U-Boot Web Fail-Safe",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/friendlyarm/nanopi_r5s"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://openwrt.org/toh/friendlyarm/nanopi_r5s"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit: rockchip: add support for FriendlyElec NanoPi R5S",
+          "Full 2.5 Gbps line rate verified with Realtek r8125 driver"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: FriendlyElec NanoPi R5S",
+          "url": "https://openwrt.org/toh/friendlyarm/nanopi_r5s",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "gl-inet-gl-mt3000",
+      "manufacturer": "GL.iNet",
+      "model": "GL-MT3000",
+      "hardware_revision": "Beryl AX",
+      "regional_variant": "Global",
+      "internal_board_name": "glinet_gl-mt3000",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981B",
+        "family": "Filogic 820",
+        "cores": 2,
+        "frequency_mhz": 1300
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash": {
+        "type": "SPI-NAND",
+        "capacity_mb": 256
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7976CN",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 574,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7976CN",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "3x3",
+          "max_phy_rate_mbps": 2402,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": null,
+        "ports": [
+          {
+            "name": "2.5G WAN",
+            "type": "WAN",
+            "speed_mbps": 2500,
+            "dsa_port": "eth0"
+          },
+          {
+            "name": "1G LAN",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "eth1"
+          }
+        ]
+      },
+      "usb_ports": [
+        {
+          "type": "USB 3.0 Type-A",
+          "count": 1
+        }
+      ],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2022.04 with Web Fail-Safe",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "Internal 3.3V UART pins behind bottom rubber feet."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "glinet_gl-mt3000",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "23.05.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=glinet_gl-mt3000",
+        "device_tree_file": "mt7981b-glinet-gl-mt3000.dts",
+        "known_limitations": []
+      },
+      "installation": {
+        "method": "U-Boot Web Fail-Safe",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://docs.gl-inet.com/router/en/4/faq/debrick/"
+      },
+      "recovery": {
+        "method": "U-Boot Recovery Webpage",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://docs.gl-inet.com/router/en/4/faq/debrick/"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "Upstream commit in openwrt/openwrt master: mediatek: add support for GL.iNet GL-MT3000",
+          "Widely deployed community pocket router"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt Firmware Selector: GL-MT3000",
+          "url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=glinet_gl-mt3000",
+          "type": "OPENWRT_GIT",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "gl-inet-gl-mt6000",
+      "manufacturer": "GL.iNet",
+      "model": "GL-MT6000",
+      "hardware_revision": "Flint 2",
+      "regional_variant": "Global",
+      "internal_board_name": "glinet_gl-mt6000",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830",
+        "cores": 4,
+        "frequency_mhz": 2000
+      },
+      "architecture": "aarch64",
+      "ram_mb": 1024,
+      "flash": {
+        "type": "eMMC",
+        "capacity_mb": 8192
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7976C",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 1148,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7976C",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 4804,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "MT7531AE",
+        "ports": [
+          {
+            "name": "2.5G WAN",
+            "type": "WAN",
+            "speed_mbps": 2500,
+            "dsa_port": "eth0"
+          },
+          {
+            "name": "2.5G LAN1",
+            "type": "LAN",
+            "speed_mbps": 2500,
+            "dsa_port": "eth1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          },
+          {
+            "name": "LAN4",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan4"
+          },
+          {
+            "name": "LAN5",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan5"
+          }
+        ]
+      },
+      "usb_ports": [
+        {
+          "type": "USB 3.0 Type-A",
+          "count": 1
+        }
+      ],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2022.04 with GL.iNet Web Fail-Safe",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "4-pin header clearly labelled on PCB (GND, RX, TX, 3.3V)."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "glinet_gl-mt6000",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "23.05.2",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=glinet_gl-mt6000",
+        "device_tree_file": "mt7986a-glinet-gl-mt6000.dts",
+        "known_limitations": []
+      },
+      "installation": {
+        "method": "U-Boot Web Fail-Safe",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://docs.gl-inet.com/router/en/4/faq/debrick/"
+      },
+      "recovery": {
+        "method": "U-Boot Recovery Webpage",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://docs.gl-inet.com/router/en/4/faq/debrick/"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit 8378a5e81d: mediatek: add support for GL.iNet GL-MT6000",
+          "Mainline firmware selector active"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt Firmware Selector: GL-MT6000",
+          "url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=glinet_gl-mt6000",
+          "type": "OPENWRT_GIT",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "jio-jidu6101",
+      "manufacturer": "Jio / Arcadyan",
+      "model": "JIDU6101",
+      "hardware_revision": "6j01",
+      "regional_variant": "IN",
+      "internal_board_name": "arcadyan_6j01",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830",
+        "cores": 4,
+        "frequency_mhz": 2000
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash": {
+        "type": "SPI-NAND",
+        "capacity_mb": 256
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7976C",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 1148,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7976C",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 4804,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "MT7531AE",
+        "ports": [
+          {
+            "name": "WAN",
+            "type": "WAN",
+            "speed_mbps": 1000,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          }
+        ]
+      },
+      "usb_ports": [
+        {
+          "type": "USB 3.0 Type-A",
+          "count": 1
+        }
+      ],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2022.04 (MediaTek ATF/FIP)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "Unpopulated 4-pin header near SoC shield: VCC (3.3V), TX, RX, GND."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "jiorouter_ax6000-jidu6101",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "25.12.6",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=jiorouter_ax6000-jidu6101",
+        "device_tree_file": "mt7986a-jiorouter-ax6000-jidu6101.dts",
+        "known_limitations": [
+          "Factory downgrade protection requires custom unlock stage or UART to bypass signature checks.",
+          "Dual-WAN failover with wireless uplink shares radio1 (5 GHz) requiring channel alignment with upstream AP (e.g. Channel 149)."
+        ]
+      },
+      "installation": {
+        "method": "Automated Root SSH Exploit",
+        "risk": "HIGH",
+        "requires_factory_stage": true,
+        "guide_link": "docs/installation.md"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "docs/recovery-unbrick.md"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt official PR 25122 commit 981c978eff",
+          "Live hardware execution on OpenWrt 25.12.6 r33311",
+          "Mainline dmesg matching mt7986a-jiorouter-ax6000-jidu6101.dts"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: JIDU6101 Device Tree",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob;f=target/linux/mediatek/files-6.6/arch/arm64/boot/dts/mediatek/mt7986a-jiorouter-ax6000-jidu6101.dts",
+          "type": "OPENWRT_GIT",
+          "date_accessed": "2026-11-14"
+        },
+        {
+          "title": "OpenWrt PR 25122: Add support for JioRouter AX6000 JIDU6101",
+          "url": "https://github.com/openwrt/openwrt/pull/25122",
+          "type": "OPENWRT_GIT",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "jio-jidu6201",
+      "manufacturer": "Jio / Arcadyan",
+      "model": "JIDU6201",
+      "hardware_revision": "6j02",
+      "regional_variant": "IN",
+      "internal_board_name": "arcadyan_6j02",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981B",
+        "family": "Filogic 820",
+        "cores": 2,
+        "frequency_mhz": 1300
+      },
+      "architecture": "aarch64",
+      "ram_mb": 256,
+      "flash": {
+        "type": "SPI-NAND",
+        "capacity_mb": 128
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7976CN",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 574,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7976CN",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "3x3",
+          "max_phy_rate_mbps": 2402,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "MT7531AE",
+        "ports": [
+          {
+            "name": "WAN",
+            "type": "WAN",
+            "speed_mbps": 1000,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          }
+        ]
+      },
+      "usb_ports": [],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot (MediaTek ATF/FIP)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "3.3V TTL UART header adjacent to SoC shield."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "jiorouter_ax3000-jidu6201",
+        "support_status": "COMMUNITY_VERIFIED",
+        "first_supported_version": "SNAPSHOT",
+        "latest_tested_version": "SNAPSHOT",
+        "firmware_selector_url": null,
+        "device_tree_file": "mt7981b-jiorouter-ax3000-jidu6201.dts",
+        "known_limitations": [
+          "Community build in active development; not yet in official stable release."
+        ]
+      },
+      "installation": {
+        "method": "UART Serial Command",
+        "risk": "HIGH",
+        "requires_factory_stage": true,
+        "guide_link": "docs/installation.md"
+      },
+      "recovery": {
+        "method": "UART Serial Kernel Boot",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "docs/recovery-unbrick.md"
+      },
+      "verification": {
+        "status": "COMMUNITY_VERIFIED",
+        "evidence": [
+          "Community teardown corroborating Arcadyan 6j02 MT7981B board architecture",
+          "Verified UART dmesg boot log from Indian community contributors"
+        ],
+        "last_verified": "2026-11-10"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt Forum: JioFiber Arcadyan JIDU6201 Discussion",
+          "url": "https://forum.openwrt.org/t/jio-airfiber-jidu6201-mt7981-discussion/185200",
+          "type": "OPENWRT_FORUM",
+          "date_accessed": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "id": "mercusys-mr70x-v1",
+      "manufacturer": "Mercusys",
+      "model": "MR70X",
+      "hardware_revision": "v1.0",
+      "regional_variant": "Global",
+      "internal_board_name": "mr70x-v1",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621DAT",
+        "family": "MT7621",
+        "cores": 2,
+        "frequency_mhz": 880
+      },
+      "architecture": "mips_1004kc",
+      "ram_mb": 128,
+      "flash": {
+        "type": "SPI-NOR",
+        "capacity_mb": 16
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7905DAN",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 574,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7975DN",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 1201,
+          "channel_width_mhz": 80
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "MT7530",
+        "ports": [
+          {
+            "name": "WAN",
+            "type": "WAN",
+            "speed_mbps": 1000,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          }
+        ]
+      },
+      "usb_ports": [],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2014.04 (TP-Link safe boot)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "4-pin 3.3V header (VCC, RX, TX, GND)."
+      },
+      "openwrt": {
+        "target": "ramips/mt7621",
+        "subtarget": "generic",
+        "profile": "mercusys_mr70x-v1",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "22.03.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=ramips%2Fmt7621&id=mercusys_mr70x-v1",
+        "device_tree_file": "mt7621-mercusys-mr70x-v1.dts",
+        "known_limitations": [
+          "16MB flash capacity requires minimalist package footprint."
+        ]
+      },
+      "installation": {
+        "method": "OEM Web GUI Flash",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/mercusys/mr70x_v1"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.1.66",
+        "guide_link": "https://openwrt.org/toh/mercusys/mr70x_v1"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit: ramips: add support for Mercusys MR70X v1",
+          "Official OpenWrt firmware selector available"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: Mercusys MR70X v1",
+          "url": "https://openwrt.org/toh/mercusys/mr70x_v1",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "netgear-wax206",
+      "manufacturer": "Netgear",
+      "model": "WAX206",
+      "hardware_revision": "v1",
+      "regional_variant": "Global",
+      "internal_board_name": "netgear_wax206",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7622BV",
+        "family": "Filogic / MT7622",
+        "cores": 2,
+        "frequency_mhz": 1350
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash": {
+        "type": "SPI-NAND",
+        "capacity_mb": 128
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7915D",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 800,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7915D",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 2402,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "RTL8367RB",
+        "ports": [
+          {
+            "name": "2.5G WAN",
+            "type": "WAN",
+            "speed_mbps": 2500,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          },
+          {
+            "name": "LAN4",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan4"
+          }
+        ]
+      },
+      "usb_ports": [],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2014.04 (Netgear modified)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "4-pin 3.3V TTL header."
+      },
+      "openwrt": {
+        "target": "mediatek/mt7622",
+        "subtarget": "arm64",
+        "profile": "netgear_wax206",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "22.03.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Fmt7622&id=netgear_wax206",
+        "device_tree_file": "mt7622-netgear-wax206.dts",
+        "known_limitations": []
+      },
+      "installation": {
+        "method": "OEM Web GUI Flash",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/netgear/wax206"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://openwrt.org/toh/netgear/wax206"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit: mediatek: add support for Netgear WAX206",
+          "Stable release candidate build verified"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: Netgear WAX206",
+          "url": "https://openwrt.org/toh/netgear/wax206",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "tp-link-archer-c6-v3",
+      "manufacturer": "TP-Link",
+      "model": "Archer C6",
+      "hardware_revision": "v3.2",
+      "regional_variant": "Global",
+      "internal_board_name": "archer-c6-v3",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621AT",
+        "family": "MT7621",
+        "cores": 2,
+        "frequency_mhz": 880
+      },
+      "architecture": "mips_1004kc",
+      "ram_mb": 128,
+      "flash": {
+        "type": "SPI-NOR",
+        "capacity_mb": 16
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7603E",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 4",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 300,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7613BE",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 5",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 867,
+          "channel_width_mhz": 80
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "MT7530",
+        "ports": [
+          {
+            "name": "WAN",
+            "type": "WAN",
+            "speed_mbps": 1000,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          },
+          {
+            "name": "LAN4",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan4"
+          }
+        ]
+      },
+      "usb_ports": [],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2014.04 (TP-Link safe boot)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "4-pin 3.3V header (VCC, RX, TX, GND)."
+      },
+      "openwrt": {
+        "target": "ramips/mt7621",
+        "subtarget": "generic",
+        "profile": "tplink_archer-c6-v3",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "21.02.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=ramips%2Fmt7621&id=tplink_archer-c6-v3",
+        "device_tree_file": "mt7621-tplink-archer-c6-v3.dts",
+        "known_limitations": [
+          "16MB flash requires lightweight package footprints."
+        ]
+      },
+      "installation": {
+        "method": "OEM Web GUI Flash",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/tp-link/archer_c6_v3"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.0.66",
+        "guide_link": "https://openwrt.org/toh/tp-link/archer_c6_v3"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "Mainline ramips target commit in OpenWrt Git",
+          "Millions of devices in active community service"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: TP-Link Archer C6 v3",
+          "url": "https://openwrt.org/toh/tp-link/archer_c6_v3",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "ubiquiti-unifi-6-plus",
+      "manufacturer": "Ubiquiti",
+      "model": "UniFi 6+",
+      "hardware_revision": "U6+",
+      "regional_variant": "Global",
+      "internal_board_name": "ubnt_u6_plus",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981B",
+        "family": "Filogic 820",
+        "cores": 2,
+        "frequency_mhz": 1300
+      },
+      "architecture": "aarch64",
+      "ram_mb": 256,
+      "flash": {
+        "type": "SPI-NOR + eMMC",
+        "capacity_mb": 4096
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7976CN",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 574,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7976CN",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 2402,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": null,
+        "ports": [
+          {
+            "name": "PoE LAN",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "eth0"
+          }
+        ]
+      },
+      "usb_ports": [],
+      "poe": {
+        "supported": true,
+        "standard": "802.3af (PoE)",
+        "type": "PoE-In"
+      },
+      "bootloader": "U-Boot 2022.04 (Ubiquiti UniFi bootloader)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "4-pin 3.3V TTL debug pads."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "ubnt_unifi-6-plus",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "SNAPSHOT",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=SNAPSHOT&target=mediatek%2Ffilogic&id=ubnt_unifi-6-plus",
+        "device_tree_file": "mt7981b-ubnt-unifi-6-plus.dts",
+        "known_limitations": [
+          "Access point only (single PoE Ethernet port, no dedicated WAN).",
+          "Flash storage is 16MB SPI-NOR + 4GB eMMC; OpenWrt maintains stock partition table to prevent bricking, exposing ~120 MiB overlay for packages."
+        ]
+      },
+      "installation": {
+        "method": "Automated Root SSH Exploit",
+        "risk": "MEDIUM",
+        "requires_factory_stage": true,
+        "guide_link": "https://openwrt.org/toh/ubiquiti/unifi_6_plus"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.1.20",
+        "guide_link": "https://openwrt.org/toh/ubiquiti/unifi_6_plus"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit: mediatek: add support for Ubiquiti UniFi 6+",
+          "Mainline mt76 Wi-Fi 6 driver support verified"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt Target: Ubiquiti UniFi 6+",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/mediatek/filogic",
+          "type": "OPENWRT_GIT",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-ax9000",
+      "manufacturer": "Xiaomi",
+      "model": "Mi Router AX9000",
+      "hardware_revision": "RA70",
+      "regional_variant": "Global",
+      "internal_board_name": "xiaomi_ax9000",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ8072A",
+        "family": "Hawkeye",
+        "cores": 4,
+        "frequency_mhz": 2200
+      },
+      "architecture": "aarch64",
+      "ram_mb": 1024,
+      "flash": {
+        "type": "eMMC",
+        "capacity_mb": 4096
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "QCN5024",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 1148,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "QCN5054",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 4804,
+          "channel_width_mhz": 160
+        },
+        {
+          "radio_id": "radio2",
+          "chipset": "QCN5054",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 2402,
+          "channel_width_mhz": 80
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "QCA8075",
+        "ports": [
+          {
+            "name": "2.5G Gaming Port",
+            "type": "WAN/LAN",
+            "speed_mbps": 2500,
+            "dsa_port": "eth1"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          },
+          {
+            "name": "LAN4",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan4"
+          }
+        ]
+      },
+      "usb_ports": [
+        {
+          "type": "USB 3.0 Type-A",
+          "count": 1
+        }
+      ],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2016.01 (Qualcomm QSDK)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "Internal 4-pin 3.3V header."
+      },
+      "openwrt": {
+        "target": "qualcommax/ipq807x",
+        "subtarget": "generic",
+        "profile": "xiaomi_ax9000",
+        "support_status": "COMMUNITY_VERIFIED",
+        "first_supported_version": "SNAPSHOT",
+        "latest_tested_version": "SNAPSHOT",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=SNAPSHOT&target=qualcommax%2Fipq807x&id=xiaomi_ax9000",
+        "device_tree_file": "ipq8072-xiaomi-ax9000.dts",
+        "known_limitations": [
+          "AIoT dedicated fourth radio requires experimental firmware blob."
+        ]
+      },
+      "installation": {
+        "method": "Automated Root SSH Exploit",
+        "risk": "HIGH",
+        "requires_factory_stage": true,
+        "guide_link": "https://openwrt.org/toh/xiaomi/ax9000"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.31.1",
+        "guide_link": "https://openwrt.org/toh/xiaomi/ax9000"
+      },
+      "verification": {
+        "status": "COMMUNITY_VERIFIED",
+        "evidence": [
+          "Upstream qualcommax PR and community master builds",
+          "Mainline ath11k Wi-Fi 6 tri-band operation verified"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt Forum: Xiaomi AX9000 Porting Thread",
+          "url": "https://forum.openwrt.org/t/openwrt-support-for-xiaomi-ax9000/94821",
+          "type": "OPENWRT_FORUM",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-redmi-ax6000",
+      "manufacturer": "Xiaomi",
+      "model": "Redmi Router AX6000",
+      "hardware_revision": "RB06",
+      "regional_variant": "CN",
+      "internal_board_name": "redmi_ax6000",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830",
+        "cores": 4,
+        "frequency_mhz": 2000
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash": {
+        "type": "SPI-NAND",
+        "capacity_mb": 128
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7976C",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 1148,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7976C",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "4x4",
+          "max_phy_rate_mbps": 4804,
+          "channel_width_mhz": 160
+        }
+      ],
+      "ethernet": {
+        "switch_chip": "MT7531AE",
+        "ports": [
+          {
+            "name": "WAN",
+            "type": "WAN",
+            "speed_mbps": 1000,
+            "dsa_port": "wan"
+          },
+          {
+            "name": "LAN1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "LAN2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "LAN3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          }
+        ]
+      },
+      "usb_ports": [],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2022.04 (Xiaomi miwifi-uboot)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "4-pin 3.3V header (GND, TX, RX, 3.3V)."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "redmi_ax6000",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "23.05.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=redmi_ax6000",
+        "device_tree_file": "mt7986a-xiaomi-redmi-router-ax6000.dts",
+        "known_limitations": [
+          "Initial unlock requires web interface exploit or telnet script to flash OpenWrt initramfs-factory.ubi into ubi partition."
+        ]
+      },
+      "installation": {
+        "method": "Automated Root SSH Exploit",
+        "risk": "MEDIUM",
+        "requires_factory_stage": true,
+        "guide_link": "https://openwrt.org/toh/xiaomi/redmi_ax6000"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.31.1",
+        "guide_link": "https://openwrt.org/toh/xiaomi/redmi_ax6000"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit: mediatek: add support for Xiaomi Redmi Router AX6000",
+          "Over 10,000 community installations globally"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: Xiaomi Redmi Router AX6000",
+          "url": "https://openwrt.org/toh/xiaomi/redmi_ax6000",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "zyxel-gs1900-8",
+      "manufacturer": "Zyxel",
+      "model": "GS1900-8",
+      "hardware_revision": "v1.0",
+      "regional_variant": "Global",
+      "internal_board_name": "gs1900-8",
+      "soc": {
+        "vendor": "Realtek",
+        "model": "RTL8380M",
+        "family": "RTL838x",
+        "cores": 1,
+        "frequency_mhz": 500
+      },
+      "architecture": "mips_24kc",
+      "ram_mb": 128,
+      "flash": {
+        "type": "SPI-NOR",
+        "capacity_mb": 16
+      },
+      "wireless": [],
+      "ethernet": {
+        "switch_chip": "RTL8380M Integrated ASIC",
+        "ports": [
+          {
+            "name": "Port 1",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan1"
+          },
+          {
+            "name": "Port 2",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan2"
+          },
+          {
+            "name": "Port 3",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan3"
+          },
+          {
+            "name": "Port 4",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan4"
+          },
+          {
+            "name": "Port 5",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan5"
+          },
+          {
+            "name": "Port 6",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan6"
+          },
+          {
+            "name": "Port 7",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan7"
+          },
+          {
+            "name": "Port 8",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "lan8"
+          }
+        ]
+      },
+      "usb_ports": [],
+      "poe": {
+        "supported": false,
+        "standard": null,
+        "type": null
+      },
+      "bootloader": "U-Boot 2011.12 (Realtek SDK)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "4-pin 3.3V header on edge of board."
+      },
+      "openwrt": {
+        "target": "realtek/rtl838x",
+        "subtarget": "generic",
+        "profile": "zyxel_gs1900-8",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "21.02.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=realtek%2Frtl838x&id=zyxel_gs1900-8",
+        "device_tree_file": "rtl8380_zyxel_gs1900-8.dts",
+        "known_limitations": [
+          "Dedicated hardware switch; CPU routing capacity is limited to ~150 Mbps, but L2 switch fabric operates at full line-rate 16 Gbps."
+        ]
+      },
+      "installation": {
+        "method": "OEM Web GUI Flash",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/zyxel/gs1900-8"
+      },
+      "recovery": {
+        "method": "UART Serial Kernel Boot",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://openwrt.org/toh/zyxel/gs1900-8"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit: realtek: add support for Zyxel GS1900-8",
+          "Official Linux DSA switch tree integration"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: Zyxel GS1900-8",
+          "url": "https://openwrt.org/toh/zyxel/gs1900-8",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "zyxel-nwa50ax",
+      "manufacturer": "Zyxel",
+      "model": "NWA50AX",
+      "hardware_revision": "v1.0",
+      "regional_variant": "Global",
+      "internal_board_name": "nwa50ax",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981BA",
+        "family": "Filogic 820",
+        "cores": 2,
+        "frequency_mhz": 1300
+      },
+      "architecture": "aarch64",
+      "ram_mb": 256,
+      "flash": {
+        "type": "SPI-NAND",
+        "capacity_mb": 128
+      },
+      "wireless": [
+        {
+          "radio_id": "radio0",
+          "chipset": "MT7976CN",
+          "frequency_ghz": 2.4,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 574,
+          "channel_width_mhz": 40
+        },
+        {
+          "radio_id": "radio1",
+          "chipset": "MT7976CN",
+          "frequency_ghz": 5.0,
+          "generation": "Wi-Fi 6",
+          "spatial_streams": "2x2",
+          "max_phy_rate_mbps": 1201,
+          "channel_width_mhz": 80
+        }
+      ],
+      "ethernet": {
+        "switch_chip": null,
+        "ports": [
+          {
+            "name": "LAN / PoE",
+            "type": "LAN",
+            "speed_mbps": 1000,
+            "dsa_port": "eth0"
+          }
+        ]
+      },
+      "usb_ports": [],
+      "poe": {
+        "supported": true,
+        "standard": "802.3at (PoE+)",
+        "type": "PoE-In"
+      },
+      "bootloader": "U-Boot 2022.04 (Zyxel Dual-Image U-Boot)",
+      "serial_uart": {
+        "available": true,
+        "voltage": "3.3V",
+        "baudrate": 115200,
+        "pinout_documented": true,
+        "notes": "4-pin header near Ethernet connector."
+      },
+      "openwrt": {
+        "target": "mediatek/filogic",
+        "subtarget": "arm64",
+        "profile": "zyxel_nwa50ax",
+        "support_status": "OFFICIALLY_SUPPORTED",
+        "first_supported_version": "23.05.0",
+        "latest_tested_version": "25.12.6",
+        "firmware_selector_url": "https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=zyxel_nwa50ax",
+        "device_tree_file": "mt7981ba-zyxel-nwa50ax.dts",
+        "known_limitations": []
+      },
+      "installation": {
+        "method": "OEM Web GUI Flash",
+        "risk": "LOW",
+        "requires_factory_stage": false,
+        "guide_link": "https://openwrt.org/toh/zyxel/nwa50ax"
+      },
+      "recovery": {
+        "method": "TFTP Push (Automated)",
+        "recovery_ip": "192.168.1.1",
+        "guide_link": "https://openwrt.org/toh/zyxel/nwa50ax"
+      },
+      "verification": {
+        "status": "OFFICIALLY_SUPPORTED",
+        "evidence": [
+          "OpenWrt commit: mediatek: add support for Zyxel NWA50AX",
+          "Official dual-image bank safe upgrade verified"
+        ],
+        "last_verified": "2026-11-14"
+      },
+      "sources": [
+        {
+          "title": "OpenWrt ToH: Zyxel NWA50AX",
+          "url": "https://openwrt.org/toh/zyxel/nwa50ax",
+          "type": "OPENWRT_TOH",
+          "date_accessed": "2026-11-14"
+        }
+      ]
+    }
+  ],
+  "chipsets": [
+    {
+      "id": "broadcom-bcm4908",
+      "vendor": "Broadcom",
+      "part_number": "BCM4908 / BCM4906",
+      "marketing_name": "StrataGX BCM4908",
+      "cpu": {
+        "architecture": "aarch64",
+        "core_type": "ARM Cortex-A53",
+        "cores": 4,
+        "max_clock_mhz": 1800
+      },
+      "process_node_nm": 28,
+      "openwrt_target": "bcm4908",
+      "openwrt_subtarget": "generic",
+      "linux_driver": {
+        "wireless_mac80211": "brcmfmac / b43 (Proprietary Broadcom SDK required for full Wi-Fi 6 operation)",
+        "ethernet_driver": "bcm4908_enet",
+        "switch_driver": "b53 (DSA)"
+      },
+      "wireless_subsystem": {
+        "integrated": false,
+        "accompanying_rf_chips": [
+          "BCM43684"
+        ],
+        "wi_fi_generation": "Wi-Fi 6 (802.11ax)",
+        "mimo_capabilities": "4x4:4 (Dual or Tri-band via external PCIe)"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Software Only",
+        "crypto_engine": true,
+        "wireless_ethernet_dispatch": false
+      },
+      "openwrt_support_tier": "TIER_4_UNSUPPORTED_PROPRIETARY",
+      "notes": "Powers high-end consumer routers like ASUS GT-AX11000 and Netgear RAX80. While the Linux CPU and DSA Ethernet switch work under OpenWrt bcm4908, the wireless transceivers require closed-source proprietary Broadcom binary blobs ('wl.ko') not redistributable in mainline OpenWrt, leaving wireless non-functional or severely degraded on pure open-source builds.",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: bcm4908",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/bcm4908"
+        },
+        {
+          "title": "OpenWrt Broadcom Wi-Fi Driver Limitations",
+          "url": "https://openwrt.org/docs/techref/instructionset/broadcom_bcm47xx#broadcom_wireless"
+        }
+      ]
+    },
+    {
+      "id": "intel-x86-64-generic",
+      "vendor": "Intel/x86",
+      "part_number": "x86_64 Generic (Intel N100 / J4125 / Core / Xeon)",
+      "marketing_name": "x86_64 Router Appliance Platform",
+      "cpu": {
+        "architecture": "x86_64",
+        "core_type": "x86-64 (Intel Gracemont / Tremont / Goldmont)",
+        "cores": 4,
+        "max_clock_mhz": 3400
+      },
+      "process_node_nm": 10,
+      "openwrt_target": "x86",
+      "openwrt_subtarget": "64",
+      "linux_driver": {
+        "wireless_mac80211": "iwlwifi / ath9k / mt76 (optional PCIe)",
+        "ethernet_driver": "igc (Intel i225-V / i226-V 2.5GbE), e1000e",
+        "switch_driver": null
+      },
+      "wireless_subsystem": {
+        "integrated": false,
+        "accompanying_rf_chips": [],
+        "wi_fi_generation": "Varies by M.2 PCIe Wi-Fi card",
+        "mimo_capabilities": "Optional M.2 E-key slot"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Software Only",
+        "crypto_engine": true,
+        "wireless_ethernet_dispatch": false
+      },
+      "openwrt_support_tier": "TIER_1_MAINSTREAM",
+      "notes": "Standard architecture for soft-routers and dedicated firewall appliances (e.g. Protectli Vault, Topton, Qotom, PC Engines APU, generic mini-PCs). Unmatched CPU throughput for complex routing, 10G WireGuard VPN, Suricata IDS, and heavy SQM CAKE traffic shaping.",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: x86/64",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/x86"
+        }
+      ]
+    },
+    {
+      "id": "mediatek-mt7981b",
+      "vendor": "MediaTek",
+      "part_number": "MT7981B",
+      "marketing_name": "Filogic 820",
+      "cpu": {
+        "architecture": "aarch64",
+        "core_type": "ARM Cortex-A53",
+        "cores": 2,
+        "max_clock_mhz": 1300
+      },
+      "process_node_nm": 12,
+      "openwrt_target": "mediatek",
+      "openwrt_subtarget": "filogic",
+      "linux_driver": {
+        "wireless_mac80211": "mt76 (mt7981)",
+        "ethernet_driver": "mtk_eth_soc",
+        "switch_driver": "mt7531 (DSA)"
+      },
+      "wireless_subsystem": {
+        "integrated": true,
+        "accompanying_rf_chips": [
+          "MT7976CN"
+        ],
+        "wi_fi_generation": "Wi-Fi 6 (802.11ax)",
+        "mimo_capabilities": "2x2:2 (2.4 GHz) + 3x3:2 (5.0 GHz)"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Supported (Hardware PPE / WED)",
+        "crypto_engine": true,
+        "wireless_ethernet_dispatch": true
+      },
+      "openwrt_support_tier": "TIER_1_MAINSTREAM",
+      "notes": "Cost-effective, highly efficient Wi-Fi 6 SoC prevalent in compact travel routers (e.g. GL-MT3000) and entry-to-midrange wireless access points.",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: mediatek/filogic",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/mediatek/filogic"
+        }
+      ]
+    },
+    {
+      "id": "mediatek-mt7986a",
+      "vendor": "MediaTek",
+      "part_number": "MT7986A",
+      "marketing_name": "Filogic 830",
+      "cpu": {
+        "architecture": "aarch64",
+        "core_type": "ARM Cortex-A53",
+        "cores": 4,
+        "max_clock_mhz": 2000
+      },
+      "process_node_nm": 12,
+      "openwrt_target": "mediatek",
+      "openwrt_subtarget": "filogic",
+      "linux_driver": {
+        "wireless_mac80211": "mt76 (mt7915 / mt7986)",
+        "ethernet_driver": "mtk_eth_soc",
+        "switch_driver": "mt7530 / mt7531 (DSA)"
+      },
+      "wireless_subsystem": {
+        "integrated": true,
+        "accompanying_rf_chips": [
+          "MT7976C",
+          "MT7976CN"
+        ],
+        "wi_fi_generation": "Wi-Fi 6 (802.11ax)",
+        "mimo_capabilities": "4x4:4 (2.4 GHz) + 4x4:4 (5.0 GHz)"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Supported (Hardware PPE / WED)",
+        "crypto_engine": true,
+        "wireless_ethernet_dispatch": true
+      },
+      "openwrt_support_tier": "TIER_1_MAINSTREAM",
+      "notes": "Flagship Wi-Fi 6 router platform featuring dual 2.5G SGMII interfaces, hardware packet processing engine (PPE v2), and Wireless Ethernet Dispatch (WED v2) providing line-rate routing with sub-5% CPU utilization under OpenWrt flow offloading.",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: mediatek/filogic",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/mediatek/filogic"
+        },
+        {
+          "title": "MediaTek Filogic 830 Product Brief",
+          "url": "https://www.mediatek.com/products/broadband-wifi/mediatek-filogic-830"
+        }
+      ]
+    },
+    {
+      "id": "mediatek-mt7988a",
+      "vendor": "MediaTek",
+      "part_number": "MT7988A",
+      "marketing_name": "Filogic 880",
+      "cpu": {
+        "architecture": "aarch64",
+        "core_type": "ARM Cortex-A73",
+        "cores": 4,
+        "max_clock_mhz": 1800
+      },
+      "process_node_nm": 6,
+      "openwrt_target": "mediatek",
+      "openwrt_subtarget": "filogic",
+      "linux_driver": {
+        "wireless_mac80211": "mt76 (mt7996 for PCIe Wi-Fi 7 modules)",
+        "ethernet_driver": "mtk_eth_soc",
+        "switch_driver": "mt7531 / direct USXGMII"
+      },
+      "wireless_subsystem": {
+        "integrated": false,
+        "accompanying_rf_chips": [
+          "MT7996AV",
+          "MT7992AV"
+        ],
+        "wi_fi_generation": "Wi-Fi 7 (802.11be)",
+        "mimo_capabilities": "Tri-band 4x4 + 4x4 + 4x4 via PCIe NIC"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Supported (Hardware PPE / WED)",
+        "crypto_engine": true,
+        "wireless_ethernet_dispatch": true
+      },
+      "openwrt_support_tier": "TIER_2_STABLE",
+      "notes": "State-of-the-art 6nm networking platform engineered for multi-gigabit gateways (Banana Pi BPI-R4). Supports quad 10GbE interfaces (USXGMII) and PCIe 3.0 interfaces for Wi-Fi 7 MLO (Multi-Link Operation).",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: mediatek/filogic (MT7988 Support)",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/mediatek/filogic"
+        }
+      ]
+    },
+    {
+      "id": "mediatek-mt7621a",
+      "vendor": "MediaTek",
+      "part_number": "MT7621A / MT7621AT",
+      "marketing_name": "MT7621",
+      "cpu": {
+        "architecture": "mips_1004kc",
+        "core_type": "MIPS 1004Kc (Dual-Core / 4 Threads via VPE)",
+        "cores": 2,
+        "max_clock_mhz": 880
+      },
+      "process_node_nm": 65,
+      "openwrt_target": "ramips",
+      "openwrt_subtarget": "mt7621",
+      "linux_driver": {
+        "wireless_mac80211": "mt76 (mt7603e / mt7612e / mt7615e / mt7915e)",
+        "ethernet_driver": "mtk_eth_soc",
+        "switch_driver": "mt7530 (DSA)"
+      },
+      "wireless_subsystem": {
+        "integrated": false,
+        "accompanying_rf_chips": [
+          "MT7603E",
+          "MT7612E",
+          "MT7615E"
+        ],
+        "wi_fi_generation": "Wi-Fi 5 (802.11ac)",
+        "mimo_capabilities": "Varies by companion PCIe RF chip (typically 2x2 or 4x4)"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Supported (Hardware PPE / WED)",
+        "crypto_engine": false,
+        "wireless_ethernet_dispatch": false
+      },
+      "openwrt_support_tier": "TIER_1_MAINSTREAM",
+      "notes": "The ubiquitous historical workhorse of budget Gigabit OpenWrt routers (e.g. TP-Link Archer C6 v3, Xiaomi Mi Router 4A Gigabit, D-Link DIR-882). Highly mature Linux target with hardware NAT flow offloading.",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: ramips/mt7621",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/ramips/mt7621"
+        }
+      ]
+    },
+    {
+      "id": "qualcomm-ipq4019",
+      "vendor": "Qualcomm",
+      "part_number": "IPQ4018 / IPQ4019",
+      "marketing_name": "Dakota",
+      "cpu": {
+        "architecture": "arm_cortex-a7",
+        "core_type": "ARM Cortex-A7",
+        "cores": 4,
+        "max_clock_mhz": 716
+      },
+      "process_node_nm": 40,
+      "openwrt_target": "ipq40xx",
+      "openwrt_subtarget": "generic",
+      "linux_driver": {
+        "wireless_mac80211": "ath10k",
+        "ethernet_driver": "essedma",
+        "switch_driver": "qca8k"
+      },
+      "wireless_subsystem": {
+        "integrated": true,
+        "accompanying_rf_chips": [],
+        "wi_fi_generation": "Wi-Fi 5 (802.11ac Wave 2)",
+        "mimo_capabilities": "2x2:2 (2.4 GHz) + 2x2:2 (5.0 GHz)"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Software Only",
+        "crypto_engine": true,
+        "wireless_ethernet_dispatch": false
+      },
+      "openwrt_support_tier": "TIER_1_MAINSTREAM",
+      "notes": "Highly popular Wave-2 AC chipset (e.g. GL.iNet GL-B1300, Linksys EA8300, ASUS RT-AC58U, Netgear Orbi RBR50). Outstanding open-source driver maturity via ath10k.",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: ipq40xx",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/ipq40xx"
+        }
+      ]
+    },
+    {
+      "id": "qualcomm-ipq8072a",
+      "vendor": "Qualcomm",
+      "part_number": "IPQ8072A / IPQ8074",
+      "marketing_name": "Networking Pro 1200 / Hawkeye",
+      "cpu": {
+        "architecture": "aarch64",
+        "core_type": "ARM Cortex-A53",
+        "cores": 4,
+        "max_clock_mhz": 2200
+      },
+      "process_node_nm": 14,
+      "openwrt_target": "qualcommax",
+      "openwrt_subtarget": "ipq807x",
+      "linux_driver": {
+        "wireless_mac80211": "ath11k",
+        "ethernet_driver": "qca_nss_dp",
+        "switch_driver": "qca8k (DSA)"
+      },
+      "wireless_subsystem": {
+        "integrated": true,
+        "accompanying_rf_chips": [
+          "QCN5024",
+          "QCN5054"
+        ],
+        "wi_fi_generation": "Wi-Fi 6 (802.11ax)",
+        "mimo_capabilities": "4x4:4 (2.4 GHz) + 8x8:8 (5.0 GHz)"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Supported (NSS / PPE)",
+        "crypto_engine": true,
+        "wireless_ethernet_dispatch": false
+      },
+      "openwrt_support_tier": "TIER_1_MAINSTREAM",
+      "notes": "High-performance enterprise and prosumer Wi-Fi 6 platform powering routers such as Xiaomi AX9000, GL.iNet GL-AXT1800, and Netgear WAX218. Features dedicated Network Subsystem (NSS) coprocessors.",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: qualcommax/ipq807x",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/qualcommax/ipq807x"
+        }
+      ]
+    },
+    {
+      "id": "qualcomm-ipq6018",
+      "vendor": "Qualcomm",
+      "part_number": "IPQ6018 / IPQ6000",
+      "marketing_name": "Networking Pro 400 / Cypress",
+      "cpu": {
+        "architecture": "aarch64",
+        "core_type": "ARM Cortex-A53",
+        "cores": 4,
+        "max_clock_mhz": 1800
+      },
+      "process_node_nm": 14,
+      "openwrt_target": "qualcommax",
+      "openwrt_subtarget": "ipq60xx",
+      "linux_driver": {
+        "wireless_mac80211": "ath11k",
+        "ethernet_driver": "qca_nss_dp",
+        "switch_driver": "qca8k"
+      },
+      "wireless_subsystem": {
+        "integrated": true,
+        "accompanying_rf_chips": [
+          "QCN5022",
+          "QCN5052"
+        ],
+        "wi_fi_generation": "Wi-Fi 6 (802.11ax)",
+        "mimo_capabilities": "2x2:2 (2.4 GHz) + 2x2:2 (5.0 GHz)"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Supported (NSS / PPE)",
+        "crypto_engine": true,
+        "wireless_ethernet_dispatch": false
+      },
+      "openwrt_support_tier": "TIER_1_MAINSTREAM",
+      "notes": "Mid-tier Wi-Fi 6 chipset powering widespread models like Xiaomi AX1800, Redmi AX5, and GL.iNet Flint (GL-AX1800). Full upstream ath11k driver support.",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: qualcommax",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/qualcommax"
+        }
+      ]
+    },
+    {
+      "id": "realtek-rtl8380m",
+      "vendor": "Realtek",
+      "part_number": "RTL8380M / RTL8382M",
+      "marketing_name": "RTL838x Managed Switch Platform",
+      "cpu": {
+        "architecture": "mips_24kc",
+        "core_type": "MIPS 4KEc / 24Kc",
+        "cores": 1,
+        "max_clock_mhz": 500
+      },
+      "process_node_nm": 40,
+      "openwrt_target": "realtek",
+      "openwrt_subtarget": "rtl838x",
+      "linux_driver": {
+        "wireless_mac80211": null,
+        "ethernet_driver": "rtl838x_eth",
+        "switch_driver": "rtl838x (DSA)"
+      },
+      "wireless_subsystem": {
+        "integrated": false,
+        "accompanying_rf_chips": [],
+        "wi_fi_generation": "None (Dedicated Ethernet Switch)",
+        "mimo_capabilities": "N/A"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Supported (Hardware L2/L3 ASIC Switch Engine)",
+        "crypto_engine": false,
+        "wireless_ethernet_dispatch": false
+      },
+      "openwrt_support_tier": "TIER_2_STABLE",
+      "notes": "Dedicated managed switch platform powering 8-port to 24-port Gigabit smart switches (e.g. Zyxel GS1900-8, D-Link DGS-1210). Fully supported via upstream OpenWrt realtek/rtl838x target with Linux DSA switch fabric integration.",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: realtek/rtl838x",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/realtek"
+        }
+      ]
+    },
+    {
+      "id": "rockchip-rk3568",
+      "vendor": "Rockchip",
+      "part_number": "RK3568 / RK3568B2",
+      "marketing_name": "RK3568",
+      "cpu": {
+        "architecture": "aarch64",
+        "core_type": "ARM Cortex-A55",
+        "cores": 4,
+        "max_clock_mhz": 2000
+      },
+      "process_node_nm": 22,
+      "openwrt_target": "rockchip",
+      "openwrt_subtarget": "armv8",
+      "linux_driver": {
+        "wireless_mac80211": null,
+        "ethernet_driver": "r8125 / stmmac",
+        "switch_driver": null
+      },
+      "wireless_subsystem": {
+        "integrated": false,
+        "accompanying_rf_chips": [],
+        "wi_fi_generation": "Varies by M.2 / PCIe Wi-Fi card",
+        "mimo_capabilities": "Optional M.2 E-key slot"
+      },
+      "hardware_acceleration": {
+        "flow_offload": "Software Only",
+        "crypto_engine": true,
+        "wireless_ethernet_dispatch": false
+      },
+      "openwrt_support_tier": "TIER_1_MAINSTREAM",
+      "notes": "Workhorse of modern multi-gigabit SBC routers (e.g. FriendlyElec NanoPi R5S / R5C, Radxa E25). Features native dual PCIe 2.5GbE PHYs (Realtek RTL8125BG) delivering full 2.5 Gbps wire speed under OpenWrt.",
+      "sources": [
+        {
+          "title": "OpenWrt Target Definition: rockchip/armv8",
+          "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/rockchip"
+        }
+      ]
+    }
+  ]
+}\n</script>\n  <script>
+    let allDevices = [];
+    let compareList = [];
+
+    async function loadData() {
+      try {
+        const res = await fetch('../data/index.json');
+        if (!res.ok) throw new Error('Network response not ok');
+        const data = await res.json();
+        allDevices = data.devices || [];
+        renderDevices(allDevices);
+      } catch (err) {
+        // Fallback for local file protocol where browser blocks local fetch
+        const embedded = document.getElementById('embedded-data');
+        if (embedded && embedded.textContent.trim()) {
+          try {
+            const data = JSON.parse(embedded.textContent);
+            allDevices = data.devices || [];
+            renderDevices(allDevices);
+            return;
+          } catch(e) {}
+        }
+        document.getElementById('device-grid').innerHTML = `
+          <div style="grid-column: 1/-1; text-align:center; padding: 3rem; background: var(--card-bg); border-radius: 8px;">
+            <h3 style="color:var(--danger-text)">Failed to load device database</h3>
+            <p style="color:var(--text-muted); margin-top:0.5rem;">Ensure <code>data/index.json</code> is generated and accessible.</p>
+          </div>
+        `;
+      }
+    }
+
+    function renderDevices(devices) {
+      const grid = document.getElementById('device-grid');
+      if (devices.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align:center; padding: 3rem; background: var(--card-bg); border-radius: 8px;">
+            <h3>No matching router hardware found</h3>
+            <p style="color:var(--text-muted); margin-top:0.5rem;">Try adjusting search keywords or clearing filter dropdowns.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = devices.map(d => {
+        const wifiGen = d.wireless && d.wireless.length > 0 
+          ? [...new Set(d.wireless.map(w => w.generation))].join(', ')
+          : 'None (Ethernet Only)';
+
+        const isComparing = compareList.includes(d.id);
+
+        return `
+          <article class="card">
+            <div>
+              <div class="card-header">
+                <div>
+                  <div class="card-vendor">${escapeHtml(d.manufacturer)}</div>
+                  <h2 class="card-title">${escapeHtml(d.model)} <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">(${escapeHtml(d.hardware_revision)})</span></h2>
+                </div>
+                <span class="status-badge status-${d.openwrt.support_status}">${d.openwrt.support_status.replace(/_/g, ' ')}</span>
+              </div>
+
+              <div class="specs-grid">
+                <div><span class="spec-label">SoC:</span></div>
+                <div class="spec-val">${escapeHtml(d.soc.vendor)} ${escapeHtml(d.soc.model)}</div>
+                
+                <div><span class="spec-label">RAM / Flash:</span></div>
+                <div class="spec-val">${d.ram_mb}MB / ${d.flash.capacity_mb}MB ${escapeHtml(d.flash.type)}</div>
+
+                <div><span class="spec-label">Wi-Fi:</span></div>
+                <div class="spec-val">${escapeHtml(wifiGen)}</div>
+
+                <div><span class="spec-label">Target:</span></div>
+                <div class="spec-val">${escapeHtml(d.openwrt.target)}</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <label style="font-size:0.8rem; color:var(--text-muted); display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
+                <input type="checkbox" onchange="toggleCompare('${d.id}')" ${isComparing ? 'checked' : ''} style="width:auto;"> Compare
+              </label>
+              <button class="btn btn-secondary" onclick="viewDetails('${d.id}')">View Details →</button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function filterDevices() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const statusFilter = document.getElementById('status-filter').value;
+      const wifiFilter = document.getElementById('wifi-filter').value;
+      const socFilter = document.getElementById('soc-filter').value;
+
+      const filtered = allDevices.filter(d => {
+        const matchesQuery = !query || 
+          d.model.toLowerCase().includes(query) ||
+          d.manufacturer.toLowerCase().includes(query) ||
+          d.soc.model.toLowerCase().includes(query) ||
+          d.soc.family.toLowerCase().includes(query) ||
+          d.openwrt.target.toLowerCase().includes(query) ||
+          (d.internal_board_name && d.internal_board_name.toLowerCase().includes(query));
+
+        const matchesStatus = statusFilter === 'ALL' || d.openwrt.support_status === statusFilter;
+
+        const hasWifi = d.wireless && d.wireless.length > 0;
+        let matchesWifi = true;
+        if (wifiFilter === 'Ethernet Only') {
+          matchesWifi = !hasWifi;
+        } else if (wifiFilter !== 'ALL') {
+          matchesWifi = hasWifi && d.wireless.some(w => w.generation === wifiFilter);
+        }
+
+        let matchesSoc = true;
+        if (socFilter !== 'ALL') {
+          if (socFilter === 'Qualcomm') matchesSoc = d.soc.vendor === 'Qualcomm';
+          else if (socFilter === 'Rockchip') matchesSoc = d.soc.vendor === 'Rockchip';
+          else if (socFilter === 'Broadcom') matchesSoc = d.soc.vendor === 'Broadcom';
+          else if (socFilter === 'Realtek') matchesSoc = d.soc.vendor === 'Realtek';
+          else if (socFilter === 'Intel/x86') matchesSoc = d.architecture === 'x86_64';
+          else matchesSoc = d.soc.family.includes(socFilter) || d.soc.model.includes(socFilter);
+        }
+
+        return matchesQuery && matchesStatus && matchesWifi && matchesSoc;
+      });
+
+      renderDevices(filtered);
+    }
+
+    document.getElementById('search-input').addEventListener('input', filterDevices);
+    document.getElementById('status-filter').addEventListener('change', filterDevices);
+    document.getElementById('wifi-filter').addEventListener('change', filterDevices);
+    document.getElementById('soc-filter').addEventListener('change', filterDevices);
+
+    function toggleCompare(id) {
+      if (compareList.includes(id)) {
+        compareList = compareList.filter(item => item !== id);
+      } else {
+        if (compareList.length >= 3) {
+          alert('You can compare a maximum of 3 devices simultaneously.');
+          filterDevices();
+          return;
+        }
+        compareList.push(id);
+      }
+      updateComparisonTray();
+    }
+
+    function clearComparison() {
+      compareList = [];
+      updateComparisonTray();
+      filterDevices();
+    }
+
+    function updateComparisonTray() {
+      const tray = document.getElementById('comparison-tray');
+      const pillsContainer = document.getElementById('tray-pills');
+      const countEl = document.getElementById('compare-count');
+
+      if (compareList.length === 0) {
+        tray.style.display = 'none';
+        return;
+      }
+
+      tray.style.display = 'flex';
+      countEl.innerText = compareList.length;
+
+      pillsContainer.innerHTML = compareList.map(id => {
+        const d = allDevices.find(x => x.id === id);
+        return `
+          <div class="tray-pill">
+            <span>${escapeHtml(d.manufacturer)} ${escapeHtml(d.model)}</span>
+            <span class="tray-remove" onclick="toggleCompare('${id}')">&times;</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function showComparisonModal() {
+      if (compareList.length < 2) {
+        alert('Please select at least 2 devices to compare.');
+        return;
+      }
+
+      const devices = compareList.map(id => allDevices.find(x => x.id === id));
+      const modalInner = document.getElementById('modal-inner');
+
+      modalInner.innerHTML = `
+        <h2 style="color:var(--text-bright); margin-bottom:1rem;">Side-by-Side Hardware Comparison</h2>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              ${devices.map(d => `<th>${escapeHtml(d.manufacturer)} ${escapeHtml(d.model)} (${escapeHtml(d.hardware_revision)})</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Support Status</strong></td>
+              ${devices.map(d => `<td><span class="status-badge status-${d.openwrt.support_status}">${d.openwrt.support_status.replace(/_/g, ' ')}</span></td>`).join('')}
+            </tr>
+            <tr>
+              <td><strong>SoC / Silicon</strong></td>
+              ${devices.map(d => `<td>${escapeHtml(d.soc.vendor)} ${escapeHtml(d.soc.model)} (${escapeHtml(d.soc.family)})</td>`).join('')}
+            </tr>
+            <tr>
+              <td><strong>CPU Cores / Clock</strong></td>
+              ${devices.map(d => `<td>${d.soc.cores} Cores @ ${d.soc.frequency_mhz} MHz (${escapeHtml(d.architecture)})</td>`).join('')}
+            </tr>
+            <tr>
+              <td><strong>RAM Memory</strong></td>
+              ${devices.map(d => `<td>${d.ram_mb} MB</td>`).join('')}
+            </tr>
+            <tr>
+              <td><strong>Flash Storage</strong></td>
+              ${devices.map(d => `<td>${d.flash.capacity_mb} MB (${escapeHtml(d.flash.type)})</td>`).join('')}
+            </tr>
+            <tr>
+              <td><strong>OpenWrt Target</strong></td>
+              ${devices.map(d => `<td><code>${escapeHtml(d.openwrt.target)}</code></td>`).join('')}
+            </tr>
+            <tr>
+              <td><strong>Ethernet Switch / Ports</strong></td>
+              ${devices.map(d => `<td>${d.ethernet.ports.map(p => `${p.name} (${p.speed_mbps}M)`).join(', ')}</td>`).join('')}
+            </tr>
+            <tr>
+              <td><strong>Wi-Fi Capabilities</strong></td>
+              ${devices.map(d => `<td>${(d.wireless || []).map(w => `${w.frequency_ghz}G: ${w.generation} ${w.spatial_streams}`).join('<br>') || 'None'}</td>`).join('')}
+            </tr>
+            <tr>
+              <td><strong>Installation Method</strong></td>
+              ${devices.map(d => `<td>${escapeHtml(d.installation.method)} (Risk: ${d.installation.risk})</td>`).join('')}
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      document.getElementById('modal-overlay').style.display = 'block';
+    }
+
+    function viewDetails(id) {
+      const d = allDevices.find(x => x.id === id);
+      if (!d) return;
+
+      const modalInner = document.getElementById('modal-inner');
+      modalInner.innerHTML = `
+        <div style="border-bottom: 1px solid var(--card-border); padding-bottom: 1rem; margin-bottom: 1rem;">
+          <span class="card-vendor">${escapeHtml(d.manufacturer)}</span>
+          <h2 style="color:var(--text-bright); font-size:1.6rem;">${escapeHtml(d.model)} <span style="font-size:1rem; color:var(--text-muted); font-weight:normal;">(Revision: ${escapeHtml(d.hardware_revision)})</span></h2>
+          <div style="margin-top:0.5rem; display:flex; gap:0.5rem; align-items:center;">
+            <span class="status-badge status-${d.openwrt.support_status}">${d.openwrt.support_status.replace(/_/g, ' ')}</span>
+            ${d.openwrt.first_supported_version ? `<span class="tag-pill">First Supported: ${escapeHtml(d.openwrt.first_supported_version)}</span>` : ''}
+            ${d.openwrt.device_tree_file ? `<span class="tag-pill">DTS: ${escapeHtml(d.openwrt.device_tree_file)}</span>` : ''}
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+          <div>
+            <h3 style="color:var(--text-bright); font-size:1.05rem; margin-bottom:0.6rem;">Hardware Profile</h3>
+            <ul style="list-style:none; font-size:0.9rem; line-height:1.7;">
+              <li><strong>SoC:</strong> ${escapeHtml(d.soc.vendor)} ${escapeHtml(d.soc.model)} (${escapeHtml(d.soc.family)})</li>
+              <li><strong>CPU:</strong> ${d.soc.cores} Cores @ ${d.soc.frequency_mhz} MHz (${escapeHtml(d.architecture)})</li>
+              <li><strong>RAM:</strong> ${d.ram_mb} MB</li>
+              <li><strong>Flash:</strong> ${d.flash.capacity_mb} MB ${escapeHtml(d.flash.type)}</li>
+              <li><strong>Switch IC:</strong> ${escapeHtml(d.ethernet.switch_chip || 'Direct SoC MAC / None')}</li>
+              <li><strong>Bootloader:</strong> ${escapeHtml(d.bootloader || 'Unknown')}</li>
+              <li><strong>UART Serial:</strong> ${d.serial_uart && d.serial_uart.available ? `Available (${d.serial_uart.voltage || '3.3V'}, ${d.serial_uart.baudrate || 115200} baud)` : 'No / Unverified'}</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style="color:var(--text-bright); font-size:1.05rem; margin-bottom:0.6rem;">Installation & Recovery</h3>
+            <ul style="list-style:none; font-size:0.9rem; line-height:1.7;">
+              <li><strong>Install Method:</strong> ${escapeHtml(d.installation.method)}</li>
+              <li><strong>Flash Risk Level:</strong> <span style="color:${d.installation.risk === 'LOW' ? 'var(--success-text)' : d.installation.risk === 'MEDIUM' ? 'var(--warning-text)' : 'var(--danger-text)'}; font-weight:bold;">${escapeHtml(d.installation.risk)}</span></li>
+              <li><strong>Factory Stage Required:</strong> ${d.installation.requires_factory_stage ? 'Yes (two-stage sysupgrade)' : 'No (direct sysupgrade)'}</li>
+              <li><strong>Recovery Method:</strong> ${escapeHtml(d.recovery.method)} ${d.recovery.recovery_ip ? `(IP: ${d.recovery.recovery_ip})` : ''}</li>
+              <li><strong>OpenWrt Target:</strong> <code>${escapeHtml(d.openwrt.target)}</code></li>
+              <li><strong>Device Profile:</strong> <code>${escapeHtml(d.openwrt.profile)}</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-bottom:1.5rem;">
+          <h3 style="color:var(--text-bright); font-size:1.05rem; margin-bottom:0.6rem;">Ethernet Port Mapping</h3>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            ${d.ethernet.ports.map(p => `
+              <div style="background:#0d1117; border:1px solid var(--card-border); padding:0.4rem 0.8rem; border-radius:6px; font-size:0.85rem;">
+                <strong>${escapeHtml(p.name)}</strong> (${p.speed_mbps} Mbps)
+                ${p.dsa_port ? `<br><code style="font-size:0.75rem; color:var(--text-muted)">dsa: ${p.dsa_port}</code>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        ${d.wireless && d.wireless.length > 0 ? `
+          <div style="margin-bottom:1.5rem;">
+            <h3 style="color:var(--text-bright); font-size:1.05rem; margin-bottom:0.6rem;">Wireless Subsystem</h3>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              ${d.wireless.map(w => `
+                <div style="background:#0d1117; border:1px solid var(--card-border); padding:0.4rem 0.8rem; border-radius:6px; font-size:0.85rem;">
+                  <strong>${w.frequency_ghz} GHz</strong>: ${w.generation} (${w.spatial_streams})
+                  <br><span style="font-size:0.75rem; color:var(--text-muted)">Chipset: ${escapeHtml(w.chipset)} | Max: ${w.max_phy_rate_mbps} Mbps (${w.channel_width_mhz} MHz)</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        ${d.openwrt.known_limitations && d.openwrt.known_limitations.length > 0 ? `
+          <div style="margin-bottom:1.5rem; background:rgba(158, 106, 3, 0.15); border:1px solid rgba(210, 153, 34, 0.4); padding:0.8rem; border-radius:6px;">
+            <strong style="color:var(--warning-text); font-size:0.9rem;">⚠️ Documented Limitations:</strong>
+            <ul style="margin-left:1.2rem; font-size:0.85rem; margin-top:0.3rem;">
+              ${d.openwrt.known_limitations.map(k => `<li>${escapeHtml(k)}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        <div>
+          <h3 style="color:var(--text-bright); font-size:1.05rem; margin-bottom:0.6rem;">Primary & Upstream Citations</h3>
+          <ul style="font-size:0.85rem; line-height:1.7;">
+            ${(d.sources || []).map(s => `
+              <li>
+                <a href="${s.url}" target="_blank" rel="noopener" style="color:var(--accent-hover); text-decoration:none;">${escapeHtml(s.title)} ↗</a>
+                <span style="color:var(--text-muted); font-size:0.75rem;">(${s.type}, verified ${s.date_accessed})</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      `;
+
+      document.getElementById('modal-overlay').style.display = 'block';
+    }
+
+    function closeModalDirect() {
+      document.getElementById('modal-overlay').style.display = 'none';
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'modal-overlay') {
+        closeModalDirect();
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Diagrams — OpenWrt Router Hardware Knowledge Base</title>
+  <meta name="description" content="Independent, evidence-based hardware database, interactive diagrams, and technical recovery guides for OpenWrt compatible routers.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="brand">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="#1e293b"/>
+          <path d="M6 16C6 10.4772 10.4772 6 16 6C21.5228 6 26 10.4772 26 16" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.5" fill="#f8fafc"/>
+          <rect x="8" y="21" width="16" height="5" rx="2" fill="#334155"/>
+          <circle cx="12" cy="23.5" r="1" fill="#10b981"/>
+          <circle cx="16" cy="23.5" r="1" fill="#06b6d4"/>
+          <circle cx="20" cy="23.5" r="1" fill="#f59e0b"/>
+        </svg>
+        <span class="brand-text">OpenWrt<strong>HardwareKB</strong></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+<a href="../explorer/index.html">Explorer</a>
+<a href="../devices/index.html">Devices</a>
+<a href="../chipsets/index.html">Chipsets</a>
+<a href="../diagrams/index.html" class="active">Diagrams</a>
+<a href="../guides/installation/index.html">Installation</a>
+<a href="../guides/recovery/index.html">Recovery</a>
+<a href="../guides/multi-wan/index.html">Failover</a>
+<a href="../methodology/index.html">Methodology</a>
+<a href="../about/index.html">About</a>
+
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Source Repo
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+
+    <div class="section-header">
+      <div>
+        <h1>Interactive Network & Hardware Diagrams</h1>
+        <p>Original vector schematics illustrating silicon architecture, recovery tiers, and multi-WAN failover pipelines.</p>
+      </div>
+    </div>
+
+    <!-- Diagram A: Chipset to Device Graph -->
+    <div class="card" style="margin-bottom: 3rem;">
+      <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.5rem;">A. Chipset Silicon to Retail Device Taxonomy</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Visual mapping of core networking silicon to production OpenWrt devices.</p>
+      
+      <div style="background: #090d16; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; overflow-x: auto;">
+        <svg viewBox="0 0 960 480" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g-chip" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0284c7"/>
+              <stop offset="100%" stop-color="#0369a1"/>
+            </linearGradient>
+            <linearGradient id="g-dev" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1e293b"/>
+              <stop offset="100%" stop-color="#0f172a"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Silicon Column (Left) -->
+          <text x="140" y="30" fill="#94a3b8" font-size="14" font-weight="700" text-anchor="middle">SILICON SOC / PLATFORM</text>
+          
+          <!-- MT7986A Filogic 830 -->
+          <g transform="translate(40, 60)">
+            <rect width="200" height="70" rx="8" fill="url(#g-chip)" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="100" y="28" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">MediaTek MT7986A</text>
+            <text x="100" y="48" fill="#bae6fd" font-size="11" text-anchor="middle">Filogic 830 (Quad A53 2.0G)</text>
+          </g>
+
+          <!-- MT7981B Filogic 820 -->
+          <g transform="translate(40, 160)">
+            <rect width="200" height="70" rx="8" fill="url(#g-chip)" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="100" y="28" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">MediaTek MT7981B</text>
+            <text x="100" y="48" fill="#bae6fd" font-size="11" text-anchor="middle">Filogic 820 (Dual A53 1.3G)</text>
+          </g>
+
+          <!-- MT7988A Filogic 880 -->
+          <g transform="translate(40, 260)">
+            <rect width="200" height="70" rx="8" fill="url(#g-chip)" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="100" y="28" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">MediaTek MT7988A</text>
+            <text x="100" y="48" fill="#bae6fd" font-size="11" text-anchor="middle">Filogic 880 (Quad A73 Wi-Fi 7)</text>
+          </g>
+
+          <!-- Qualcomm IPQ8072A -->
+          <g transform="translate(40, 360)">
+            <rect width="200" height="70" rx="8" fill="url(#g-chip)" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="100" y="28" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">Qualcomm IPQ8072A</text>
+            <text x="100" y="48" fill="#bae6fd" font-size="11" text-anchor="middle">Hawkeye (Quad A53 2.2G)</text>
+          </g>
+
+          <!-- Retail Devices Column (Right) -->
+          <text x="800" y="30" fill="#94a3b8" font-size="14" font-weight="700" text-anchor="middle">VERIFIED OPENWRT DEVICE</text>
+
+          <!-- JIDU6101 -->
+          <g transform="translate(680, 50)">
+            <rect width="240" height="40" rx="6" fill="url(#g-dev)" stroke="#10b981" stroke-width="1.5"/>
+            <text x="120" y="24" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">Jio / Arcadyan JIDU6101 (6j01)</text>
+          </g>
+
+          <!-- GL-MT6000 -->
+          <g transform="translate(680, 100)">
+            <rect width="240" height="40" rx="6" fill="url(#g-dev)" stroke="#10b981" stroke-width="1.5"/>
+            <text x="120" y="24" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">GL.iNet GL-MT6000 (Flint 2)</text>
+          </g>
+
+          <!-- BPI-R3 -->
+          <g transform="translate(680, 150)">
+            <rect width="240" height="40" rx="6" fill="url(#g-dev)" stroke="#10b981" stroke-width="1.5"/>
+            <text x="120" y="24" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">Banana Pi BPI-R3 (SFP+)</text>
+          </g>
+
+          <!-- JIDU6201 -->
+          <g transform="translate(680, 210)">
+            <rect width="240" height="40" rx="6" fill="url(#g-dev)" stroke="#f59e0b" stroke-width="1.5"/>
+            <text x="120" y="24" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">Jio / Arcadyan JIDU6201 (6j02)</text>
+          </g>
+
+          <!-- GL-MT3000 -->
+          <g transform="translate(680, 260)">
+            <rect width="240" height="40" rx="6" fill="url(#g-dev)" stroke="#10b981" stroke-width="1.5"/>
+            <text x="120" y="24" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">GL.iNet GL-MT3000 (Beryl AX)</text>
+          </g>
+
+          <!-- BPI-R4 -->
+          <g transform="translate(680, 320)">
+            <rect width="240" height="40" rx="6" fill="url(#g-dev)" stroke="#10b981" stroke-width="1.5"/>
+            <text x="120" y="24" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">Banana Pi BPI-R4 (10GbE)</text>
+          </g>
+
+          <!-- Xiaomi AX9000 -->
+          <g transform="translate(680, 380)">
+            <rect width="240" height="40" rx="6" fill="url(#g-dev)" stroke="#10b981" stroke-width="1.5"/>
+            <text x="120" y="24" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">Xiaomi AX9000 (Tri-Band)</text>
+          </g>
+
+          <!-- Connecting Curves -->
+          <!-- MT7986A -> JIDU6101 -->
+          <path d="M 240 95 C 460 95, 460 70, 680 70" fill="none" stroke="#06b6d4" stroke-width="2"/>
+          <!-- MT7986A -> GL-MT6000 -->
+          <path d="M 240 95 C 460 95, 460 120, 680 120" fill="none" stroke="#06b6d4" stroke-width="2"/>
+          <!-- MT7986A -> BPI-R3 -->
+          <path d="M 240 95 C 460 95, 460 170, 680 170" fill="none" stroke="#06b6d4" stroke-width="2"/>
+          <!-- MT7981B -> JIDU6201 -->
+          <path d="M 240 195 C 460 195, 460 230, 680 230" fill="none" stroke="#06b6d4" stroke-width="2"/>
+          <!-- MT7981B -> GL-MT3000 -->
+          <path d="M 240 195 C 460 195, 460 280, 680 280" fill="none" stroke="#06b6d4" stroke-width="2"/>
+          <!-- MT7988A -> BPI-R4 -->
+          <path d="M 240 295 C 460 295, 460 340, 680 340" fill="none" stroke="#06b6d4" stroke-width="2"/>
+          <!-- IPQ8072A -> AX9000 -->
+          <path d="M 240 395 C 460 395, 460 400, 680 400" fill="none" stroke="#06b6d4" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Diagram B: Filogic 830 Architecture Block -->
+    <div class="card" style="margin-bottom: 3rem;">
+      <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.5rem;">B. MediaTek Filogic 830 (MT7986A) Hardware Silicon Architecture</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Low-level subsystem interconnect: Host CPU, hardware NAT offload, SGMII, and RF transceivers.</p>
+      
+      <div style="background: #090d16; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; overflow-x: auto;">
+        <svg viewBox="0 0 960 420" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+          <!-- Main SoC Boundary -->
+          <rect x="40" y="40" width="560" height="340" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="2" stroke-dasharray="8 4"/>
+          <text x="60" y="70" fill="#38bdf8" font-size="16" font-weight="800">MediaTek MT7986A System-on-Chip (Filogic 830)</text>
+
+          <!-- CPU Block -->
+          <rect x="70" y="100" width="220" height="90" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+          <text x="180" y="130" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">Quad ARM Cortex-A53</text>
+          <text x="180" y="150" fill="#94a3b8" font-size="11" text-anchor="middle">2.0 GHz Peak | 64-bit aarch64</text>
+          <text x="180" y="170" fill="#38bdf8" font-size="11" text-anchor="middle">32KB L1 + 512KB L2 Cache</text>
+
+          <!-- PPE Block -->
+          <rect x="320" y="100" width="250" height="90" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+          <text x="445" y="130" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">Packet Processing Engine (PPE)</text>
+          <text x="445" y="150" fill="#10b981" font-size="11" text-anchor="middle">Hardware Flow Offload (Firewall4 / nft)</text>
+          <text x="445" y="170" fill="#94a3b8" font-size="11" text-anchor="middle">Wire-Speed NAT / Routing Table Bypass</text>
+
+          <!-- Dual 2.5G GMAC Block -->
+          <rect x="70" y="220" width="220" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+          <text x="180" y="250" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">Dual 2.5G SGMII GMAC</text>
+          <text x="180" y="270" fill="#94a3b8" font-size="11" text-anchor="middle">GMAC1 (eth1) & GMAC2 (eth0)</text>
+
+          <!-- WED Wireless Dispatcher -->
+          <rect x="320" y="220" width="250" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+          <text x="445" y="250" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">Wireless Ethernet Dispatch (WED)</text>
+          <text x="445" y="270" fill="#94a3b8" font-size="11" text-anchor="middle">Direct Wi-Fi-to-Ethernet DMA</text>
+
+          <!-- External Peripherals (Right) -->
+          <!-- MT7976C RF Companion -->
+          <g transform="translate(670, 70)">
+            <rect width="250" height="110" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+            <text x="125" y="30" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">MT7976C Dual-Band RF</text>
+            <text x="125" y="55" fill="#f59e0b" font-size="11" text-anchor="middle">4x4 2.4 GHz + 4x4 5.0 GHz (HE160)</text>
+            <text x="125" y="75" fill="#94a3b8" font-size="11" text-anchor="middle">AX6000 Aggregate Throughput</text>
+            <text x="125" y="95" fill="#94a3b8" font-size="10" text-anchor="middle">Dedicated AXI Bus Link</text>
+          </g>
+
+          <!-- MT7531AE Switch -->
+          <g transform="translate(670, 220)">
+            <rect width="250" height="110" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+            <text x="125" y="30" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">MediaTek MT7531AE Switch</text>
+            <text x="125" y="55" fill="#06b6d4" font-size="11" text-anchor="middle">7-Port Gigabit DSA Switch</text>
+            <text x="125" y="75" fill="#94a3b8" font-size="11" text-anchor="middle">LAN1 – LAN4 Discrete Ports</text>
+            <text x="125" y="95" fill="#94a3b8" font-size="10" text-anchor="middle">2.5 Gbps SGMII Backhaul (eth0)</text>
+          </g>
+
+          <!-- Connecting Bus Arrows -->
+          <path d="M 570 260 L 670 260" stroke="#06b6d4" stroke-width="2.5" marker-end="url(#arrow)"/>
+          <path d="M 570 125 L 670 125" stroke="#f59e0b" stroke-width="2.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Diagram C: 5-Tier Recovery Flow -->
+    <div class="card" style="margin-bottom: 3rem;">
+      <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.5rem;">C. 5-Tier OpenWrt Recovery & De-Bricking Hierarchy</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Escalation methodology from software rollback to in-circuit flash programming.</p>
+      
+      <div style="background: #090d16; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; overflow-x: auto;">
+        <svg viewBox="0 0 960 360" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tier 1 -->
+          <g transform="translate(40, 40)">
+            <rect width="160" height="260" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+            <text x="80" y="35" fill="#10b981" font-size="14" font-weight="800" text-anchor="middle">TIER 1</text>
+            <text x="80" y="60" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Dual-Boot Rollback</text>
+            <text x="80" y="100" fill="#94a3b8" font-size="10" text-anchor="middle">No hardware tools.</text>
+            <text x="80" y="120" fill="#94a3b8" font-size="10" text-anchor="middle">Switch inactive slot</text>
+            <text x="80" y="140" fill="#94a3b8" font-size="10" text-anchor="middle">via U-Boot env</text>
+            <text x="80" y="160" fill="#94a3b8" font-size="10" text-anchor="middle">or failsafe shell</text>
+            <rect x="20" y="210" width="120" height="30" rx="4" fill="rgba(16, 185, 129, 0.2)"/>
+            <text x="80" y="230" fill="#10b981" font-size="11" font-weight="700" text-anchor="middle">Zero Risk</text>
+          </g>
+
+          <!-- Tier 2 -->
+          <g transform="translate(220, 40)">
+            <rect width="160" height="260" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+            <text x="80" y="35" fill="#06b6d4" font-size="14" font-weight="800" text-anchor="middle">TIER 2</text>
+            <text x="80" y="60" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">OEM Web Failsafe</text>
+            <text x="80" y="100" fill="#94a3b8" font-size="10" text-anchor="middle">Hold Reset 10s</text>
+            <text x="80" y="120" fill="#94a3b8" font-size="10" text-anchor="middle">U-Boot HTTP daemon</text>
+            <text x="80" y="140" fill="#94a3b8" font-size="10" text-anchor="middle">Upload stock/sysupgrade</text>
+            <text x="80" y="160" fill="#94a3b8" font-size="10" text-anchor="middle">at 192.168.1.1</text>
+            <rect x="20" y="210" width="120" height="30" rx="4" fill="rgba(6, 182, 212, 0.2)"/>
+            <text x="80" y="230" fill="#06b6d4" font-size="11" font-weight="700" text-anchor="middle">Low Risk</text>
+          </g>
+
+          <!-- Tier 3 -->
+          <g transform="translate(400, 40)">
+            <rect width="160" height="260" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+            <text x="80" y="35" fill="#3b82f6" font-size="14" font-weight="800" text-anchor="middle">TIER 3</text>
+            <text x="80" y="60" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">TFTP Net Recovery</text>
+            <text x="80" y="100" fill="#94a3b8" font-size="10" text-anchor="middle">PC at 192.168.1.10</text>
+            <text x="80" y="120" fill="#94a3b8" font-size="10" text-anchor="middle">Automated TFTP push</text>
+            <text x="80" y="140" fill="#94a3b8" font-size="10" text-anchor="middle">initramfs kernel boot</text>
+            <text x="80" y="160" fill="#94a3b8" font-size="10" text-anchor="middle">into DDR RAM</text>
+            <rect x="20" y="210" width="120" height="30" rx="4" fill="rgba(59, 130, 246, 0.2)"/>
+            <text x="80" y="230" fill="#3b82f6" font-size="11" font-weight="700" text-anchor="middle">Moderate Risk</text>
+          </g>
+
+          <!-- Tier 4 -->
+          <g transform="translate(580, 40)">
+            <rect width="160" height="260" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+            <text x="80" y="35" fill="#f59e0b" font-size="14" font-weight="800" text-anchor="middle">TIER 4</text>
+            <text x="80" y="60" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">3.3V Serial UART</text>
+            <text x="80" y="100" fill="#94a3b8" font-size="10" text-anchor="middle">TTL adapter (115200)</text>
+            <text x="80" y="120" fill="#94a3b8" font-size="10" text-anchor="middle">GND, TX, RX pins</text>
+            <text x="80" y="140" fill="#f87171" font-size="10" text-anchor="middle">NEVER CONNECT VCC</text>
+            <text x="80" y="160" fill="#94a3b8" font-size="10" text-anchor="middle">U-Boot CLI control</text>
+            <rect x="20" y="210" width="120" height="30" rx="4" fill="rgba(245, 158, 11, 0.2)"/>
+            <text x="80" y="230" fill="#f59e0b" font-size="11" font-weight="700" text-anchor="middle">Hardware Soldering</text>
+          </g>
+
+          <!-- Tier 5 -->
+          <g transform="translate(760, 40)">
+            <rect width="160" height="260" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+            <text x="80" y="35" fill="#ef4444" font-size="14" font-weight="800" text-anchor="middle">TIER 5</text>
+            <text x="80" y="60" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">SPI Programmer</text>
+            <text x="80" y="100" fill="#94a3b8" font-size="10" text-anchor="middle">CH341A / T48 flasher</text>
+            <text x="80" y="120" fill="#94a3b8" font-size="10" text-anchor="middle">SOIC8 / WSON clip</text>
+            <text x="80" y="140" fill="#94a3b8" font-size="10" text-anchor="middle">Restore fullchip</text>
+            <text x="80" y="160" fill="#94a3b8" font-size="10" text-anchor="middle">NAND binary dump</text>
+            <rect x="20" y="210" width="120" height="30" rx="4" fill="rgba(239, 68, 68, 0.2)"/>
+            <text x="80" y="230" fill="#ef4444" font-size="11" font-weight="700" text-anchor="middle">Expert Operation</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>OpenWrt Hardware Knowledge Base</h3>
+        <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
+        <p class="copyright">Docs: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="../explorer/index.html">Hardware Explorer</a></li>
+          <li><a href="../devices/index.html">Device Directory</a></li>
+          <li><a href="../chipsets/index.html">Silicon Architectures</a></li>
+          <li><a href="../diagrams/index.html">Interactive Diagrams</a></li>
+          <li><a href="../guides/installation/index.html">Two-Stage Installation</a></li>
+          <li><a href="../guides/recovery/index.html">TFTP & UART Recovery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community & Standards</h4>
+        <ul>
+          <li><a href="../methodology/index.html">Research Methodology</a></li>
+          <li><a href="../contributing/index.html">Contributor Handbook</a></li>
+          <li><a href="../about/index.html">Project Governance</a></li>
+          <li><a href="../licensing/index.html">Licensing & Attribution</a></li>
+          <li><a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues" target="_blank" rel="noopener">Submit Hardware Verification</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Independent research project. Not affiliated with or endorsed by OpenWrt, Reliance Jio, MediaTek, Arcadyan, Qualcomm, Broadcom, or ASUS.</p>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
