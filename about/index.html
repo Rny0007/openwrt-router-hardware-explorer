@@ -4,10 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Project — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Independent, evidence-based hardware database, interactive diagrams, and technical recovery guides for OpenWrt compatible routers.">
+  <meta name="description" content="About the Global OpenWrt Router Hardware Knowledge Base, project stewardship, and dual-repository architecture.">
+  <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/about/">
+  <meta property="og:title" content="About Project — OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:description" content="About the Global OpenWrt Router Hardware Knowledge Base, project stewardship, and dual-repository architecture.">
+  <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/about/">
+  <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Project">
+  <meta name="twitter:description" content="About the Global OpenWrt Router Hardware Knowledge Base, project stewardship, and dual-repository architecture.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="manifest" href="../manifest.webmanifest">
   <link rel="stylesheet" href="../assets/css/style.css">
+
 </head>
 <body>
   <header class="site-header">
@@ -52,6 +62,11 @@
   </header>
   <main class="main-content">
 
+    <div class="breadcrumbs">
+      <a href="../index.html">Home</a> <span>/</span>
+      <strong>About Project</strong>
+    </div>
+
     <div class="section-header">
       <div>
         <h1>About the OpenWrt Hardware Knowledge Base</h1>
@@ -79,6 +94,8 @@
         <li><strong>Repository B (Website Only):</strong> <a href="https://github.com/Rny0007/openwrt-router-hardware-explorer" target="_blank" rel="noopener">Rny0007/openwrt-router-hardware-explorer</a> — The deployable, zero-dependency static website compiled automatically by GitHub Actions.</li>
       </ul>
     </div>
+
+    {get_contribution_panel("AGENT.md", "About & Project Governance", rel_root="..")}
     
   </main>
   <footer class="site-footer">
@@ -87,6 +104,12 @@
         <h3>OpenWrt Hardware Knowledge Base</h3>
         <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
         <p class="copyright">Docs: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+        <div class="visitor-telemetry" style="margin-top: 1rem;">
+          <span class="telemetry-badge" id="telemetry-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Cookie-Free Analytics: <strong>Privacy-First / No Trackers Active</strong>
+          </span>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
@@ -115,5 +138,6 @@
     </div>
   </footer>
   <script src="../assets/js/main.js"></script>
+  
 </body>
 </html>

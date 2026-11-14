@@ -4,10 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Licensing & Attribution — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Independent, evidence-based hardware database, interactive diagrams, and technical recovery guides for OpenWrt compatible routers.">
+  <meta name="description" content="Licensing policies, Creative Commons attribution, MIT code licenses, and third-party trademark notices for OpenWrt Hardware KB.">
+  <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/licensing/">
+  <meta property="og:title" content="Licensing & Attribution — OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:description" content="Licensing policies, Creative Commons attribution, MIT code licenses, and third-party trademark notices for OpenWrt Hardware KB.">
+  <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/licensing/">
+  <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Licensing & Attribution">
+  <meta name="twitter:description" content="Licensing policies, Creative Commons attribution, MIT code licenses, and third-party trademark notices for OpenWrt Hardware KB.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="manifest" href="../manifest.webmanifest">
   <link rel="stylesheet" href="../assets/css/style.css">
+
 </head>
 <body>
   <header class="site-header">
@@ -52,6 +62,11 @@
   </header>
   <main class="main-content">
 
+    <div class="breadcrumbs">
+      <a href="../index.html">Home</a> <span>/</span>
+      <strong>Licensing & Attribution</strong>
+    </div>
+
     <div class="section-header">
       <div>
         <h1>Licensing, Attributions & Trademarks</h1>
@@ -61,11 +76,17 @@
 
     <div class="card" style="margin-bottom: 2rem;">
       <h2 style="color: var(--text-heading); font-size: 1.3rem; margin-bottom: 1rem;">Dual-License Framework</h2>
-      <table class="spec-table">
-        <tr><th>Asset Type</th><th>License</th><th>Terms</th></tr>
-        <tr><td>Documentation, Schemas & Research Data</td><td><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></td><td>Free to share, adapt, and build upon with appropriate attribution.</td></tr>
-        <tr><td>Code, Build Scripts, Explorer UI & Tools</td><td><a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></td><td>Permissive open-source software license.</td></tr>
-      </table>
+      <div class="table-container">
+        <table class="spec-table">
+          <thead>
+            <tr><th>Asset Type</th><th>License</th><th>Terms</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Documentation, Schemas & Research Data</td><td><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></td><td>Free to share, adapt, and build upon with appropriate attribution.</td></tr>
+            <tr><td>Code, Build Scripts, Explorer UI & Tools</td><td><a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></td><td>Permissive open-source software license.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="card">
@@ -74,6 +95,8 @@
         All trademarks, product names, logos, and brands cited on this website (including OpenWrt, MediaTek, Filogic, Qualcomm, Broadcom, Realtek, Rockchip, Jio, Arcadyan, ASUS, GL.iNet, TP-Link, Xiaomi, and Ubiquiti) are the property of their respective owners. Their citation is strictly for technical identification, compatibility analysis, and educational reference, and does not imply endorsement or affiliation.
       </p>
     </div>
+
+    {get_contribution_panel("ATTRIBUTION.md", "Licensing & Attribution", rel_root="..")}
     
   </main>
   <footer class="site-footer">
@@ -82,6 +105,12 @@
         <h3>OpenWrt Hardware Knowledge Base</h3>
         <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
         <p class="copyright">Docs: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+        <div class="visitor-telemetry" style="margin-top: 1rem;">
+          <span class="telemetry-badge" id="telemetry-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Cookie-Free Analytics: <strong>Privacy-First / No Trackers Active</strong>
+          </span>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
@@ -110,5 +139,6 @@
     </div>
   </footer>
   <script src="../assets/js/main.js"></script>
+  
 </body>
 </html>

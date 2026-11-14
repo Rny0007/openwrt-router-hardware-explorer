@@ -3,11 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Installation Guide — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Independent, evidence-based hardware database, interactive diagrams, and technical recovery guides for OpenWrt compatible routers.">
+  <title>Two-Stage Installation — OpenWrt Router Hardware Knowledge Base</title>
+  <meta name="description" content="Step-by-step two-stage installation guide for OpenWrt on MediaTek Filogic 830 / MT7986A routers without hardware disassembly.">
+  <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/installation/">
+  <meta property="og:title" content="Two-Stage Installation — OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:description" content="Step-by-step two-stage installation guide for OpenWrt on MediaTek Filogic 830 / MT7986A routers without hardware disassembly.">
+  <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/installation/">
+  <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Two-Stage Installation">
+  <meta name="twitter:description" content="Step-by-step two-stage installation guide for OpenWrt on MediaTek Filogic 830 / MT7986A routers without hardware disassembly.">
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
   <link rel="manifest" href="../../manifest.webmanifest">
   <link rel="stylesheet" href="../../assets/css/style.css">
+
 </head>
 <body>
   <header class="site-header">
@@ -52,6 +62,12 @@
   </header>
   <main class="main-content">
 
+    <div class="breadcrumbs">
+      <a href="../../index.html">Home</a> <span>/</span>
+      <a href="../recovery/index.html">Guides</a> <span>/</span>
+      <strong>Two-Stage Installation</strong>
+    </div>
+
     <div class="section-header">
       <div>
         <h1>Two-Stage OpenWrt Installation Guide</h1>
@@ -59,7 +75,7 @@
       </div>
     </div>
 
-    <div class="alert alert-warning">
+    <div class="callout callout-warning">
       <strong>CRITICAL SAFETY PREREQUISITE:</strong> Never flash any router without dumping and verifying your factory calibration partitions (<code>Factory</code>, <code>MFG</code>). These contain unique MAC addresses and radio RF calibration parameters that cannot be recovered from public images.
     </div>
 
@@ -91,6 +107,19 @@ sync && reboot</code></pre>
       <p style="font-size: 0.92rem; color: var(--text); margin-bottom: 1rem;">The router reboots into OpenWrt operating purely in DDR3 RAM at <code>192.168.1.1</code>. Upload the final official OpenWrt 25.12.6 sysupgrade image and flash permanently:</p>
       <pre><code>sysupgrade -n /tmp/openwrt-sysupgrade.bin</code></pre>
     </div>
+
+    <div class="guide-pagination">
+      <a href="../../index.html" class="guide-nav-link">
+        <span>&larr; Previous</span>
+        <strong>Home Overview</strong>
+      </a>
+      <a href="../recovery/index.html" class="guide-nav-link" style="text-align: right;">
+        <span>Next Guide &rarr;</span>
+        <strong>Disaster Recovery & Unbricking</strong>
+      </a>
+    </div>
+
+    {get_contribution_panel("docs/installation.md", "Two-Stage Installation Guide", rel_root="../..")}
     
   </main>
   <footer class="site-footer">
@@ -99,6 +128,12 @@ sync && reboot</code></pre>
         <h3>OpenWrt Hardware Knowledge Base</h3>
         <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
         <p class="copyright">Docs: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+        <div class="visitor-telemetry" style="margin-top: 1rem;">
+          <span class="telemetry-badge" id="telemetry-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Cookie-Free Analytics: <strong>Privacy-First / No Trackers Active</strong>
+          </span>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
@@ -127,5 +162,6 @@ sync && reboot</code></pre>
     </div>
   </footer>
   <script src="../../assets/js/main.js"></script>
+  
 </body>
 </html>

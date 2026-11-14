@@ -4,10 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contributor Guide — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Independent, evidence-based hardware database, interactive diagrams, and technical recovery guides for OpenWrt compatible routers.">
+  <meta name="description" content="Contributor handbook, JSON schema validation rules, and structured GitHub issue submission guides for OpenWrt hardware.">
+  <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/contributing/">
+  <meta property="og:title" content="Contributor Guide — OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:description" content="Contributor handbook, JSON schema validation rules, and structured GitHub issue submission guides for OpenWrt hardware.">
+  <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/contributing/">
+  <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contributor Guide">
+  <meta name="twitter:description" content="Contributor handbook, JSON schema validation rules, and structured GitHub issue submission guides for OpenWrt hardware.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="manifest" href="../manifest.webmanifest">
   <link rel="stylesheet" href="../assets/css/style.css">
+
 </head>
 <body>
   <header class="site-header">
@@ -52,6 +62,11 @@
   </header>
   <main class="main-content">
 
+    <div class="breadcrumbs">
+      <a href="../index.html">Home</a> <span>/</span>
+      <strong>Contributor Handbook</strong>
+    </div>
+
     <div class="section-header">
       <div>
         <h1>Contributor Handbook & Submission Guide</h1>
@@ -79,6 +94,8 @@
         <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=05_recovery_unbrick_report.yml" target="_blank" rel="noopener" class="btn btn-sm btn-outline">Submit Unbrick Tutorial</a>
       </div>
     </div>
+
+    {get_contribution_panel("docs/contributor-handbook.md", "Contributor Handbook", rel_root="..")}
     
   </main>
   <footer class="site-footer">
@@ -87,6 +104,12 @@
         <h3>OpenWrt Hardware Knowledge Base</h3>
         <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
         <p class="copyright">Docs: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+        <div class="visitor-telemetry" style="margin-top: 1rem;">
+          <span class="telemetry-badge" id="telemetry-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Cookie-Free Analytics: <strong>Privacy-First / No Trackers Active</strong>
+          </span>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
@@ -115,5 +138,6 @@
     </div>
   </footer>
   <script src="../assets/js/main.js"></script>
+  
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* OpenWrt Hardware Knowledge Base — Premium Design System (Figma-Inspired) */
+/* OpenWrt Hardware Knowledge Base — Premium Design System (Figma & NOC Inspired) */
 :root {
   --bg: #0b0f19;
   --bg-secondary: #111827;
@@ -178,6 +178,103 @@ a:hover { color: var(--primary-hover); text-decoration: underline; }
   padding: 2.5rem 1.5rem 5rem;
 }
 
+/* NOC Documentation Layout */
+.docs-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+.docs-sidebar {
+  position: sticky;
+  top: 5rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  padding: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+}
+.docs-sidebar h4 {
+  color: var(--text-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.78rem;
+  margin-bottom: 0.8rem;
+}
+.docs-sidebar ul {
+  list-style: none;
+}
+.docs-sidebar li {
+  margin-bottom: 0.5rem;
+}
+.docs-sidebar a {
+  color: var(--text-muted);
+  display: block;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+.docs-sidebar a:hover, .docs-sidebar a.active-toc {
+  color: var(--primary);
+  background: var(--bg-secondary);
+  text-decoration: none;
+}
+.docs-content {
+  min-width: 0;
+}
+
+/* Callouts */
+.callout {
+  padding: 1.25rem;
+  border-radius: var(--radius-sm);
+  margin: 1.5rem 0;
+  border-left: 4px solid var(--primary);
+  background: var(--bg-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.callout-note {
+  border-left-color: var(--info);
+  background: var(--info-bg);
+}
+.callout-warning {
+  border-left-color: var(--warning);
+  background: var(--warning-bg);
+}
+.callout-danger {
+  border-left-color: var(--danger);
+  background: var(--danger-bg);
+}
+.callout strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--text-heading);
+}
+
+/* Code Blocks with Copy */
+.code-block-wrapper {
+  position: relative;
+  margin: 1.25rem 0;
+}
+.copy-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: #1e293b;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.copy-btn:hover {
+  color: var(--text-heading);
+  border-color: var(--primary);
+}
+
 /* Hero */
 .hero {
   padding: 3rem 0 4rem;
@@ -259,7 +356,7 @@ a:hover { color: var(--primary-hover); text-decoration: underline; }
   flex-wrap: wrap;
   gap: 1rem;
 }
-.section-header h2 {
+.section-header h1, .section-header h2 {
   font-size: 1.65rem;
   color: var(--text-heading);
   letter-spacing: -0.02em;
@@ -332,14 +429,19 @@ a:hover { color: var(--primary-hover); text-decoration: underline; }
 .badge-info { background: var(--info-bg); color: var(--info); border: 1px solid rgba(59, 130, 246, 0.3); }
 
 /* Specs Table */
+.table-container {
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
 .spec-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
   font-size: 0.88rem;
 }
 .spec-table th, .spec-table td {
-  padding: 0.6rem 0.75rem;
+  padding: 0.7rem 0.85rem;
   text-align: left;
   border-bottom: 1px solid var(--border);
 }
@@ -347,21 +449,114 @@ a:hover { color: var(--primary-hover); text-decoration: underline; }
   color: var(--text-muted);
   font-weight: 600;
   background: var(--bg-secondary);
+  white-space: nowrap;
 }
 
-/* Callout Alert */
-.alert {
-  background: var(--bg-secondary);
-  border-left: 4px solid var(--primary);
-  border-radius: var(--radius-sm);
-  padding: 1rem 1.25rem;
-  margin: 1.5rem 0;
-  font-size: 0.9rem;
+/* Breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
 }
-.alert-warning {
-  border-left-color: var(--warning);
-  background: var(--warning-bg);
-  color: var(--text);
+.breadcrumbs a { color: var(--text-muted); }
+.breadcrumbs a:hover { color: var(--primary); }
+.breadcrumbs span { color: var(--border); }
+
+/* Guide Pagination */
+.guide-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+.guide-nav-link {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.guide-nav-link:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.guide-nav-link span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.guide-nav-link strong {
+  font-size: 1.05rem;
+  color: var(--text-heading);
+}
+
+/* Contribution Panel */
+.contribution-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  margin-top: 3.5rem;
+}
+.contribution-header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+.contribution-icon {
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--primary);
+  padding: 0.6rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contribution-header h3 {
+  color: var(--text-heading);
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}
+.contribution-header p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.contribution-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Visitor Telemetry Badge */
+.visitor-telemetry {
+  display: inline-block;
+}
+.telemetry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.telemetry-badge strong {
+  color: var(--success);
 }
 
 /* Code Snippets */
@@ -418,6 +613,8 @@ pre {
   .footer-inner { grid-template-columns: 1fr; }
   .nav-links { display: none; }
   .hero h1 { font-size: 2.2rem; }
+  .docs-layout { grid-template-columns: 1fr; }
+  .docs-sidebar { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -3,11 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recovery Guide — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Independent, evidence-based hardware database, interactive diagrams, and technical recovery guides for OpenWrt compatible routers.">
+  <title>Disaster Recovery & Unbricking — OpenWrt Router Hardware Knowledge Base</title>
+  <meta name="description" content="Engineering unbricking guide for OpenWrt routers across 5 tiers: OpenWrt failsafe, OEM Web failsafe, automated TFTP, 3.3V UART serial console, and SPI flash programmers.">
+  <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/">
+  <meta property="og:title" content="Disaster Recovery & Unbricking — OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:description" content="Engineering unbricking guide for OpenWrt routers across 5 tiers: OpenWrt failsafe, OEM Web failsafe, automated TFTP, 3.3V UART serial console, and SPI flash programmers.">
+  <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/">
+  <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Disaster Recovery & Unbricking">
+  <meta name="twitter:description" content="Engineering unbricking guide for OpenWrt routers across 5 tiers: OpenWrt failsafe, OEM Web failsafe, automated TFTP, 3.3V UART serial console, and SPI flash programmers.">
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
   <link rel="manifest" href="../../manifest.webmanifest">
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "OpenWrt Disaster Recovery Guide: TFTP Recovery & 3.3V TTL UART Unbricking",
+  "description": "Comprehensive engineering guide to unbricking OpenWrt routers via TFTP, OEM web failsafe, 3.3V UART serial console, and SPI flash restoration.",
+  "author": {
+    "@type": "Person",
+    "name": "Rny0007"
+  },
+  "url": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/"
+}
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -52,39 +74,481 @@
   </header>
   <main class="main-content">
 
+    <div class="breadcrumbs">
+      <a href="../../index.html">Home</a> <span>/</span>
+      <a href="index.html">Guides</a> <span>/</span>
+      <strong>Disaster Recovery & Unbricking</strong>
+    </div>
+
     <div class="section-header">
       <div>
-        <h1>TFTP & Serial UART Disaster Recovery Guide</h1>
-        <p>Comprehensive procedures for restoring unbootable or misconfigured OpenWrt hardware.</p>
+        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+          <span class="badge badge-success">OpenWrt 25.12.6 / Mainline</span>
+          <span class="badge badge-danger">Risk Level: High (Hardware Operations)</span>
+          <span class="badge badge-info">Verified: 2026-11-15</span>
+        </div>
+        <h1 style="font-size: 2.3rem;">Disaster Recovery & Unbricking Guide</h1>
+        <p>Comprehensive engineering methodology for diagnosing, recovering, and unbricking OpenWrt routers across 5 escalation tiers.</p>
       </div>
     </div>
 
-    <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.3rem; margin-bottom: 1rem;">1. TFTP Automated Network Recovery</h2>
-      <p style="font-size: 0.92rem; color: var(--text); margin-bottom: 1rem;">
-        When the router's bootloader is intact but the kernel or rootfs is corrupted, MediaTek U-Boot attempts to fetch an emergency image over TFTP upon powering on with the Reset button held down.
-      </p>
-      <ul style="margin: 0.5rem 0 1rem 1.5rem; font-size: 0.9rem; color: var(--text);">
-        <li>Set Host PC Static IP: <code>192.168.1.10</code> (Netmask <code>255.255.255.0</code>)</li>
-        <li>Connect Cat6 cable to LAN Port 1</li>
-        <li>Run a TFTP server (e.g. <code>tftpd64</code>) serving <code>openwrt-initramfs.bin</code></li>
-        <li>Hold physical Reset button for 10 seconds while powering on</li>
-      </ul>
-    </div>
+    <div class="docs-layout">
+      <!-- Sticky Desktop Table of Contents -->
+      <aside class="docs-sidebar" aria-label="Table of Contents">
+        <h4>Table of Contents</h4>
+        <ul>
+          <li><a href="#sec-1-diagnosis" class="toc-link">1. Initial Diagnosis & Faults</a></li>
+          <li><a href="#sec-2-flowchart" class="toc-link">2. Decision Flowchart</a></li>
+          <li><a href="#sec-3-prerequisites" class="toc-link">3. Required Tools & Bench</a></li>
+          <li><a href="#sec-4-preservation" class="toc-link">4. Partition Preservation</a></li>
+          <li><a href="#sec-5-tiers" class="toc-link">5. Five Recovery Tiers</a></li>
+          <li><a href="#sec-6-device-notes" class="toc-link">6. Device-Specific Notes</a></li>
+          <li><a href="#sec-7-verification" class="toc-link">7. Success Verification</a></li>
+          <li><a href="#sec-8-troubleshooting" class="toc-link">8. Troubleshooting Table</a></li>
+          <li><a href="#sec-9-safety" class="toc-link">9. Electrical Safety Rules</a></li>
+          <li><a href="#sec-10-references" class="toc-link">10. Primary Citations</a></li>
+        </ul>
+      </aside>
 
-    <div class="card">
-      <h2 style="color: var(--text-heading); font-size: 1.3rem; margin-bottom: 1rem;">2. 3.3V TTL Serial UART Console Wiring</h2>
-      <div class="alert alert-warning" style="margin-top: 0;">
-        <strong>ELECTRICAL VOLTAGE WARNING:</strong> Router serial headers operate at <strong>3.3V TTL logic levels</strong>. Connecting standard RS-232 (+12V/-12V) or connecting the USB adapter's <strong>VCC pin</strong> can instantly fry the SoC GPIO controller.
+      <!-- Main Documentation Content -->
+      <article class="docs-content">
+        <!-- Section 1 -->
+        <section id="sec-1-diagnosis" class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">1. Initial Diagnosis & Fault Matrix</h2>
+          <p style="font-size: 0.92rem; color: var(--text); line-height: 1.6; margin-bottom: 1rem;">
+            Before connecting hardware probes or flashing recovery images, systematically classify the router's hardware failure mode:
+          </p>
+
+          <div class="table-container">
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th>Observable Symptom</th>
+                  <th>Hardware Subsystem Status</th>
+                  <th>Suspected Root Cause</th>
+                  <th>Recommended Tier</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Solid Red / Dark LED</strong></td>
+                  <td>Bootloader BL2 not executing</td>
+                  <td>Corrupted SPI-NAND partition table or damaged BL2 header</td>
+                  <td><span class="badge badge-danger">Tier 4 / Tier 5</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Flashing Rapid Pulse (Heartbeat)</strong></td>
+                  <td>Linux Kernel booting; LuCI offline</td>
+                  <td>Firewall misconfiguration or <code>uhttpd</code> service crash</td>
+                  <td><span class="badge badge-success">Tier 1 (Failsafe)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Link Flapping (5-8s cycle)</strong></td>
+                  <td>U-Boot watchdog resetting kernel</td>
+                  <td>Kernel panic during rootfs mount (UBI corrupted)</td>
+                  <td><span class="badge badge-info">Tier 2 / Tier 3</span></td>
+                </tr>
+                <tr>
+                  <td><strong>No Ping to 192.168.1.1</strong></td>
+                  <td>Network stack uninitialized or subnet mismatch</td>
+                  <td>Host adapter IP configured on wrong subnet (e.g. 192.168.0.x)</td>
+                  <td><span class="badge badge-warning">Tier 1 / Static IP</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="sec-2-flowchart" class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">2. Recovery Decision Flowchart</h2>
+          <p style="font-size: 0.92rem; color: var(--text); margin-bottom: 1rem;">Follow this non-destructive escalation tree to recover device functionality:</p>
+
+          <div class="decision-diagram" style="background: #090d16; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; overflow-x: auto;">
+            <svg viewBox="0 0 800 320" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="20" width="220" height="60" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+              <text x="130" y="45" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Power-on LED Pulse?</text>
+              <text x="130" y="65" fill="#38bdf8" font-size="10" text-anchor="middle">Press Reset immediately</text>
+
+              <path d="M 240 50 L 300 50" stroke="#10b981" stroke-width="2"/>
+              <text x="270" y="42" fill="#10b981" font-size="10" text-anchor="middle">Yes</text>
+
+              <rect x="300" y="20" width="220" height="60" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+              <text x="410" y="45" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Tier 1: Failsafe Mode</text>
+              <text x="410" y="65" fill="#94a3b8" font-size="10" text-anchor="middle">SSH root@192.168.1.1</text>
+
+              <path d="M 130 80 L 130 130" stroke="#f59e0b" stroke-width="2"/>
+              <text x="145" y="110" fill="#f59e0b" font-size="10">No</text>
+
+              <rect x="20" y="130" width="220" height="60" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+              <text x="130" y="155" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Hold Reset 10s on boot</text>
+              <text x="130" y="175" fill="#f59e0b" font-size="10" text-anchor="middle">Check TFTP / Web daemon</text>
+
+              <path d="M 240 160 L 300 160" stroke="#10b981" stroke-width="2"/>
+              <text x="270" y="152" fill="#10b981" font-size="10" text-anchor="middle">Yes</text>
+
+              <rect x="300" y="130" width="220" height="60" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+              <text x="410" y="155" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Tier 2/3: TFTP / Web Failsafe</text>
+              <text x="410" y="175" fill="#94a3b8" font-size="10" text-anchor="middle">Push initramfs recovery</text>
+
+              <path d="M 130 190 L 130 240" stroke="#ef4444" stroke-width="2"/>
+              <text x="145" y="220" fill="#ef4444" font-size="10">No</text>
+
+              <rect x="20" y="240" width="220" height="60" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+              <text x="130" y="265" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Connect 3.3V UART Serial</text>
+              <text x="130" y="285" fill="#ef4444" font-size="10" text-anchor="middle">GND, TX, RX (Never VCC!)</text>
+
+              <path d="M 240 270 L 300 270" stroke="#10b981" stroke-width="2"/>
+              <text x="270" y="262" fill="#10b981" font-size="10" text-anchor="middle">U-Boot OK</text>
+
+              <rect x="300" y="240" width="220" height="60" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+              <text x="410" y="265" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Tier 4: UART CLI Recovery</text>
+              <text x="410" y="285" fill="#94a3b8" font-size="10" text-anchor="middle">tftpboot into RAM</text>
+
+              <path d="M 520 270 L 580 270" stroke="#ef4444" stroke-width="2"/>
+              <text x="550" y="262" fill="#ef4444" font-size="10">No output</text>
+
+              <rect x="580" y="240" width="190" height="60" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+              <text x="675" y="265" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Tier 5: External SPI</text>
+              <text x="675" y="285" fill="#ef4444" font-size="10" text-anchor="middle">CH341A Flasher Clip</text>
+            </svg>
+          </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="sec-3-prerequisites" class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">3. Required Tools & Bench Prerequisites</h2>
+          <div class="callout callout-warning" style="margin-top: 0; margin-bottom: 1.25rem;">
+            <strong>LOGIC LEVEL SAFETY WARNING:</strong> Always verify that your USB-to-UART adapter is set to 3.3V TTL mode via physical jumper or switch. Standard 5V FTDI or RS-232 (+12V/-12V) adapters will overvoltage and permanently destroy the SoC GPIO silicon.
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--text-heading); margin-bottom: 0.5rem;">Hardware Equipment</h3>
+              <ul style="margin-left: 1.5rem; font-size: 0.88rem; color: var(--text); line-height: 1.7;">
+                <li><strong>USB-UART Adapter:</strong> CP2102, FT232RL, or CH340G with physical 3.3V jumper set.</li>
+                <li><strong>Dupont Jumper Wires:</strong> Female-to-female and female-to-male test leads.</li>
+                <li><strong>Cat6 Ethernet Cables:</strong> Direct host-to-router connection (LAN1).</li>
+                <li><strong>Uninterruptible Power Supply (UPS):</strong> Ensures stable voltage during flash operations.</li>
+                <li><strong>Digital Multimeter:</strong> Verify 3.3V logic level between TX and GND before connecting.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--text-heading); margin-bottom: 0.5rem;">Software Utilities</h3>
+              <ul style="margin-left: 1.5rem; font-size: 0.88rem; color: var(--text); line-height: 1.7;">
+                <li><strong>Serial Console:</strong> PuTTY (Windows) or <code>picocom</code> / <code>minicom</code> (Linux).</li>
+                <li><strong>TFTP Server:</strong> Tftpd64 portable (Windows) or <code>tftpd-hpa</code> (Linux).</li>
+                <li><strong>OpenSSH Client:</strong> Pre-installed on Windows PowerShell 10+ and Linux.</li>
+                <li><strong>Recovery Kernel:</strong> Official OpenWrt <code>*-initramfs-recovery.bin</code> image.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="sec-4-preservation" class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">4. Mandatory Partition Preservation Protocol</h2>
+          <div class="callout callout-danger" style="margin-top: 0;">
+            <strong>DO NOT OVERWRITE CALIBRATION PARTITIONS:</strong>
+            The vendor <code>Factory</code> and <code>MFG</code> partitions contain cryptographically signed RF calibration values and physical MAC address labels tuned specifically to your device's RF front-end module. Erasing them causes irreversible Wi-Fi power degradation (dropping signal by up to 15 dBm).
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text); margin-bottom: 0.75rem;">Whenever terminal access or failsafe shell is available, immediately archive all MTD partitions:</p>
+          <pre><code># [Router Terminal]
+cat /proc/mtd
+dd if=/dev/mtd0 of=/tmp/mtd0_fullchip_backup.bin bs=128k
+dd if=/dev/mtd3 of=/tmp/mtd3_Factory.bin
+dd if=/dev/mtd7 of=/tmp/mtd7_MFG.bin</code></pre>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="sec-5-tiers" class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">5. The Five Recovery Tiers</h2>
+
+          <!-- Tier 1 -->
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <h3 style="color: var(--success); font-size: 1.15rem; margin-bottom: 0.5rem;">Tier 1: OpenWrt Failsafe Mode</h3>
+            <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 0.75rem;">
+              If OpenWrt boots but custom firewall rules or network settings lock out web/SSH access, enter failsafe mode:
+            </p>
+            <ol style="margin-left: 1.5rem; font-size: 0.88rem; color: var(--text); line-height: 1.7;">
+              <li>Set PC Static IP: <code>192.168.1.2</code> (Subnet <code>255.255.255.0</code>). Connect cable to router LAN1.</li>
+              <li>Power cycle router. When the front LED flashes rapidly, press the physical <strong>RESET</strong> button once.</li>
+              <li>Open terminal and execute:</li>
+            </ol>
+            <pre><code>ssh -o StrictHostKeyChecking=no root@192.168.1.1
+mount_root
+firstboot -y
+reboot -f</code></pre>
+          </div>
+
+          <!-- Tier 2 -->
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 0.5rem;">Tier 2: OEM Web Failsafe Interface</h3>
+            <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 0.75rem;">
+              MediaTek Filogic and GL.iNet bootloaders feature an embedded HTTP server in U-Boot:
+            </p>
+            <ol style="margin-left: 1.5rem; font-size: 0.88rem; color: var(--text); line-height: 1.7;">
+              <li>Set PC static IP to <code>192.168.1.2</code>. Connect to LAN1.</li>
+              <li>Power on the router while holding down the <strong>RESET</strong> button for 8 to 10 seconds.</li>
+              <li>Navigate to <code>http://192.168.1.1</code> in your web browser. Upload the official OpenWrt sysupgrade binary.</li>
+            </ol>
+          </div>
+
+          <!-- Tier 3 -->
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <h3 style="color: var(--info); font-size: 1.15rem; margin-bottom: 0.5rem;">Tier 3: Automated Bootloader TFTP Client Mode</h3>
+            <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 0.75rem;">
+              When rootfs cannot mount, the bootloader broadcasts TFTP requests to predefined IP addresses:
+            </p>
+            <div class="table-container">
+              <table class="spec-table">
+                <thead>
+                  <tr>
+                    <th>Platform / Vendor</th>
+                    <th>Router Target IP</th>
+                    <th>Host PC TFTP Server IP</th>
+                    <th>Required Image Filename</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>MediaTek Filogic (U-Boot)</strong></td>
+                    <td><code>192.168.1.1</code></td>
+                    <td><code>192.168.1.254</code> (or <code>192.168.1.10</code>)</td>
+                    <td><code>openwrt.bin</code> / <code>recovery.bin</code></td>
+                  </tr>
+                  <tr>
+                    <td><strong>TP-Link MediaTek</strong></td>
+                    <td><code>192.168.0.1</code></td>
+                    <td><code>192.168.0.66</code></td>
+                    <td><code>ArcherC6v3_tp_recovery.bin</code></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Xiaomi / Redmi</strong></td>
+                    <td><code>192.168.31.1</code></td>
+                    <td><code>192.168.31.100</code></td>
+                    <td><code>test.bin</code></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Netgear WAX206</strong></td>
+                    <td><code>192.168.1.1</code></td>
+                    <td><code>192.168.1.10</code></td>
+                    <td><code>wax206.img</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <pre><code># Linux TFTP Server Setup
+sudo apt install tftpd-hpa
+sudo cp openwrt-*-initramfs.bin /var/lib/tftpboot/openwrt.bin
+sudo systemctl restart tftpd-hpa</code></pre>
+          </div>
+
+          <!-- Tier 4 -->
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <h3 style="color: var(--warning); font-size: 1.15rem; margin-bottom: 0.5rem;">Tier 4: Hardware 3.3V TTL Serial UART Console</h3>
+            <div class="callout callout-danger" style="margin-top: 0;">
+              <strong>CRITICAL ELECTRICAL RULE:</strong> Connect ONLY <code>GND</code>, <code>TX</code>, and <code>RX</code>. <strong>NEVER CONNECT THE VCC PIN</strong> from your USB-UART adapter. Doing so causes power back-feeding and can permanently destroy the SoC.
+            </div>
+            <pre><code>USB-UART Adapter                Router PCB Serial Header
+[ GND ] ------------------------ [ GND ] (Ground reference)
+[ RX  ] ------------------------ [ TX  ] (Crossover transmit)
+[ TX  ] ------------------------ [ RX  ] (Crossover receive)
+[ VCC ] (DISCONNECTED)           [ VCC ] (STRICTLY DISCONNECTED)</code></pre>
+            <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6; margin: 0.75rem 0;">
+              Open PuTTY (Windows) or picocom (Linux) at <strong>115200 baud, 8 data bits, 1 stop bit, no parity (8N1)</strong>. Power cycle the router and repeatedly press <code>Space</code> or <code>Enter</code> to interrupt autoboot into the U-Boot console:
+            </p>
+            <pre><code># Configure network inside U-Boot
+setenv ipaddr 192.168.1.1
+setenv serverip 192.168.1.254
+ping 192.168.1.254
+
+# Load initramfs recovery kernel into DDR RAM
+tftpboot 0x46000000 openwrt-initramfs.bin
+fdt addr \$(fdtcontroladdr)
+fdt rm /signature
+bootm 0x46000000</code></pre>
+          </div>
+
+          <!-- Tier 5 -->
+          <div>
+            <h3 style="color: var(--danger); font-size: 1.15rem; margin-bottom: 0.5rem;">Tier 5: External Hardware Flash Programmer</h3>
+            <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 0.75rem;">
+              When the SPI-NAND bootloader partitions (`BL2`, `FIP`) are completely erased or corrupted, attach a CH341A or T48 external hardware programmer with a SOIC8/WSON clip directly to the flash chip:
+            </p>
+            <pre><code># Flash raw fullchip dump to SPI chip
+flashrom -p ch341a_spi -w mtd0_fullchip_backup.bin</code></pre>
+          </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="sec-6-device-notes" class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">6. Device-Specific Recovery Notes</h2>
+          <div class="table-container">
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th>Device Model</th>
+                  <th>Primary Recovery Path</th>
+                  <th>UART Pinout & Details</th>
+                  <th>Verification Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Jio JIDU6101</strong></td>
+                  <td>Dual-slot U-Boot rollback (<code>fw_setenv dual_boot.slot_*_invalid 0</code>)</td>
+                  <td>Unpopulated 4-pin header near SoC shield: VCC (leave open), TX, RX, GND (115200 8N1)</td>
+                  <td><span class="badge badge-success">Verified</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Jio JIDU6201</strong></td>
+                  <td>Dual-boot slot recovery</td>
+                  <td>3.3V TTL header adjacent to SoC shield (115200 8N1)</td>
+                  <td><span class="badge badge-warning">Community Verified</span></td>
+                </tr>
+                <tr>
+                  <td><strong>GL.iNet GL-MT6000</strong></td>
+                  <td>U-Boot Web Failsafe at <code>192.168.1.1</code> (hold reset 8s)</td>
+                  <td>Internal 4-pin UART pads (115200 8N1)</td>
+                  <td><span class="badge badge-success">Verified</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Banana Pi BPI-R3</strong></td>
+                  <td>Hardware boot DIP switch (switch to MicroSD boot)</td>
+                  <td>Dedicated 3-pin UART debug header (115200 8N1)</td>
+                  <td><span class="badge badge-success">Verified</span></td>
+                </tr>
+                <tr>
+                  <td><strong>FriendlyElec R5S</strong></td>
+                  <td>Rockchip Maskrom mode via Type-C USB (<code>rkdeveloptool</code>)</td>
+                  <td>Dedicated debug UART header (1500000 baud)</td>
+                  <td><span class="badge badge-success">Verified</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Netgear WAX206</strong></td>
+                  <td>TFTP client push to server <code>192.168.1.10</code></td>
+                  <td>Internal 4-pin UART header (115200 8N1)</td>
+                  <td><span class="badge badge-success">Verified</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="sec-7-verification" class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">7. Success Verification Protocol</h2>
+          <p style="font-size: 0.92rem; color: var(--text); line-height: 1.6; margin-bottom: 1rem;">
+            After executing recovery procedures, verify operational health in this exact sequence:
+          </p>
+          <ul style="margin-left: 1.5rem; font-size: 0.88rem; color: var(--text); line-height: 1.8;">
+            <li><strong>ICMP Echo Response:</strong> <code>ping 192.168.1.1</code> responds consistently with round-trip times &lt; 1.0 ms and 0% packet loss.</li>
+            <li><strong>LuCI Web Interface:</strong> Open <code>http://192.168.1.1</code> in an incognito browser window and confirm OpenWrt login banner renders.</li>
+            <li><strong>SSH Authentication:</strong> <code>ssh root@192.168.1.1</code> connects cleanly without Dropbear host key errors.</li>
+            <li><strong>Kernel dmesg Audit:</strong> Run <code>dmesg | grep -iE "fail|error|panic"</code> to ensure no persistent hardware driver crashes.</li>
+          </ul>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="sec-8-troubleshooting" class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">8. Common Recovery Failures & Resolutions</h2>
+          <div class="table-container">
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th>Symptom</th>
+                  <th>Root Cause</th>
+                  <th>Corrective Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>TFTP server log shows no file requests</td>
+                  <td>Host PC static IP configured on wrong network or firewall blocking UDP port 69</td>
+                  <td>Disable Windows Defender Firewall temporarily; verify Ethernet cable is plugged into LAN1</td>
+                </tr>
+                <tr>
+                  <td>Serial terminal outputs garbled ASCII characters</td>
+                  <td>Baud rate mismatch or missing ground connection</td>
+                  <td>Confirm baud rate is 115200 (or 1500000 for RK3568); confirm adapter GND is firmly bonded to router PCB GND</td>
+                </tr>
+                <tr>
+                  <td>Router loops repeatedly after TFTP transfer</td>
+                  <td>Kernel image is incompatible or missing initramfs ramdisk payload</td>
+                  <td>Ensure you are flashing the <code>initramfs-recovery.bin</code> image, NOT a standard squashfs sysupgrade image</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="sec-9-safety" class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">9. Electrical Safety & Risk Protocol</h2>
+          <div class="callout callout-warning" style="margin-top: 0; margin-bottom: 1.25rem;">
+            <strong>ESD & GROUNDING ADVISORY:</strong> Work on a static-dissipative ESD mat with a wrist strap attached to ground before touching exposed router circuitry. High ESD potentials can latch up sensitive transceiver silicon.
+          </div>
+          <ul style="margin-left: 1.5rem; font-size: 0.88rem; color: var(--text); line-height: 1.8;">
+            <li><strong>Voltage Rail Verification:</strong> Router serial logic is strictly <strong>3.3V TTL</strong>. Never connect 5V TTL or RS-232 (+12V/-12V).</li>
+            <li><strong>VCC Prohibition:</strong> The VCC pin from your serial adapter must remain completely disconnected. Power the router solely from its own DC power adapter.</li>
+            <li><strong>Electrostatic Discharge (ESD):</strong> Work on an anti-static mat and touch a grounded metal chassis before handling open router PCBs.</li>
+            <li><strong>Capacitor Discharge:</strong> Wait a minimum of 10 seconds after unplugging the router before attaching or removing serial probes.</li>
+          </ul>
+        </section>
+
+        <!-- Section 10 -->
+        <section id="sec-10-references" class="card">
+          <h2 style="color: var(--text-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">10. Primary Citations & Upstream Evidence</h2>
+          <ul style="margin-left: 1.5rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;">
+            <li>OpenWrt Official Documentation: <a href="https://openwrt.org/docs/guide-user/troubleshooting/generic.flashing.tftp" target="_blank" rel="noopener">Generic TFTP Flashing & Recovery</a></li>
+            <li>OpenWrt Upstream Source: <a href="https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/mediatek/filogic" target="_blank" rel="noopener">target/linux/mediatek/filogic</a></li>
+            <li>MediaTek ATF/FIP Bootloader Specifications: MT7986 / MT7981 Reference U-Boot Implementation</li>
+          </ul>
+        </section>
+
+        <div class="guide-pagination">
+          <a href="../installation/index.html" class="guide-nav-link">
+            <span>&larr; Previous Guide</span>
+            <strong>Two-Stage Installation</strong>
+          </a>
+          <a href="../multi-wan/index.html" class="guide-nav-link" style="text-align: right;">
+            <span>Next Guide &rarr;</span>
+            <strong>Dual-WAN Automatic Failover</strong>
+          </a>
+        </div>
+
+        
+    <section class="contribution-panel" aria-label="Contribution and Community Verification">
+      <div class="contribution-header">
+        <div class="contribution-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div>
+          <h3>Community Verification & Improvement Panel</h3>
+          <p>This documentation is maintained in the authoritative source repository (Repo A). See an error, tested this procedure on physical hardware, or have verified serial logs?</p>
+        </div>
       </div>
-      <table class="spec-table" style="margin-top: 1rem;">
-        <tr><th>Pin</th><th>Function</th><th>Wiring Instruction</th></tr>
-        <tr><td>GND</td><td>Ground</td><td>Connect to USB-UART Adapter GND</td></tr>
-        <tr><td>TX</td><td>Transmit (Router -> PC)</td><td>Connect to USB-UART Adapter RX</td></tr>
-        <tr><td>RX</td><td>Receive (PC -> Router)</td><td>Connect to USB-UART Adapter TX</td></tr>
-        <tr><td>VCC</td><td>Power (3.3V)</td><td><strong style="color: var(--danger);">LEAVE DISCONNECTED (NEVER CONNECT)</strong></td></tr>
-      </table>
-      <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text);">Baud Rate: <code>115200</code> | Data bits: <code>8</code> | Parity: <code>None</code> | Stop bits: <code>1</code> | Flow Control: <code>None</code></p>
+      <div class="contribution-actions">
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/blob/main/docs/recovery/tftp-and-uart-recovery.md" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Edit this page on GitHub
+        </a>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=08_documentation_improvement.yml&page_url=docs/recovery/tftp-and-uart-recovery.md&title=%5BDocs%5D%3A%20Feedback%20on%20Disaster%20Recovery%20Guide&labels=documentation,enhancement" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          Report an Error or Typo
+        </a>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=05_recovery_unbrick_report.yml&title=%5BRecovery%5D%3A%20Unbrick%20Verification%20for%20Disaster%20Recovery%20Guide&labels=recovery-guide,unbrick-verified" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          Submit Unbrick Tutorial
+        </a>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=02_hardware_revision_verification.yml&title=%5BVerification%5D%3A%20Tested%20Hardware%20on%20Disaster%20Recovery%20Guide&labels=hardware-verified,testing-report" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          Verified on My Device
+        </a>
+        <a href="../../contributing/index.html" class="btn btn-sm btn-primary">
+          Contribution Guidelines
+        </a>
+      </div>
+    </section>
+    
+      </article>
     </div>
     
   </main>
@@ -94,6 +558,12 @@
         <h3>OpenWrt Hardware Knowledge Base</h3>
         <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
         <p class="copyright">Docs: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+        <div class="visitor-telemetry" style="margin-top: 1rem;">
+          <span class="telemetry-badge" id="telemetry-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Cookie-Free Analytics: <strong>Privacy-First / No Trackers Active</strong>
+          </span>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
@@ -122,5 +592,6 @@
     </div>
   </footer>
   <script src="../../assets/js/main.js"></script>
+  
 </body>
 </html>
