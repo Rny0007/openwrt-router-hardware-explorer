@@ -111,7 +111,7 @@
           </ul>
           <h3 style="font-size: 1rem; color: var(--text-heading); margin-top: 1rem;">Wireless Radios</h3>
           <ul style="margin: 0.5rem 0 1rem 1.5rem; font-size: 0.9rem; color: var(--text);">
-            <li><strong>Wi-Fi 6 (2.4 GHz)</strong>: Chipset <code>MT7976C</code>, Streams: 4x4, Max Rate: 1148 Mbps</li><li><strong>Wi-Fi 6 (5.0 GHz)</strong>: Chipset <code>MT7976C</code>, Streams: 4x4, Max Rate: 4804 Mbps</li>
+            <li><strong>Wi-Fi 6 (2.4 GHz)</strong>: Chipset <code>MT7976C</code>, MIMO/Streams: 4x4, Max Rate: 1148 Mbps</li><li><strong>Wi-Fi 6 (5.0 GHz)</strong>: Chipset <code>MT7976C</code>, MIMO/Streams: 4x4, Max Rate: 4804 Mbps</li>
           </ul>
         </div>
 
@@ -133,15 +133,17 @@
             <tr><th>First Supported</th><td>23.05.0</td></tr>
             <tr><th>Device Tree File</th><td><code>mt7986a-bananapi-bpi-r3.dts</code></td></tr>
           </table>
-          <div style="margin-top: 1.25rem;">
-            <a href="https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=bananapi_bpi-r3" target="_blank" rel="noopener" class="btn btn-sm btn-primary" style="width: 100%; justify-content: center;">Download Official Firmware &rarr;</a>
+          <div style="margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <a href="https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=bananapi_bpi-r3" target="_blank" rel="noopener" class="btn btn-sm btn-primary" style="justify-content: center;">Download Official Firmware &rarr;</a>
+            <a href="../../guides/install/banana-pi-bpi-r3/index.html" class="btn btn-sm btn-outline" style="justify-content: center;">View Installation Guide &rarr;</a>
+            <a href="../../guides/recovery/banana-pi-bpi-r3/index.html" class="btn btn-sm btn-outline" style="justify-content: center;">View Recovery Guide &rarr;</a>
           </div>
         </div>
 
         <div class="card" style="margin-bottom: 2rem;">
           <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Installation & Recovery</h2>
           <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Flashing Method:</strong> U-Boot Web Fail-Safe</p>
-          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Installation Risk:</strong> <span class="badge badge-warning">LOW</span></p>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Installation Risk:</strong> <span class="badge badge-success">LOW</span></p>
           <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Serial UART:</strong> Available (3.3V TTL)</p>
           <p style="font-size: 0.9rem;"><strong>Recovery Method:</strong> TFTP Push (Automated)</p>
         </div>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVM FRITZ!Box 4040 Disaster Recovery Guide — OpenWrt Router Hardware Knowledge Base</title>
+  <meta name="description" content="Complete disaster recovery and unbricking instructions for AVM FRITZ!Box 4040. TFTP recovery, 3.3V UART serial unbricking, and bootloader restoration.">
+  <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/avm-fritzbox-4040/">
+  <meta property="og:title" content="AVM FRITZ!Box 4040 Disaster Recovery Guide — OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:description" content="Complete disaster recovery and unbricking instructions for AVM FRITZ!Box 4040. TFTP recovery, 3.3V UART serial unbricking, and bootloader restoration.">
+  <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/avm-fritzbox-4040/">
+  <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AVM FRITZ!Box 4040 Disaster Recovery Guide">
+  <meta name="twitter:description" content="Complete disaster recovery and unbricking instructions for AVM FRITZ!Box 4040. TFTP recovery, 3.3V UART serial unbricking, and bootloader restoration.">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+  <link rel="manifest" href="../../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Disaster Recovery & Unbricking Guide for AVM FRITZ!Box 4040",
+  "description": "Verified unbricking procedure, TFTP restoration, and 3.3V UART serial recovery for AVM FRITZ!Box 4040.",
+  "url": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/avm-fritzbox-4040/"
+}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../../index.html" class="brand">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="#1e293b"/>
+          <path d="M6 16C6 10.4772 10.4772 6 16 6C21.5228 6 26 10.4772 26 16" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.5" fill="#f8fafc"/>
+          <rect x="8" y="21" width="16" height="5" rx="2" fill="#334155"/>
+          <circle cx="12" cy="23.5" r="1" fill="#10b981"/>
+          <circle cx="16" cy="23.5" r="1" fill="#06b6d4"/>
+          <circle cx="20" cy="23.5" r="1" fill="#f59e0b"/>
+        </svg>
+        <span class="brand-text">OpenWrt<strong>HardwareKB</strong></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../../../index.html">Home</a>
+<a href="../../../explorer/index.html">Explorer</a>
+<a href="../../../devices/index.html">Devices</a>
+<a href="../../../chipsets/index.html">Chipsets</a>
+<a href="../../../diagrams/index.html">Diagrams</a>
+<a href="../../../guides/installation/index.html">Installation</a>
+<a href="../../../guides/recovery/index.html" class="active">Recovery</a>
+<a href="../../../guides/multi-wan/index.html">Failover</a>
+<a href="../../../methodology/index.html">Methodology</a>
+<a href="../../../about/index.html">About</a>
+
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Source Repo
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+
+    <div class="breadcrumbs">
+      <a href="../../../index.html">Home</a> <span>/</span>
+      <a href="../../recovery/index.html">Guides</a> <span>/</span>
+      <a href="../../../devices/avm-fritzbox-4040/index.html">AVM FRITZ!Box 4040</a> <span>/</span>
+      <strong>Disaster Recovery</strong>
+    </div>
+
+    <div class="section-header">
+      <div>
+        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+          <span class="badge badge-success">OFFICIALLY SUPPORTED</span>
+          <span class="badge badge-danger">High Risk Hardware Operations</span>
+        </div>
+        <h1 style="font-size: 2.2rem; color: var(--text-heading);">AVM FRITZ!Box 4040 Disaster Recovery & Unbricking</h1>
+        <p style="color: var(--text-muted);">Primary Recovery Protocol: <strong>TFTP Push (Automated)</strong> | UART Serial: <strong>Available</strong> @ 115200 baud</p>
+      </div>
+    </div>
+
+    <!-- CRITICAL ELECTRICAL WARNING -->
+    <div class="callout callout-danger">
+      <strong>CRITICAL SAFETY MANDATE — NEVER CONNECT VCC (RED WIRE):</strong>
+      When connecting a USB-to-TTL serial adapter to the FRITZ!Box 4040 PCB, connect <strong>ONLY GND, TX, and RX</strong>.
+      The router provides its own 3.3V/1.8V power rail when plugged into its AC adapter. Connecting the red VCC wire from your USB adapter will backfeed voltage into the power management IC and <strong>permanently destroy the SoC and flash chips</strong>!
+      Ensure your USB adapter logic level is set to <strong>3.3V TTL</strong> (never 5V, never RS-232 +/-12V).
+    </div>
+
+    <div class="card" style="margin-bottom: 2rem;">
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">1. Recovery Escalation Hierarchy</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">Always attempt recovery in order of increasing intervention. Do not disassemble the enclosure until software fail-safes are exhausted.</p>
+      <table class="spec-table">
+        <thead>
+          <tr><th>Tier</th><th>Method</th><th>When to Use</th><th>Hardware Required</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tier 1</strong></td>
+            <td>OpenWrt Failsafe Mode</td>
+            <td>Kernel boots, network config broken, forgotten root password</td>
+            <td>Ethernet cable, computer set to DHCP or static <code>192.168.1.2</code></td>
+          </tr>
+          <tr>
+            <td><strong>Tier 2</strong></td>
+            <td>TFTP Automated Bootloader Push</td>
+            <td>Bootloader intact, corrupted kernel / rootfs, boot loop</td>
+            <td>Ethernet cable, TFTP server utility (e.g. <code>dnsmasq</code> / <code>tftpd32</code>)</td>
+          </tr>
+          <tr>
+            <td><strong>Tier 3</strong></td>
+            <td>3.3V TTL Serial UART Console</td>
+            <td>Bootloader prompt accessible, TFTP fails, diagnose boot failure</td>
+            <td>3.3V USB-UART adapter (CP2102/FTDI), jumper wires, soldering iron (if pads unpopulated)</td>
+          </tr>
+          <tr>
+            <td><strong>Tier 4</strong></td>
+            <td>External SPI Flash Programmer</td>
+            <td>Bootloader erased/corrupted (hard brick), no serial output</td>
+            <td>CH341A programmer, SOIC-8 / SOIC-16 test clip, full mtd0 raw flash dump</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-bottom: 2rem;">
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">2. Tier 1: OpenWrt Failsafe Mode</h2>
+      <ol style="margin-left: 1.5rem; line-height: 1.8;">
+        <li>Disconnect all cables from router except power and LAN Port 1 to your computer.</li>
+        <li>Set computer network interface to static IP: <code>192.168.1.2</code>, netmask: <code>255.255.255.0</code>, gateway: <code>192.168.1.1</code>.</li>
+        <li>Power on the router. As soon as the status or power LED begins blinking, press the <strong>WPS / Reset</strong> button repeatedly.</li>
+        <li>The status LED will begin blinking extremely rapidly (10 Hz), indicating Failsafe mode is active.</li>
+        <li>Connect via Telnet: <code>telnet 192.168.1.1</code>. No password is required.</li>
+        <li>Reset configuration to factory defaults:
+          <pre><code>mount_root
+firstboot -y
+sync && reboot</code></pre>
+        </li>
+      </ol>
+    </div>
+
+    <div class="card" style="margin-bottom: 2rem;">
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">3. Tier 2: Bootloader TFTP Restoration</h2>
+      <table class="spec-table" style="margin-bottom: 1rem;">
+        <tr><th>Router Recovery IP</th><td><code>192.168.1.1</code></td></tr>
+        <tr><th>Host PC TFTP Server IP</th><td><code>192.168.1.2</code></td></tr>
+        <tr><th>Subnet Mask</th><td><code>255.255.255.0</code></td></tr>
+        <tr><th>Expected TFTP Filename</th><td><code>avm-fritzbox-4040.bin</code></td></tr>
+      </table>
+      <ol style="margin-left: 1.5rem; line-height: 1.8;">
+        <li>Download official OpenWrt factory firmware image from the repository.</li>
+        <li>Rename image file to <code>avm-fritzbox-4040.bin</code> and place in TFTP server root directory.</li>
+        <li>Configure host PC Ethernet to static IP <code>192.168.1.2</code>.</li>
+        <li>Power off router. Hold Reset button down and power on. Hold for 10-15 seconds until TFTP request is detected.</li>
+        <li>Observe file transfer in TFTP server logs. Allow 3-5 minutes for flash write and reboot.</li>
+      </ol>
+    </div>
+
+    <div class="card" style="margin-bottom: 2rem;">
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">4. Tier 3: 3.3V TTL Serial UART Console</h2>
+      <table class="spec-table" style="margin-bottom: 1rem;">
+        <thead>
+          <tr><th>Adapter Pin</th><th>Router Header</th><th>Mandatory Instruction</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>GND (Black)</strong></td><td>GND Pad / Pin</td><td>Connect securely to establish common ground reference.</td></tr>
+          <tr><td><strong>RX (White)</strong></td><td>TX Pad / Pin</td><td>Connect adapter RX to router TX.</td></tr>
+          <tr><td><strong>TX (Green)</strong></td><td>RX Pad / Pin</td><td>Connect adapter TX to router RX.</td></tr>
+          <tr><td><strong>VCC (Red)</strong></td><td><span style="color: var(--danger); font-weight: bold;">DISCONNECTED</span></td><td><strong>DO NOT CONNECT!</strong> Router powers itself from AC barrel jack.</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size: 0.92rem; margin-bottom: 1rem;">Configure your terminal emulator (PuTTY, Minicom, Picocom, or Screen):</p>
+      <pre><code># Linux / macOS screen command
+screen /dev/ttyUSB0 115200 8N1
+
+# Picocom command
+picocom -b 115200 -d 8 -p n -f n /dev/ttyUSB0</code></pre>
+      <p style="font-size: 0.92rem; margin-top: 1rem;">Power on router and observe U-Boot bootlog. Press Enter/Space to enter U-Boot shell:</p>
+      <pre><code># Check environment variables
+printenv
+
+# Boot kernel via TFTP
+setenv ipaddr 192.168.1.1
+setenv serverip 192.168.1.2
+tftpboot 0x46000000 avm-fritzbox-4040.bin
+bootm 0x46000000</code></pre>
+    </div>
+
+    <div class="card" style="margin-bottom: 2rem;">
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">5. Calibration & Partition Preservation</h2>
+      <div class="callout callout-note">
+        If you previously dumped your <code>Factory</code>, <code>ART</code>, or <code>MFG</code> partitions prior to bricking, you can restore them via serial console or OpenWrt shell:
+        <pre><code>mtd write /tmp/mtd_Factory.bin Factory
+mtd write /tmp/mtd_ART.bin art</code></pre>
+        <strong>Never flash another router's calibration partition!</strong> Each contains unique physical RF power calibration values and factory MAC addresses.
+      </div>
+    </div>
+
+    <div class="guide-pagination">
+      <a href="../../install/avm-fritzbox-4040/index.html" class="guide-nav-link">
+        <span>&larr; Installation Guide</span>
+        <strong>Install OpenWrt on FRITZ!Box 4040</strong>
+      </a>
+      <a href="../../../devices/avm-fritzbox-4040/index.html" class="guide-nav-link" style="text-align: right;">
+        <span>Hardware Profile &rarr;</span>
+        <strong>AVM FRITZ!Box 4040 Specifications</strong>
+      </a>
+    </div>
+
+    
+    <section class="contribution-panel" aria-label="Contribution and Community Verification">
+      <div class="contribution-header">
+        <div class="contribution-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div>
+          <h3>Community Verification & Improvement Panel</h3>
+          <p>This documentation is maintained in the authoritative source repository (Repo A). See an error, tested this procedure on physical hardware, or have verified serial logs?</p>
+        </div>
+      </div>
+      <div class="contribution-actions">
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/blob/main/data/devices/avm/avm-fritzbox-4040.json" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Edit this page on GitHub
+        </a>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=08_documentation_improvement.yml&page_url=data/devices/avm/avm-fritzbox-4040.json&title=%5BDocs%5D%3A%20Feedback%20on%20AVM%20FRITZ%21Box%204040%20Recovery%20Guide&labels=documentation,enhancement" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          Report an Error or Typo
+        </a>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=05_recovery_unbrick_report.yml&title=%5BRecovery%5D%3A%20Unbrick%20Verification%20for%20AVM%20FRITZ%21Box%204040%20Recovery%20Guide&labels=recovery-guide,unbrick-verified" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          Submit Unbrick Tutorial
+        </a>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=02_hardware_revision_verification.yml&title=%5BVerification%5D%3A%20Tested%20Hardware%20on%20AVM%20FRITZ%21Box%204040%20Recovery%20Guide&labels=hardware-verified,testing-report" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          Verified on My Device
+        </a>
+        <a href="../../../contributing/index.html" class="btn btn-sm btn-primary">
+          Contribution Guidelines
+        </a>
+      </div>
+    </section>
+    
+    
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>OpenWrt Hardware Knowledge Base</h3>
+        <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
+        <p class="copyright">Docs: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+        <div class="visitor-telemetry" style="margin-top: 1rem;">
+          <span class="telemetry-badge" id="telemetry-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Cookie-Free Analytics: <strong>Privacy-First / No Trackers Active</strong>
+          </span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="../../../explorer/index.html">Hardware Explorer</a></li>
+          <li><a href="../../../devices/index.html">Device Directory</a></li>
+          <li><a href="../../../chipsets/index.html">Silicon Architectures</a></li>
+          <li><a href="../../../diagrams/index.html">Interactive Diagrams</a></li>
+          <li><a href="../../../guides/installation/index.html">Two-Stage Installation</a></li>
+          <li><a href="../../../guides/recovery/index.html">TFTP & UART Recovery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community & Standards</h4>
+        <ul>
+          <li><a href="../../../methodology/index.html">Research Methodology</a></li>
+          <li><a href="../../../contributing/index.html">Contributor Handbook</a></li>
+          <li><a href="../../../about/index.html">Project Governance</a></li>
+          <li><a href="../../../licensing/index.html">Licensing & Attribution</a></li>
+          <li><a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues" target="_blank" rel="noopener">Submit Hardware Verification</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Independent research project. Not affiliated with or endorsed by OpenWrt, Reliance Jio, MediaTek, Arcadyan, Qualcomm, Broadcom, or ASUS.</p>
+    </div>
+  </footer>
+  <script src="../../../assets/js/main.js"></script>
+  
+</body>
+</html>
