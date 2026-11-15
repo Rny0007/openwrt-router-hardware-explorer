@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Global Hardware Intelligence — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Global OpenWrt router hardware knowledge base. Discover, verify, and compare 48 OpenWrt-compatible routers, switches, and SoCs across 18 manufacturers.">
+  <meta name="description" content="Global OpenWrt router hardware knowledge base. Discover, verify, and compare 72 OpenWrt-compatible routers, switches, and SoCs across 31 manufacturers.">
   <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/">
   <meta property="og:title" content="Global Hardware Intelligence — OpenWrt Router Hardware Knowledge Base">
-  <meta property="og:description" content="Global OpenWrt router hardware knowledge base. Discover, verify, and compare 48 OpenWrt-compatible routers, switches, and SoCs across 18 manufacturers.">
+  <meta property="og:description" content="Global OpenWrt router hardware knowledge base. Discover, verify, and compare 72 OpenWrt-compatible routers, switches, and SoCs across 31 manufacturers.">
   <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/">
   <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Global Hardware Intelligence">
-  <meta name="twitter:description" content="Global OpenWrt router hardware knowledge base. Discover, verify, and compare 48 OpenWrt-compatible routers, switches, and SoCs across 18 manufacturers.">
+  <meta name="twitter:description" content="Global OpenWrt router hardware knowledge base. Discover, verify, and compare 72 OpenWrt-compatible routers, switches, and SoCs across 31 manufacturers.">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -41,6 +41,7 @@
 <a href="./explorer/index.html">Explorer</a>
 <a href="./devices/index.html">Devices</a>
 <a href="./chipsets/index.html">Chipsets</a>
+<a href="./categories/index.html">Guides</a>
 <a href="./diagrams/index.html">Diagrams</a>
 <a href="./guides/installation/index.html">Installation</a>
 <a href="./guides/recovery/index.html">Recovery</a>
@@ -88,6 +89,7 @@
 <a href="./explorer/index.html">Explorer</a>
 <a href="./devices/index.html">Devices</a>
 <a href="./chipsets/index.html">Chipsets</a>
+<a href="./categories/index.html">Guides</a>
 <a href="./diagrams/index.html">Diagrams</a>
 <a href="./guides/installation/index.html">Installation</a>
 <a href="./guides/recovery/index.html">Recovery</a>
@@ -137,9 +139,10 @@
       </div>
 
       <div class="hero-cta">
-        <a href="explorer/index.html" class="btn btn-primary">⚡ Launch Hardware Explorer (48)</a>
-        <a href="diagrams/index.html" class="btn btn-outline">📊 View Architecture Diagrams</a>
-        <a href="devices/index.html" class="btn btn-outline">📁 Device Directory</a>
+        <a href="explorer/index.html" class="btn btn-primary">⚡ Launch Hardware Explorer (72)</a>
+        <a href="categories/index.html" class="btn btn-outline">🏆 Curated Buyer Guides</a>
+        <a href="diagrams/index.html" class="btn btn-outline">📊 Architecture Diagrams</a>
+        <a href="devices/index.html" class="btn btn-outline">📁 Device Directory (72)</a>
         <a href="guides/recovery/index.html" class="btn btn-outline">🛠 Disaster Recovery Guide</a>
       </div>
     </section>
@@ -147,19 +150,19 @@
     <!-- SECTION 2: DATABASE TELEMETRY & LIVE METRICS -->
     <section class="stats-grid" aria-label="Database Telemetry">
       <div class="stat-card">
-        <div class="stat-val">48</div>
+        <div class="stat-val">72</div>
         <div class="stat-label">Verified Devices</div>
       </div>
       <div class="stat-card">
-        <div class="stat-val">15</div>
+        <div class="stat-val">20</div>
         <div class="stat-label">Silicon Platforms</div>
       </div>
       <div class="stat-card">
-        <div class="stat-val">35</div>
+        <div class="stat-val">50</div>
         <div class="stat-label">Mainline Supported</div>
       </div>
       <div class="stat-card">
-        <div class="stat-val">22</div>
+        <div class="stat-val">31</div>
         <div class="stat-label">Global Manufacturers</div>
       </div>
       <div class="stat-card">
@@ -178,12 +181,12 @@
     </div>
 
     <div class="filter-tabs" role="tablist" aria-label="Hardware Classification Filter">
-      <button class="filter-tab-btn active" data-filter="ALL" role="tab">All Hardware (48)</button>
-      <button class="filter-tab-btn" data-filter="OFFICIALLY_SUPPORTED" role="tab">Officially Supported (35)</button>
-      <button class="filter-tab-btn" data-filter="COMMUNITY_VERIFIED" role="tab">Community Verified (5)</button>
-      <button class="filter-tab-btn" data-filter="PARTIALLY_VERIFIED" role="tab">Partially Verified (4)</button>
-      <button class="filter-tab-btn" data-filter="POTENTIALLY_COMPATIBLE" role="tab">Carrier Gateways (1)</button>
-      <button class="filter-tab-btn" data-filter="UNSUPPORTED" role="tab">Unsupported Limits (3)</button>
+      <button class="filter-tab-btn active" data-filter="ALL" role="tab">All Hardware (72)</button>
+      <button class="filter-tab-btn" data-filter="OFFICIALLY_SUPPORTED" role="tab">Officially Supported (50)</button>
+      <button class="filter-tab-btn" data-filter="COMMUNITY_VERIFIED" role="tab">Community Verified (9)</button>
+      <button class="filter-tab-btn" data-filter="PARTIALLY_VERIFIED" role="tab">Partially Verified (5)</button>
+      <button class="filter-tab-btn" data-filter="POTENTIALLY_COMPATIBLE" role="tab">Carrier Gateways (2)</button>
+      <button class="filter-tab-btn" data-filter="UNSUPPORTED" role="tab">Unsupported Limits (6)</button>
     </div>
 
     <!-- SECTION 4: FEATURED OFFICIALLY SUPPORTED ROUTERS -->
@@ -287,10 +290,25 @@
         <h2>Community-Verified Hardware</h2>
         <p>Platforms verified running functional community builds, forks, and patches with active community testing.</p>
       </div>
-      <span class="badge badge-warning">5 Verified</span>
+      <span class="badge badge-warning">9 Verified</span>
     </div>
     <div class="grid-2">
       
+        <div class="card filter-card featured-device-card " data-status="COMMUNITY_VERIFIED">
+          <div>
+            <div class="card-header">
+              <span class="card-title">Comfast CF-E390AX</span>
+              <span class="badge badge-warning">COMMUNITY VERIFIED</span>
+            </div>
+            <div class="card-meta">Platform: <strong>MediaTek MT7621AT</strong> | Arch: mipsel_24kc</div>
+            <p class="card-body">RAM: <strong>256 MB</strong> | Flash: 16 MB SPI-NOR | Ethernet: 2 Ports<br>Target: <code>ramips</code></p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <a href="devices/comfast-cf-e390ax/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
+            <a href="guides/install/comfast-cf-e390ax/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
+          </div>
+        </div>
+        
         <div class="card filter-card featured-device-card " data-status="COMMUNITY_VERIFIED">
           <div>
             <div class="card-header">
@@ -309,6 +327,21 @@
         <div class="card filter-card featured-device-card " data-status="COMMUNITY_VERIFIED">
           <div>
             <div class="card-header">
+              <span class="card-title">GL.iNet GL-SFT1200 (Opal)</span>
+              <span class="badge badge-warning">COMMUNITY VERIFIED</span>
+            </div>
+            <div class="card-meta">Platform: <strong>Siflower SF19A2890</strong> | Arch: mips_1004kc</div>
+            <p class="card-body">RAM: <strong>128 MB</strong> | Flash: 128 MB SPI-NAND | Ethernet: 3 Ports<br>Target: <code>siflower</code></p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <a href="devices/gl-inet-gl-sft1200/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
+            <a href="guides/install/gl-inet-gl-sft1200/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
+          </div>
+        </div>
+        
+        <div class="card filter-card featured-device-card " data-status="COMMUNITY_VERIFIED">
+          <div>
+            <div class="card-header">
               <span class="card-title">Jio / Arcadyan JIDU6201</span>
               <span class="badge badge-warning">COMMUNITY VERIFIED</span>
             </div>
@@ -321,36 +354,6 @@
           </div>
         </div>
         
-        <div class="card filter-card featured-device-card " data-status="COMMUNITY_VERIFIED">
-          <div>
-            <div class="card-header">
-              <span class="card-title">Reyee / Ruijie RG-EW3200GX PRO</span>
-              <span class="badge badge-warning">COMMUNITY VERIFIED</span>
-            </div>
-            <div class="card-meta">Platform: <strong>MediaTek MT7622BV</strong> | Arch: aarch64</div>
-            <p class="card-body">RAM: <strong>256 MB</strong> | Flash: 16 MB SPI-NOR | Ethernet: 5 Ports<br>Target: <code>mediatek/mt7622</code></p>
-          </div>
-          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-            <a href="devices/reyee-rg-ew3200gx-pro/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
-            <a href="guides/install/reyee-rg-ew3200gx-pro/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
-          </div>
-        </div>
-        
-        <div class="card filter-card featured-device-card " data-status="COMMUNITY_VERIFIED">
-          <div>
-            <div class="card-header">
-              <span class="card-title">TP-Link Deco X20</span>
-              <span class="badge badge-warning">COMMUNITY VERIFIED</span>
-            </div>
-            <div class="card-meta">Platform: <strong>Qualcomm IPQ6000</strong> | Arch: aarch64</div>
-            <p class="card-body">RAM: <strong>512 MB</strong> | Flash: 128 MB SPI-NAND | Ethernet: 2 Ports<br>Target: <code>qualcommax/ipq60xx</code></p>
-          </div>
-          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-            <a href="devices/tp-link-deco-x20/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
-            <a href="guides/install/tp-link-deco-x20/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
-          </div>
-        </div>
-        
     </div>
 
     <!-- SECTION 6: PARTIALLY VERIFIED HARDWARE (LIMITATIONS DISCLOSED) -->
@@ -359,7 +362,7 @@
         <h2>Partially Verified & Platform Constraints</h2>
         <p>Hardware with working Ethernet/routing but documented wireless limitations or bootloader locks.</p>
       </div>
-      <span class="badge badge-info">4 Documented</span>
+      <span class="badge badge-info">5 Documented</span>
     </div>
     <div class="grid-2">
       
@@ -411,15 +414,15 @@
         <div class="card filter-card featured-device-card " data-status="PARTIALLY_VERIFIED">
           <div>
             <div class="card-header">
-              <span class="card-title">Netgear Nighthawk R7000 (AC1900)</span>
+              <span class="card-title">Netgear Nighthawk R6700</span>
               <span class="badge badge-info">PARTIALLY VERIFIED</span>
             </div>
-            <div class="card-meta">Platform: <strong>Broadcom BCM4709A0</strong> | Arch: arm_cortex-a9</div>
-            <p class="card-body">RAM: <strong>256 MB</strong> | Flash: 128 MB SPI-NAND | Ethernet: 5 Ports<br>Target: <code>bcm53xx/generic</code></p>
+            <div class="card-meta">Platform: <strong>Broadcom BCM4708C0</strong> | Arch: arm_cortex-a9</div>
+            <p class="card-body">RAM: <strong>256 MB</strong> | Flash: 128 MB SPI-NAND | Ethernet: 5 Ports<br>Target: <code>bcm53xx</code></p>
           </div>
           <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-            <a href="devices/netgear-r7000/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
-            <a href="guides/install/netgear-r7000/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
+            <a href="devices/netgear-r6700-v3/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
+            <a href="guides/install/netgear-r6700-v3/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
           </div>
         </div>
         
@@ -431,10 +434,25 @@
         <h2>Carrier Gateways & Proprietary Hardware</h2>
         <p>Technical evaluation of ISP hardware: bootloader signature locks, OMCI blobs, and reverse engineering.</p>
       </div>
-      <span class="badge badge-secondary">4 Audited</span>
+      <span class="badge badge-secondary">8 Audited</span>
     </div>
     <div class="grid-2">
       
+        <div class="card filter-card featured-device-card " data-status="UNSUPPORTED">
+          <div>
+            <div class="card-header">
+              <span class="card-title">ASUS RT-AX86U / RT-AX86S</span>
+              <span class="badge badge-danger">UNSUPPORTED</span>
+            </div>
+            <div class="card-meta">Platform: <strong>Broadcom BCM4908</strong> | Arch: arm_cortex-a53</div>
+            <p class="card-body">RAM: <strong>1024 MB</strong> | Flash: 256 MB SPI-NAND | Ethernet: 6 Ports<br>Target: <code>bcm4908</code></p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <a href="devices/asus-rt-ax86u/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
+            <a href="guides/install/asus-rt-ax86u/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
+          </div>
+        </div>
+        
         <div class="card filter-card featured-device-card " data-status="UNSUPPORTED">
           <div>
             <div class="card-header">
@@ -450,48 +468,33 @@
           </div>
         </div>
         
-        <div class="card filter-card featured-device-card " data-status="POTENTIALLY_COMPATIBLE">
+        <div class="card filter-card featured-device-card " data-status="UNSUPPORTED">
           <div>
             <div class="card-header">
-              <span class="card-title">Nokia FastMile 5G Gateway 3.2 (5G14-B)</span>
-              <span class="badge badge-secondary">POTENTIALLY COMPATIBLE</span>
+              <span class="card-title">ASUS RT-BE96U (ROG Rapture / Wi-Fi 7)</span>
+              <span class="badge badge-danger">UNSUPPORTED</span>
             </div>
-            <div class="card-meta">Platform: <strong>MediaTek T750 (MT6890)</strong> | Arch: aarch64</div>
-            <p class="card-body">RAM: <strong>4096 MB</strong> | Flash: 8192 MB eMMC | Ethernet: 2 Ports<br>Target: <code>mediatek/t750</code></p>
+            <div class="card-meta">Platform: <strong>Broadcom BCM4916</strong> | Arch: arm_cortex-a53</div>
+            <p class="card-body">RAM: <strong>2048 MB</strong> | Flash: 256 MB SPI-NAND | Ethernet: 7 Ports<br>Target: <code>bcm4908</code></p>
           </div>
           <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-            <a href="devices/nokia-fastmile-5g-gateway-3-2/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
-            <a href="guides/install/nokia-fastmile-5g-gateway-3-2/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
+            <a href="devices/asus-rt-be96u/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
+            <a href="guides/install/asus-rt-be96u/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
           </div>
         </div>
         
         <div class="card filter-card featured-device-card " data-status="UNSUPPORTED">
           <div>
             <div class="card-header">
-              <span class="card-title">Sercomm / Airtel A-622G (Airtel Xstream Fiber ONT)</span>
+              <span class="card-title">Huawei 4G Router 3 Pro (B535-232)</span>
               <span class="badge badge-danger">UNSUPPORTED</span>
             </div>
-            <div class="card-meta">Platform: <strong>Realtek RTL9607C</strong> | Arch: mips_34kc</div>
-            <p class="card-body">RAM: <strong>256 MB</strong> | Flash: 128 MB SPI-NAND | Ethernet: 4 Ports<br>Target: <code>realtek/rtl960x</code></p>
+            <div class="card-meta">Platform: <strong>HiSilicon Balong 711 (Hi6932)</strong> | Arch: arm_cortex-a7</div>
+            <p class="card-body">RAM: <strong>128 MB</strong> | Flash: 128 MB SPI-NAND | Ethernet: 4 Ports<br>Target: <code>hisilicon</code></p>
           </div>
           <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-            <a href="devices/sercomm-airtel-a622g/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
-            <a href="guides/install/sercomm-airtel-a622g/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
-          </div>
-        </div>
-        
-        <div class="card filter-card featured-device-card " data-status="UNSUPPORTED">
-          <div>
-            <div class="card-header">
-              <span class="card-title">TP-Link Archer AX50</span>
-              <span class="badge badge-danger">UNSUPPORTED</span>
-            </div>
-            <div class="card-meta">Platform: <strong>Intel/x86 AnyWAN GRX350 (Intel Lantiq)</strong> | Arch: mips_34kc</div>
-            <p class="card-body">RAM: <strong>256 MB</strong> | Flash: 128 MB SPI-NAND | Ethernet: 5 Ports<br>Target: <code>lantiq/xrx200</code></p>
-          </div>
-          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-            <a href="devices/tp-link-archer-ax50-v1/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
-            <a href="guides/install/tp-link-archer-ax50-v1/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
+            <a href="devices/huawei-b535-232/index.html" class="btn btn-sm btn-primary" style="flex: 1; justify-content: center;">View Hardware Profile &rarr;</a>
+            <a href="guides/install/huawei-b535-232/index.html" class="btn btn-sm btn-outline" title="Installation Guide">Install</a>
           </div>
         </div>
         
@@ -503,7 +506,7 @@
         <h2>Core Networking Silicon Architectures</h2>
         <p>MediaTek Filogic, Qualcomm IPQ, Rockchip, Broadcom, Realtek Managed Switch DSA, and x86_64.</p>
       </div>
-      <a href="chipsets/index.html" class="btn btn-sm btn-outline">Browse All 15 Chipsets &rarr;</a>
+      <a href="chipsets/index.html" class="btn btn-sm btn-outline">Browse All 20 Chipsets &rarr;</a>
     </div>
     <div class="grid-3">
       
@@ -534,6 +537,18 @@
         <div class="card filter-card">
           <div>
             <div class="card-header">
+              <span class="card-title">Broadcom BCM63138</span>
+              <span class="badge badge-info">TIER_3_COMMUNITY_ONLY</span>
+            </div>
+            <div class="card-meta">Broadcom BCM63138 (DSL / VDSL2 / Gigabit Gateway) | ARM Cortex-A9 MPCore</div>
+            <p class="card-body">Cores: 2x @ 1000 MHz | Target: <code>bcm63xx</code></p>
+          </div>
+          <a href="chipsets/broadcom-bcm63138/index.html" class="btn btn-sm btn-outline" style="justify-content: center;">Explore Silicon Architecture &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
               <span class="card-title">Intel/x86 x86_64 Generic (Intel N100 / J4125 / Core / Xeon)</span>
               <span class="badge badge-info">TIER_1_MAINSTREAM</span>
             </div>
@@ -546,6 +561,18 @@
         <div class="card filter-card">
           <div>
             <div class="card-header">
+              <span class="card-title">Marvell 88F6820 (Armada 385)</span>
+              <span class="badge badge-info">TIER_1_MAINSTREAM</span>
+            </div>
+            <div class="card-meta">Marvell Armada 385 (88F6820 / 88F6828) | ARM Cortex-A9 MPCore (v7-A)</div>
+            <p class="card-body">Cores: 2x @ 1600 MHz | Target: <code>mvebu</code></p>
+          </div>
+          <a href="chipsets/marvell-armada-385/index.html" class="btn btn-sm btn-outline" style="justify-content: center;">Explore Silicon Architecture &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
               <span class="card-title">MediaTek MT7621A / MT7621AT</span>
               <span class="badge badge-info">TIER_1_MAINSTREAM</span>
             </div>
@@ -553,30 +580,6 @@
             <p class="card-body">Cores: 2x @ 880 MHz | Target: <code>ramips</code></p>
           </div>
           <a href="chipsets/mediatek-mt7621a/index.html" class="btn btn-sm btn-outline" style="justify-content: center;">Explore Silicon Architecture &rarr;</a>
-        </div>
-        
-        <div class="card filter-card">
-          <div>
-            <div class="card-header">
-              <span class="card-title">MediaTek MT7622BV</span>
-              <span class="badge badge-info">TIER_1_MAINSTREAM</span>
-            </div>
-            <div class="card-meta">MediaTek MT7622B | ARM Cortex-A53</div>
-            <p class="card-body">Cores: 2x @ 1350 MHz | Target: <code>mediatek</code></p>
-          </div>
-          <a href="chipsets/mediatek-mt7622bv/index.html" class="btn btn-sm btn-outline" style="justify-content: center;">Explore Silicon Architecture &rarr;</a>
-        </div>
-        
-        <div class="card filter-card">
-          <div>
-            <div class="card-header">
-              <span class="card-title">MediaTek MT7981B</span>
-              <span class="badge badge-info">TIER_1_MAINSTREAM</span>
-            </div>
-            <div class="card-meta">Filogic 820 | ARM Cortex-A53</div>
-            <p class="card-body">Cores: 2x @ 1300 MHz | Target: <code>mediatek</code></p>
-          </div>
-          <a href="chipsets/mediatek-mt7981b/index.html" class="btn btn-sm btn-outline" style="justify-content: center;">Explore Silicon Architecture &rarr;</a>
         </div>
         
     </div>
@@ -697,13 +700,14 @@
       <span class="badge badge-info">v2.1 Production Release</span>
     </div>
     <div class="card" style="margin-bottom: 3.5rem;">
-      <h3 style="color: var(--text-heading); font-size: 1.15rem; margin-bottom: 0.75rem;">Release v2.1: Multi-Vendor Database Expansion & Dedicated Guide System</h3>
+      <h3 style="color: var(--text-heading); font-size: 1.15rem; margin-bottom: 0.75rem;">Release v2.2: Global Hardware Discovery & SEO Expansion</h3>
       <ul style="margin: 0 0 1rem 1.5rem; font-size: 0.88rem; color: var(--text); line-height: 1.7;">
-        <li>Expanded catalog to <strong>48 verified hardware devices</strong> across 18 manufacturers.</li>
-        <li>Integrated <strong>15 silicon architecture profiles</strong> across MediaTek, Qualcomm, Rockchip, Broadcom, Realtek, and x86_64.</li>
-        <li>Published <strong>48 dedicated device installation guides</strong> under <code>/guides/install/&lt;slug&gt;/</code>.</li>
-        <li>Published <strong>48 dedicated disaster recovery guides</strong> under <code>/guides/recovery/&lt;slug&gt;/</code>.</li>
-        <li>Introduced responsive mobile navigation drawer, theme persistence, and global search deep-linking.</li>
+        <li>Expanded catalog to <strong>72 verified hardware devices</strong> across 31 manufacturers worldwide.</li>
+        <li>Integrated <strong>20 silicon architecture profiles</strong> across MediaTek, Qualcomm, Marvell, Rockchip, Broadcom, Realtek, and Intel x86_64.</li>
+        <li>Published <strong>8 curated search-intent category landing pages</strong> with comparison tables and evaluation criteria.</li>
+        <li>Published <strong>72 dedicated device installation guides</strong> under <code>/guides/install/&lt;slug&gt;/</code>.</li>
+        <li>Published <strong>72 dedicated disaster recovery guides</strong> with strict 3.3V TTL safety mandates under <code>/guides/recovery/&lt;slug&gt;/</code>.</li>
+        <li>Updated sitemap, JSON-LD structured data (TechArticle, ItemList), and real-time explorer deep-linking.</li>
       </ul>
       <p style="font-size: 0.85rem; color: var(--text-muted);">View full project history in <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/blob/main/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG.md &rarr;</a></p>
     </div>
@@ -745,7 +749,7 @@
         <div class="visitor-telemetry" style="margin-top: 1rem;">
           <span class="telemetry-badge" id="telemetry-badge">
             <span class="pulse-dot"></span>
-            <strong>48 Devices Cataloged</strong> &bull; 15 Silicon Platforms &bull; 100% Citations Verified
+            <strong>72 Devices Cataloged</strong> &bull; 20 Silicon Platforms &bull; 100% Citations Verified
           </span>
         </div>
       </div>
@@ -753,8 +757,9 @@
         <h4>Hardware Intelligence</h4>
         <ul>
           <li><a href="./explorer/index.html">Hardware Explorer</a></li>
-          <li><a href="./devices/index.html">Device Directory (48)</a></li>
-          <li><a href="./chipsets/index.html">Silicon Architectures (15)</a></li>
+          <li><a href="./devices/index.html">Device Directory (72)</a></li>
+          <li><a href="./chipsets/index.html">Silicon Architectures (20)</a></li>
+          <li><a href="./categories/index.html">Curated Buyer Guides (8)</a></li>
           <li><a href="./diagrams/index.html">Interactive Diagrams</a></li>
         </ul>
       </div>

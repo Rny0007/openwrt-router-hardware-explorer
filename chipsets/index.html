@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silicon Platforms — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Architectural reference and OpenWrt driver integration for 15 core router SoCs and Wi-Fi transceivers.">
+  <meta name="description" content="Architectural reference and OpenWrt driver integration for 20 core router SoCs and Wi-Fi transceivers.">
   <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/">
   <meta property="og:title" content="Silicon Platforms — OpenWrt Router Hardware Knowledge Base">
-  <meta property="og:description" content="Architectural reference and OpenWrt driver integration for 15 core router SoCs and Wi-Fi transceivers.">
+  <meta property="og:description" content="Architectural reference and OpenWrt driver integration for 20 core router SoCs and Wi-Fi transceivers.">
   <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/">
   <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Silicon Platforms">
-  <meta name="twitter:description" content="Architectural reference and OpenWrt driver integration for 15 core router SoCs and Wi-Fi transceivers.">
+  <meta name="twitter:description" content="Architectural reference and OpenWrt driver integration for 20 core router SoCs and Wi-Fi transceivers.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="manifest" href="../manifest.webmanifest">
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -41,6 +41,7 @@
 <a href="../explorer/index.html">Explorer</a>
 <a href="../devices/index.html">Devices</a>
 <a href="../chipsets/index.html" class="active">Chipsets</a>
+<a href="../categories/index.html">Guides</a>
 <a href="../diagrams/index.html">Diagrams</a>
 <a href="../guides/installation/index.html">Installation</a>
 <a href="../guides/recovery/index.html">Recovery</a>
@@ -88,6 +89,7 @@
 <a href="../explorer/index.html">Explorer</a>
 <a href="../devices/index.html">Devices</a>
 <a href="../chipsets/index.html" class="active">Chipsets</a>
+<a href="../categories/index.html">Guides</a>
 <a href="../diagrams/index.html">Diagrams</a>
 <a href="../guides/installation/index.html">Installation</a>
 <a href="../guides/recovery/index.html">Recovery</a>
@@ -116,7 +118,7 @@
     <div class="section-header">
       <div>
         <h1>Networking Silicon & SoC Platforms</h1>
-        <p>Comprehensive architectural analysis of 15 core network processing units and RF transceivers.</p>
+        <p>Comprehensive architectural analysis of 20 core network processing units and RF transceivers.</p>
       </div>
       <div>
         <input type="text" id="search-input" placeholder="Search silicon platforms..." style="padding: 0.55rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-card); color: var(--text); min-width: 260px;" aria-label="Search silicon platforms">
@@ -160,6 +162,22 @@
         <div class="card filter-card">
           <div>
             <div class="card-header">
+              <span class="card-title">Broadcom BCM63138</span>
+              <span class="badge badge-info">TIER_3_COMMUNITY_ONLY</span>
+            </div>
+            <div class="card-meta">Broadcom BCM63138 (DSL / VDSL2 / Gigabit Gateway) | ARM Cortex-A9 MPCore</div>
+            <p class="card-body">
+              <strong>Cores:</strong> 2x @ 1000 MHz<br>
+              <strong>Architecture:</strong> arm_cortex-a9<br>
+              <strong>Target:</strong> <code>bcm63xx</code>
+            </p>
+          </div>
+          <a href="broadcom-bcm63138/index.html" class="btn btn-sm btn-outline">Explore Silicon &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
               <span class="card-title">Intel/x86 x86_64 Generic (Intel N100 / J4125 / Core / Xeon)</span>
               <span class="badge badge-info">TIER_1_MAINSTREAM</span>
             </div>
@@ -171,6 +189,22 @@
             </p>
           </div>
           <a href="intel-x86-64-generic/index.html" class="btn btn-sm btn-outline">Explore Silicon &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">Marvell 88F6820 (Armada 385)</span>
+              <span class="badge badge-info">TIER_1_MAINSTREAM</span>
+            </div>
+            <div class="card-meta">Marvell Armada 385 (88F6820 / 88F6828) | ARM Cortex-A9 MPCore (v7-A)</div>
+            <p class="card-body">
+              <strong>Cores:</strong> 2x @ 1600 MHz<br>
+              <strong>Architecture:</strong> arm_cortex-a9<br>
+              <strong>Target:</strong> <code>mvebu</code>
+            </p>
+          </div>
+          <a href="marvell-armada-385/index.html" class="btn btn-sm btn-outline">Explore Silicon &rarr;</a>
         </div>
         
         <div class="card filter-card">
@@ -272,6 +306,22 @@
         <div class="card filter-card">
           <div>
             <div class="card-header">
+              <span class="card-title">Qualcomm IPQ5018</span>
+              <span class="badge badge-info">TIER_2_STABLE</span>
+            </div>
+            <div class="card-meta">Qualcomm IPQ5018 (Maple / Immersive Home 216) | ARM Cortex-A53</div>
+            <p class="card-body">
+              <strong>Cores:</strong> 2x @ 1000 MHz<br>
+              <strong>Architecture:</strong> arm_cortex-a53<br>
+              <strong>Target:</strong> <code>qualcommax</code>
+            </p>
+          </div>
+          <a href="qualcomm-ipq5018/index.html" class="btn btn-sm btn-outline">Explore Silicon &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
               <span class="card-title">Qualcomm IPQ6018 / IPQ6000</span>
               <span class="badge badge-info">TIER_1_MAINSTREAM</span>
             </div>
@@ -320,6 +370,22 @@
         <div class="card filter-card">
           <div>
             <div class="card-header">
+              <span class="card-title">Qualcomm QCA9563</span>
+              <span class="badge badge-info">TIER_1_MAINSTREAM</span>
+            </div>
+            <div class="card-meta">Qualcomm Atheros QCA9563 (Dragonfly) | MIPS 74Kc</div>
+            <p class="card-body">
+              <strong>Cores:</strong> 1x @ 775 MHz<br>
+              <strong>Architecture:</strong> mips_74kc<br>
+              <strong>Target:</strong> <code>ath79</code>
+            </p>
+          </div>
+          <a href="qualcomm-qca9563/index.html" class="btn btn-sm btn-outline">Explore Silicon &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
               <span class="card-title">Realtek RTL8380M / RTL8382M</span>
               <span class="badge badge-info">TIER_2_STABLE</span>
             </div>
@@ -331,6 +397,22 @@
             </p>
           </div>
           <a href="realtek-rtl8380m/index.html" class="btn btn-sm btn-outline">Explore Silicon &rarr;</a>
+        </div>
+        
+        <div class="card filter-card">
+          <div>
+            <div class="card-header">
+              <span class="card-title">Rockchip RK3328</span>
+              <span class="badge badge-info">TIER_1_MAINSTREAM</span>
+            </div>
+            <div class="card-meta">Rockchip RK3328 | ARM Cortex-A53</div>
+            <p class="card-body">
+              <strong>Cores:</strong> 4x @ 1300 MHz<br>
+              <strong>Architecture:</strong> arm_cortex-a53<br>
+              <strong>Target:</strong> <code>rockchip</code>
+            </p>
+          </div>
+          <a href="rockchip-rk3328/index.html" class="btn btn-sm btn-outline">Explore Silicon &rarr;</a>
         </div>
         
         <div class="card filter-card">
@@ -417,7 +499,7 @@
         <div class="visitor-telemetry" style="margin-top: 1rem;">
           <span class="telemetry-badge" id="telemetry-badge">
             <span class="pulse-dot"></span>
-            <strong>48 Devices Cataloged</strong> &bull; 15 Silicon Platforms &bull; 100% Citations Verified
+            <strong>72 Devices Cataloged</strong> &bull; 20 Silicon Platforms &bull; 100% Citations Verified
           </span>
         </div>
       </div>
@@ -425,8 +507,9 @@
         <h4>Hardware Intelligence</h4>
         <ul>
           <li><a href="../explorer/index.html">Hardware Explorer</a></li>
-          <li><a href="../devices/index.html">Device Directory (48)</a></li>
-          <li><a href="../chipsets/index.html">Silicon Architectures (15)</a></li>
+          <li><a href="../devices/index.html">Device Directory (72)</a></li>
+          <li><a href="../chipsets/index.html">Silicon Architectures (20)</a></li>
+          <li><a href="../categories/index.html">Curated Buyer Guides (8)</a></li>
           <li><a href="../diagrams/index.html">Interactive Diagrams</a></li>
         </ul>
       </div>

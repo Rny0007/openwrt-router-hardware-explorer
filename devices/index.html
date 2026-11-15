@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Device Directory — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Complete catalog of 48 OpenWrt-compatible routers, switches, and access points with verified hardware specifications and targets.">
+  <meta name="description" content="Complete catalog of 72 OpenWrt-compatible routers, switches, and access points with verified hardware specifications and targets.">
   <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/devices/">
   <meta property="og:title" content="Device Directory — OpenWrt Router Hardware Knowledge Base">
-  <meta property="og:description" content="Complete catalog of 48 OpenWrt-compatible routers, switches, and access points with verified hardware specifications and targets.">
+  <meta property="og:description" content="Complete catalog of 72 OpenWrt-compatible routers, switches, and access points with verified hardware specifications and targets.">
   <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/devices/">
   <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Device Directory">
-  <meta name="twitter:description" content="Complete catalog of 48 OpenWrt-compatible routers, switches, and access points with verified hardware specifications and targets.">
+  <meta name="twitter:description" content="Complete catalog of 72 OpenWrt-compatible routers, switches, and access points with verified hardware specifications and targets.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="manifest" href="../manifest.webmanifest">
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -41,6 +41,7 @@
 <a href="../explorer/index.html">Explorer</a>
 <a href="../devices/index.html" class="active">Devices</a>
 <a href="../chipsets/index.html">Chipsets</a>
+<a href="../categories/index.html">Guides</a>
 <a href="../diagrams/index.html">Diagrams</a>
 <a href="../guides/installation/index.html">Installation</a>
 <a href="../guides/recovery/index.html">Recovery</a>
@@ -88,6 +89,7 @@
 <a href="../explorer/index.html">Explorer</a>
 <a href="../devices/index.html" class="active">Devices</a>
 <a href="../chipsets/index.html">Chipsets</a>
+<a href="../categories/index.html">Guides</a>
 <a href="../diagrams/index.html">Diagrams</a>
 <a href="../guides/installation/index.html">Installation</a>
 <a href="../guides/recovery/index.html">Recovery</a>
@@ -116,7 +118,7 @@
     <div class="section-header">
       <div>
         <h1>OpenWrt Supported Devices Directory</h1>
-        <p>Comprehensive catalog of 48 verified router, access point, switch, and SBC platforms.</p>
+        <p>Comprehensive catalog of 72 verified router, access point, switch, and SBC platforms.</p>
       </div>
       <div>
         <input type="text" id="search-input" placeholder="Search devices by name, SoC, target..." style="padding: 0.55rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-card); color: var(--text); min-width: 280px;" aria-label="Search devices">
@@ -184,6 +186,17 @@
         </tr>
         
         <tr class="filter-card">
+          <td><strong><a href="asus-rt-ax86u/index.html">ASUS RT-AX86U / RT-AX86S</a></strong></td>
+          <td>Broadcom BCM4908</td>
+          <td>1024 MB</td>
+          <td>256 MB SPI-NAND</td>
+          <td>6 Ports</td>
+          <td><code>bcm4908</code></td>
+          <td><span class="badge badge-danger">UNSUPPORTED</span></td>
+          <td><a href="asus-rt-ax86u/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
           <td><strong><a href="asus-rt-ax88u-pro/index.html">ASUS RT-AX88U Pro (AX6000 Dual 2.5G)</a></strong></td>
           <td>Broadcom BCM4912</td>
           <td>1024 MB</td>
@@ -192,6 +205,17 @@
           <td><code>bcm4908/generic</code></td>
           <td><span class="badge badge-danger">UNSUPPORTED</span></td>
           <td><a href="asus-rt-ax88u-pro/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="asus-rt-be96u/index.html">ASUS RT-BE96U (ROG Rapture / Wi-Fi 7)</a></strong></td>
+          <td>Broadcom BCM4916</td>
+          <td>2048 MB</td>
+          <td>256 MB SPI-NAND</td>
+          <td>7 Ports</td>
+          <td><code>bcm4908</code></td>
+          <td><span class="badge badge-danger">UNSUPPORTED</span></td>
+          <td><a href="asus-rt-be96u/index.html" class="btn btn-sm btn-outline">Profile</a></td>
         </tr>
         
         <tr class="filter-card">
@@ -236,6 +260,50 @@
           <td><code>mediatek/filogic</code></td>
           <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
           <td><a href="banana-pi-bpi-r4/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="buffalo-wsr-2533dhpl2/index.html">Buffalo WSR-2533DHPL2</a></strong></td>
+          <td>MediaTek MT7621AT</td>
+          <td>128 MB</td>
+          <td>64 MB SPI-NOR</td>
+          <td>5 Ports</td>
+          <td><code>ramips</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="buffalo-wsr-2533dhpl2/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="buffalo-wsr-3200ax4s/index.html">Buffalo WSR-3200AX4S</a></strong></td>
+          <td>MediaTek MT7622BV</td>
+          <td>512 MB</td>
+          <td>128 MB SPI-NAND</td>
+          <td>5 Ports</td>
+          <td><code>mediatek</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="buffalo-wsr-3200ax4s/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="turris-omnia/index.html">CZ.NIC / Turris Omnia (2020 Edition)</a></strong></td>
+          <td>Marvell 88F6820</td>
+          <td>2048 MB</td>
+          <td>8192 MB eMMC</td>
+          <td>7 Ports</td>
+          <td><code>mvebu</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="turris-omnia/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="comfast-cf-e390ax/index.html">Comfast CF-E390AX</a></strong></td>
+          <td>MediaTek MT7621AT</td>
+          <td>256 MB</td>
+          <td>16 MB SPI-NOR</td>
+          <td>2 Ports</td>
+          <td><code>ramips</code></td>
+          <td><span class="badge badge-warning">COMMUNITY VERIFIED</span></td>
+          <td><a href="comfast-cf-e390ax/index.html" class="btn btn-sm btn-outline">Profile</a></td>
         </tr>
         
         <tr class="filter-card">
@@ -305,6 +373,28 @@
         </tr>
         
         <tr class="filter-card">
+          <td><strong><a href="gl-inet-gl-ar300m16/index.html">GL.iNet GL-AR300M16 (Shadow)</a></strong></td>
+          <td>Qualcomm QCA9531</td>
+          <td>128 MB</td>
+          <td>16 MB SPI-NOR</td>
+          <td>2 Ports</td>
+          <td><code>ath79</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="gl-inet-gl-ar300m16/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="gl-inet-gl-ar750s/index.html">GL.iNet GL-AR750S (Slate)</a></strong></td>
+          <td>Qualcomm QCA9563</td>
+          <td>128 MB</td>
+          <td>16 MB SPI-NOR</td>
+          <td>3 Ports</td>
+          <td><code>ath79</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="gl-inet-gl-ar750s/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
           <td><strong><a href="gl-inet-gl-ax1800/index.html">GL.iNet GL-AX1800 (Flint)</a></strong></td>
           <td>Qualcomm IPQ6000</td>
           <td>512 MB</td>
@@ -360,6 +450,28 @@
         </tr>
         
         <tr class="filter-card">
+          <td><strong><a href="gl-inet-gl-sft1200/index.html">GL.iNet GL-SFT1200 (Opal)</a></strong></td>
+          <td>Siflower SF19A2890</td>
+          <td>128 MB</td>
+          <td>128 MB SPI-NAND</td>
+          <td>3 Ports</td>
+          <td><code>siflower</code></td>
+          <td><span class="badge badge-warning">COMMUNITY VERIFIED</span></td>
+          <td><a href="gl-inet-gl-sft1200/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="huawei-b535-232/index.html">Huawei 4G Router 3 Pro (B535-232)</a></strong></td>
+          <td>HiSilicon Balong 711 (Hi6932)</td>
+          <td>128 MB</td>
+          <td>128 MB SPI-NAND</td>
+          <td>4 Ports</td>
+          <td><code>hisilicon</code></td>
+          <td><span class="badge badge-danger">UNSUPPORTED</span></td>
+          <td><a href="huawei-b535-232/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
           <td><strong><a href="jio-jidu6101/index.html">Jio / Arcadyan JIDU6101</a></strong></td>
           <td>MediaTek MT7986A</td>
           <td>512 MB</td>
@@ -393,6 +505,28 @@
         </tr>
         
         <tr class="filter-card">
+          <td><strong><a href="linksys-velop-whw03/index.html">Linksys Velop Tri-Band (WHW03)</a></strong></td>
+          <td>Qualcomm IPQ4019</td>
+          <td>512 MB</td>
+          <td>4096 MB eMMC</td>
+          <td>2 Ports</td>
+          <td><code>ipq40xx</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="linksys-velop-whw03/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="linksys-wrt1900acs/index.html">Linksys WRT1900ACS</a></strong></td>
+          <td>Marvell 88F6820</td>
+          <td>512 MB</td>
+          <td>128 MB SPI-NAND</td>
+          <td>5 Ports</td>
+          <td><code>mvebu</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="linksys-wrt1900acs/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
           <td><strong><a href="linksys-wrt3200acm/index.html">Linksys WRT3200ACM</a></strong></td>
           <td>Marvell Armada 388 (88F6820)</td>
           <td>512 MB</td>
@@ -423,6 +557,28 @@
           <td><code>ramips/mt7621</code></td>
           <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
           <td><a href="mikrotik-rb750gr3/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="mikrotik-cap-ac/index.html">MikroTik cAP ac (RBcAPGi-5acD2nD)</a></strong></td>
+          <td>Qualcomm IPQ4018</td>
+          <td>128 MB</td>
+          <td>16 MB SPI-NOR</td>
+          <td>2 Ports</td>
+          <td><code>ipq40xx</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="mikrotik-cap-ac/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="netgear-r6700-v3/index.html">Netgear Nighthawk R6700</a></strong></td>
+          <td>Broadcom BCM4708C0</td>
+          <td>256 MB</td>
+          <td>128 MB SPI-NAND</td>
+          <td>5 Ports</td>
+          <td><code>bcm53xx</code></td>
+          <td><span class="badge badge-info">PARTIALLY VERIFIED</span></td>
+          <td><a href="netgear-r6700-v3/index.html" class="btn btn-sm btn-outline">Profile</a></td>
         </tr>
         
         <tr class="filter-card">
@@ -478,6 +634,28 @@
           <td><code>mediatek/filogic</code></td>
           <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
           <td><a href="openwrt-one/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="protectli-vault-fw4b/index.html">Protectli Vault FW4B</a></strong></td>
+          <td>Intel/x86 Celeron J3160</td>
+          <td>4096 MB</td>
+          <td>32768 MB SATA/SSD</td>
+          <td>4 Ports</td>
+          <td><code>x86</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="protectli-vault-fw4b/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="qotom-q355g4/index.html">Qotom Q355G4</a></strong></td>
+          <td>Intel/x86 Core i5-5200U</td>
+          <td>8192 MB</td>
+          <td>65536 MB SATA/SSD</td>
+          <td>4 Ports</td>
+          <td><code>x86</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="qotom-q355g4/index.html" class="btn btn-sm btn-outline">Profile</a></td>
         </tr>
         
         <tr class="filter-card">
@@ -547,6 +725,17 @@
         </tr>
         
         <tr class="filter-card">
+          <td><strong><a href="tp-link-archer-be800-v1/index.html">TP-Link Archer BE800</a></strong></td>
+          <td>Qualcomm IPQ9574</td>
+          <td>2048 MB</td>
+          <td>512 MB SPI-NAND</td>
+          <td>6 Ports</td>
+          <td><code>qualcommax</code></td>
+          <td><span class="badge badge-secondary">POTENTIALLY COMPATIBLE</span></td>
+          <td><a href="tp-link-archer-be800-v1/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
           <td><strong><a href="tp-link-archer-c6-v3/index.html">TP-Link Archer C6</a></strong></td>
           <td>MediaTek MT7621AT</td>
           <td>128 MB</td>
@@ -580,6 +769,17 @@
         </tr>
         
         <tr class="filter-card">
+          <td><strong><a href="technicolor-dga4132/index.html">Technicolor DGA4132 (TIM HUB)</a></strong></td>
+          <td>Broadcom BCM63138</td>
+          <td>512 MB</td>
+          <td>256 MB SPI-NAND</td>
+          <td>6 Ports</td>
+          <td><code>bcm63xx</code></td>
+          <td><span class="badge badge-warning">COMMUNITY VERIFIED</span></td>
+          <td><a href="technicolor-dga4132/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
           <td><strong><a href="ubiquiti-unifi-6-lite/index.html">Ubiquiti UniFi 6 Lite (U6-Lite)</a></strong></td>
           <td>MediaTek MT7621AT</td>
           <td>256 MB</td>
@@ -588,6 +788,17 @@
           <td><code>ramips/mt7621</code></td>
           <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
           <td><a href="ubiquiti-unifi-6-lite/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="ubiquiti-unifi-6-pro/index.html">Ubiquiti UniFi 6 Pro (U6-Pro)</a></strong></td>
+          <td>Qualcomm IPQ5018</td>
+          <td>512 MB</td>
+          <td>128 MB SPI-NOR</td>
+          <td>1 Ports</td>
+          <td><code>qualcommax</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="ubiquiti-unifi-6-pro/index.html" class="btn btn-sm btn-outline">Profile</a></td>
         </tr>
         
         <tr class="filter-card">
@@ -613,6 +824,17 @@
         </tr>
         
         <tr class="filter-card">
+          <td><strong><a href="ubiquiti-unifi-nanohd/index.html">Ubiquiti UniFi nanoHD (UAP-nanoHD)</a></strong></td>
+          <td>MediaTek MT7621AT</td>
+          <td>256 MB</td>
+          <td>32 MB SPI-NOR</td>
+          <td>1 Ports</td>
+          <td><code>ramips</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="ubiquiti-unifi-nanohd/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
           <td><strong><a href="xiaomi-ax9000/index.html">Xiaomi Mi Router AX9000</a></strong></td>
           <td>Qualcomm IPQ8072A</td>
           <td>1024 MB</td>
@@ -635,6 +857,17 @@
         </tr>
         
         <tr class="filter-card">
+          <td><strong><a href="xiaomi-router-7000/index.html">Xiaomi Router 7000 (AX7000)</a></strong></td>
+          <td>Qualcomm IPQ9554</td>
+          <td>1024 MB</td>
+          <td>128 MB SPI-NAND</td>
+          <td>4 Ports</td>
+          <td><code>qualcommax</code></td>
+          <td><span class="badge badge-warning">COMMUNITY VERIFIED</span></td>
+          <td><a href="xiaomi-router-7000/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
           <td><strong><a href="xiaomi-ax3000t/index.html">Xiaomi Router AX3000T</a></strong></td>
           <td>MediaTek MT7981B</td>
           <td>256 MB</td>
@@ -643,6 +876,39 @@
           <td><code>mediatek/filogic</code></td>
           <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
           <td><a href="xiaomi-ax3000t/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="orange-pi-r1-plus-lts/index.html">Xunlong / Orange Pi Orange Pi R1 Plus LTS</a></strong></td>
+          <td>Rockchip RK3328</td>
+          <td>1024 MB</td>
+          <td>16 MB SPI-NOR</td>
+          <td>2 Ports</td>
+          <td><code>rockchip</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="orange-pi-r1-plus-lts/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="zte-mf286d/index.html">ZTE MF286D</a></strong></td>
+          <td>Qualcomm IPQ4019</td>
+          <td>256 MB</td>
+          <td>128 MB SPI-NAND</td>
+          <td>4 Ports</td>
+          <td><code>ipq40xx</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="zte-mf286d/index.html" class="btn btn-sm btn-outline">Profile</a></td>
+        </tr>
+        
+        <tr class="filter-card">
+          <td><strong><a href="zyxel-gs1900-24/index.html">Zyxel GS1900-24</a></strong></td>
+          <td>Realtek RTL8382M</td>
+          <td>128 MB</td>
+          <td>16 MB SPI-NOR</td>
+          <td>26 Ports</td>
+          <td><code>realtek</code></td>
+          <td><span class="badge badge-success">OFFICIALLY SUPPORTED</span></td>
+          <td><a href="zyxel-gs1900-24/index.html" class="btn btn-sm btn-outline">Profile</a></td>
         </tr>
         
         <tr class="filter-card">
@@ -721,7 +987,7 @@
         <div class="visitor-telemetry" style="margin-top: 1rem;">
           <span class="telemetry-badge" id="telemetry-badge">
             <span class="pulse-dot"></span>
-            <strong>48 Devices Cataloged</strong> &bull; 15 Silicon Platforms &bull; 100% Citations Verified
+            <strong>72 Devices Cataloged</strong> &bull; 20 Silicon Platforms &bull; 100% Citations Verified
           </span>
         </div>
       </div>
@@ -729,8 +995,9 @@
         <h4>Hardware Intelligence</h4>
         <ul>
           <li><a href="../explorer/index.html">Hardware Explorer</a></li>
-          <li><a href="../devices/index.html">Device Directory (48)</a></li>
-          <li><a href="../chipsets/index.html">Silicon Architectures (15)</a></li>
+          <li><a href="../devices/index.html">Device Directory (72)</a></li>
+          <li><a href="../chipsets/index.html">Silicon Architectures (20)</a></li>
+          <li><a href="../categories/index.html">Curated Buyer Guides (8)</a></li>
           <li><a href="../diagrams/index.html">Interactive Diagrams</a></li>
         </ul>
       </div>

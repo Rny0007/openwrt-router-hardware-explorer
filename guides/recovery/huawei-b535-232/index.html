@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huawei 4G Router 3 Pro (B535-232) Disaster Recovery Guide — OpenWrt Router Hardware Knowledge Base</title>
+  <meta name="description" content="Verified unbricking procedure, TFTP restoration, and 3.3V UART serial recovery for Huawei 4G Router 3 Pro (B535-232).">
+  <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/huawei-b535-232/">
+  <meta property="og:title" content="Huawei 4G Router 3 Pro (B535-232) Disaster Recovery Guide — OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:description" content="Verified unbricking procedure, TFTP restoration, and 3.3V UART serial recovery for Huawei 4G Router 3 Pro (B535-232).">
+  <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/huawei-b535-232/">
+  <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Huawei 4G Router 3 Pro (B535-232) Disaster Recovery Guide">
+  <meta name="twitter:description" content="Verified unbricking procedure, TFTP restoration, and 3.3V UART serial recovery for Huawei 4G Router 3 Pro (B535-232).">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+  <link rel="manifest" href="../../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Disaster Recovery & Unbricking Guide for Huawei 4G Router 3 Pro (B535-232)",
+  "description": "Verified unbricking procedure, TFTP restoration, and 3.3V UART serial recovery for Huawei 4G Router 3 Pro (B535-232).",
+  "url": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/huawei-b535-232/"
+}
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="../../../index.html" class="brand" aria-label="OpenWrt Hardware Knowledge Base Homepage">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#111927"/>
+          <path d="M6 16C6 10.4772 10.4772 6 16 6C21.5228 6 26 10.4772 26 16" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.5" fill="#f8fafc"/>
+          <rect x="8" y="21" width="16" height="5" rx="2" fill="#1e2c47"/>
+          <circle cx="12" cy="23.5" r="1" fill="#10b981"/>
+          <circle cx="16" cy="23.5" r="1" fill="#06b6d4"/>
+          <circle cx="20" cy="23.5" r="1" fill="#f59e0b"/>
+        </svg>
+        <span class="brand-text">OpenWrt<strong>HardwareKB</strong> <span class="version-tag">v2.1</span></span>
+      </a>
+      <nav class="nav-links" id="desktop-nav" aria-label="Main Navigation">
+        <a href="../../../index.html">Home</a>
+<a href="../../../explorer/index.html">Explorer</a>
+<a href="../../../devices/index.html">Devices</a>
+<a href="../../../chipsets/index.html">Chipsets</a>
+<a href="../../../categories/index.html">Guides</a>
+<a href="../../../diagrams/index.html">Diagrams</a>
+<a href="../../../guides/installation/index.html">Installation</a>
+<a href="../../../guides/recovery/index.html" class="active">Recovery</a>
+<a href="../../../guides/multi-wan/index.html">Failover</a>
+<a href="../../../methodology/index.html">Methodology</a>
+<a href="../../../about/index.html">About</a>
+
+      </nav>
+      <div class="header-actions">
+        <a href="../../../explorer/index.html" class="header-search-btn" aria-label="Search hardware database" title="Quick Search (Press /)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span class="search-hint">Search</span>
+          <kbd class="kbd-hint">/</kbd>
+        </a>
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide" target="_blank" rel="noopener" class="btn btn-sm btn-outline source-btn" aria-label="View source repository on GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span class="source-text">Source</span>
+        </a>
+        <button id="mobile-menu-toggle" class="btn-icon mobile-menu-btn" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <svg class="menu-open-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="menu-close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation Drawer">
+      <div class="mobile-drawer-inner">
+        <div class="mobile-drawer-header">
+          <span class="drawer-title">Navigation Menu</span>
+          <button id="mobile-drawer-close" class="btn-icon" aria-label="Close navigation menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="mobile-drawer-search">
+          <a href="../../../explorer/index.html" class="btn btn-primary" style="width: 100%; justify-content: center; gap: 0.5rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Launch Hardware Explorer
+          </a>
+        </div>
+        <nav class="mobile-nav-links" aria-label="Mobile Navigation Links">
+          <a href="../../../index.html">Home</a>
+<a href="../../../explorer/index.html">Explorer</a>
+<a href="../../../devices/index.html">Devices</a>
+<a href="../../../chipsets/index.html">Chipsets</a>
+<a href="../../../categories/index.html">Guides</a>
+<a href="../../../diagrams/index.html">Diagrams</a>
+<a href="../../../guides/installation/index.html">Installation</a>
+<a href="../../../guides/recovery/index.html" class="active">Recovery</a>
+<a href="../../../guides/multi-wan/index.html">Failover</a>
+<a href="../../../methodology/index.html">Methodology</a>
+<a href="../../../about/index.html">About</a>
+
+        </nav>
+        <div class="mobile-drawer-footer">
+          <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide" target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%; justify-content: center; gap: 0.5rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub Source Repository &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+  </header>
+  <main id="main-content" class="main-content" role="main">
+
+    <div class="breadcrumbs">
+      <a href="../../../index.html">Home</a> <span>/</span>
+      <a href="../../recovery/index.html">Guides</a> <span>/</span>
+      <a href="../../../devices/huawei-b535-232/index.html">Huawei 4G Router 3 Pro (B535-232)</a> <span>/</span>
+      <strong>Disaster Recovery</strong>
+    </div>
+
+    <div class="section-header">
+      <div>
+        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+          <span class="badge badge-danger">UNSUPPORTED</span>
+          <span class="badge badge-danger">High Risk Hardware Operations</span>
+        </div>
+        <h1 style="font-size: 2.2rem; color: var(--text-heading);">Huawei 4G Router 3 Pro (B535-232) Disaster Recovery & Unbricking</h1>
+        <p style="color: var(--text-muted);">Primary Recovery Protocol: <strong>None Known</strong> | UART Serial: <strong>Available / Header Present</strong> @ 115200 baud</p>
+      </div>
+    </div>
+
+    <!-- CRITICAL ELECTRICAL WARNING -->
+    <div class="callout callout-danger" style="margin-bottom: 2rem;">
+      <h3 style="color: var(--danger); font-size: 1.15rem; margin-bottom: 0.5rem;">CRITICAL SAFETY MANDATE — NEVER CONNECT VCC (RED WIRE)</h3>
+      <p style="line-height: 1.7;">
+        When connecting a USB-to-TTL serial adapter to the 4G Router 3 Pro (B535-232) PCB, connect <strong>ONLY GND, TX, and RX</strong>.
+        The router provides its own power rail when plugged into its AC adapter. Connecting the red VCC wire from your USB adapter backfeeds 5V/3.3V into the power management IC and <strong>permanently destroys the SoC and flash chips</strong>!
+        Ensure your USB adapter logic level is strictly set to <strong>3.3V TTL</strong> (never 5V, never RS-232 +/-12V).
+      </p>
+    </div>
+
+    <div class="card" style="margin-bottom: 2rem;">
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">1. Recovery Escalation Hierarchy</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">Always attempt recovery in order of increasing intervention. Do not disassemble the enclosure until software fail-safes are exhausted.</p>
+      <table class="spec-table">
+        <thead>
+          <tr><th>Tier</th><th>Method</th><th>When to Use</th><th>Hardware Required</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tier 1</strong></td>
+            <td>OpenWrt Failsafe Mode</td>
+            <td>Kernel boots, network config broken, forgotten root password</td>
+            <td>Ethernet cable, computer set to DHCP or static <code>192.168.1.2</code></td>
+          </tr>
+          <tr>
+            <td><strong>Tier 2</strong></td>
+            <td>TFTP Automated Bootloader Push</td>
+            <td>Bootloader intact, corrupted kernel / rootfs, boot loop</td>
+            <td>Ethernet cable, TFTP server utility (e.g. <code>dnsmasq</code> / <code>tftpd32</code>)</td>
+          </tr>
+          <tr>
+            <td><strong>Tier 3</strong></td>
+            <td>3.3V TTL Serial UART Console</td>
+            <td>Bootloader prompt accessible, TFTP fails, diagnose boot failure</td>
+            <td>3.3V USB-UART adapter (CP2102/FTDI), jumper wires, soldering iron (if pads unpopulated)</td>
+          </tr>
+          <tr>
+            <td><strong>Tier 4</strong></td>
+            <td>External SPI Flash Programmer</td>
+            <td>Bootloader erased/corrupted (hard brick), no serial output</td>
+            <td>CH341A programmer, SOIC-8 / SOIC-16 test clip, full mtd0 raw flash dump</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+        <div class="callout callout-warning" style="margin-bottom: 2rem;">
+          <h3 style="color: var(--warning); font-size: 1.15rem; margin-bottom: 0.5rem;">⚠️ NO DOCUMENTED OPENWRT RECOVERY PROTOCOL</h3>
+          <p style="margin-bottom: 0.75rem;">
+            There is no documented or verified OpenWrt-specific bootloader recovery procedure for the <strong>Huawei 4G Router 3 Pro (B535-232)</strong>.
+          </p>
+          <p style="color: var(--text-muted); line-height: 1.7;">
+            If this router is unbootable or enters a boot loop, you must utilize the manufacturer's original factory recovery tools (such as OEM emergency firmware restoration utilities, vendor emergency TFTP mode, or direct JTAG/SPI programming using an OEM factory firmware dump).
+          </p>
+        </div>
+        
+
+    <div class="card" style="margin-bottom: 2rem;">
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">UART Serial Console Pinout & Baudrate</h2>
+      <table class="spec-table">
+        <tr><th>Serial Availability</th><td>Available / Header Present</td></tr>
+        <tr><th>Logic Voltage</th><td><strong>3.3V TTL</strong> (Do NOT use 5V or RS-232)</td></tr>
+        <tr><th>Baud Rate</th><td><code>115200</code> 8-N-1</td></tr>
+        <tr><th>Wiring Rules</th><td>Connect <strong>GND &rarr; GND</strong>, <strong>TX &rarr; RX</strong>, <strong>RX &rarr; TX</strong>. <strong>Leave VCC disconnected!</strong></td></tr>
+      </table>
+    </div>
+
+    
+    <section class="contribution-panel" aria-label="Contribution and Community Verification">
+      <div class="contribution-header">
+        <div class="contribution-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div>
+          <h3>Community Verification & Improvement Panel</h3>
+          <p>This documentation is maintained in the authoritative source repository (Repo A). See an error, tested this procedure on physical hardware, or have verified serial logs?</p>
+        </div>
+      </div>
+      <div class="contribution-actions">
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/blob/main/data/devices/huawei/huawei-b535-232.json" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Edit this page on GitHub
+        </a>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=08_documentation_improvement.yml&page_url=data/devices/huawei/huawei-b535-232.json&title=%5BDocs%5D%3A%20Feedback%20on%20Huawei%204G%20Router%203%20Pro%20%28B535-232%29%20Recovery%20Guide&labels=documentation,enhancement" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          Report an Error or Typo
+        </a>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=05_recovery_unbrick_report.yml&title=%5BRecovery%5D%3A%20Unbrick%20Verification%20for%20Huawei%204G%20Router%203%20Pro%20%28B535-232%29%20Recovery%20Guide&labels=recovery-guide,unbrick-verified" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          Submit Unbrick Tutorial
+        </a>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=02_hardware_revision_verification.yml&title=%5BVerification%5D%3A%20Tested%20Hardware%20on%20Huawei%204G%20Router%203%20Pro%20%28B535-232%29%20Recovery%20Guide&labels=hardware-verified,testing-report" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          Verified on My Device
+        </a>
+        <a href="../../../contributing/index.html" class="btn btn-sm btn-primary">
+          Contribution Guidelines
+        </a>
+      </div>
+    </section>
+    
+    
+  </main>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-col footer-col-wide">
+        <div class="footer-brand">
+          <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="#111927"/>
+            <path d="M6 16C6 10.4772 10.4772 6 16 6C21.5228 6 26 10.4772 26 16" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="2.5" fill="#f8fafc"/>
+          </svg>
+          <span class="brand-text">OpenWrt<strong>HardwareKB</strong></span>
+        </div>
+        <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
+        <p class="copyright">Documentation: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+        <div class="visitor-telemetry" style="margin-top: 1rem;">
+          <span class="telemetry-badge" id="telemetry-badge">
+            <span class="pulse-dot"></span>
+            <strong>72 Devices Cataloged</strong> &bull; 20 Silicon Platforms &bull; 100% Citations Verified
+          </span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Hardware Intelligence</h4>
+        <ul>
+          <li><a href="../../../explorer/index.html">Hardware Explorer</a></li>
+          <li><a href="../../../devices/index.html">Device Directory (72)</a></li>
+          <li><a href="../../../chipsets/index.html">Silicon Architectures (20)</a></li>
+          <li><a href="../../../categories/index.html">Curated Buyer Guides (8)</a></li>
+          <li><a href="../../../diagrams/index.html">Interactive Diagrams</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Operational Guides</h4>
+        <ul>
+          <li><a href="../../../guides/installation/index.html">Two-Stage Installation</a></li>
+          <li><a href="../../../guides/recovery/index.html">TFTP & UART Recovery</a></li>
+          <li><a href="../../../guides/multi-wan/index.html">Multi-WAN Failover Blueprint</a></li>
+          <li><a href="../../../methodology/index.html">Evidentiary Methodology</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community & Standards</h4>
+        <ul>
+          <li><a href="../../../contributing/index.html">Contributor Handbook</a></li>
+          <li><a href="../../../about/index.html">Project Governance</a></li>
+          <li><a href="../../../licensing/index.html">Licensing & Attribution</a></li>
+          <li><a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues" target="_blank" rel="noopener">Submit Hardware Verification</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Independent research platform. Not affiliated with or endorsed by OpenWrt, Reliance Jio, MediaTek, Arcadyan, Qualcomm, Broadcom, or ASUS.</p>
+    </div>
+  </footer>
+  <script src="../../../assets/js/main.js"></script>
+  
+</body>
+</html>

@@ -4,6 +4,7 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/explorer/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/categories/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/diagrams/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/installation/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -12,6 +13,14 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/contributing/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/about/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/licensing/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/categories/best-openwrt-routers/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/categories/wifi-7/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/categories/wifi-6/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/categories/travel-routers/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/categories/mesh-systems/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/categories/multi-gig-2-5g/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/categories/x86-firewalls/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/categories/cellular-4g-5g/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-gt-ax11000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-gt-ax11000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-gt-ax11000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -24,9 +33,15 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-rt-ax59u/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-rt-ax59u/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-rt-ax59u/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-rt-ax86u/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-rt-ax86u/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-rt-ax86u/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-rt-ax88u-pro/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-rt-ax88u-pro/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-rt-ax88u-pro/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-rt-be96u/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-rt-be96u/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-rt-be96u/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/avm-fritzbox-4040/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/avm-fritzbox-4040/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/avm-fritzbox-4040/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -39,6 +54,18 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/banana-pi-bpi-r4/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/banana-pi-bpi-r4/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/banana-pi-bpi-r4/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/buffalo-wsr-2533dhpl2/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/buffalo-wsr-2533dhpl2/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/buffalo-wsr-2533dhpl2/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/buffalo-wsr-3200ax4s/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/buffalo-wsr-3200ax4s/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/buffalo-wsr-3200ax4s/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/turris-omnia/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/turris-omnia/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/turris-omnia/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/comfast-cf-e390ax/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/comfast-cf-e390ax/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/comfast-cf-e390ax/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/cudy-wr3000-v1/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/cudy-wr3000-v1/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/cudy-wr3000-v1/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -57,6 +84,12 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/friendlyelec-nanopi-r6s/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/friendlyelec-nanopi-r6s/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/friendlyelec-nanopi-r6s/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-ar300m16/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-ar300m16/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-ar300m16/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-ar750s/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-ar750s/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-ar750s/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-ax1800/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-ax1800/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-ax1800/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -72,6 +105,12 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-mt6000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-mt6000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-mt6000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-sft1200/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-sft1200/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-sft1200/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/huawei-b535-232/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/huawei-b535-232/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/huawei-b535-232/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/jio-jidu6101/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/jio-jidu6101/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/jio-jidu6101/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -81,6 +120,12 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/linksys-e8450/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/linksys-e8450/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/linksys-e8450/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/linksys-velop-whw03/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/linksys-velop-whw03/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/linksys-velop-whw03/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/linksys-wrt1900acs/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/linksys-wrt1900acs/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/linksys-wrt1900acs/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/linksys-wrt3200acm/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/linksys-wrt3200acm/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/linksys-wrt3200acm/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -90,6 +135,12 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/mikrotik-rb750gr3/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/mikrotik-rb750gr3/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/mikrotik-rb750gr3/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/mikrotik-cap-ac/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/mikrotik-cap-ac/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/mikrotik-cap-ac/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/netgear-r6700-v3/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/netgear-r6700-v3/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/netgear-r6700-v3/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/netgear-r7000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/netgear-r7000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/netgear-r7000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -105,6 +156,12 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/openwrt-one/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/openwrt-one/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/openwrt-one/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/protectli-vault-fw4b/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/protectli-vault-fw4b/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/protectli-vault-fw4b/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/qotom-q355g4/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/qotom-q355g4/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/qotom-q355g4/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/raspberry-pi-4b/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/raspberry-pi-4b/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/raspberry-pi-4b/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -123,6 +180,9 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/tp-link-archer-ax50-v1/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-archer-ax50-v1/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/tp-link-archer-ax50-v1/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/tp-link-archer-be800-v1/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-archer-be800-v1/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/tp-link-archer-be800-v1/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/tp-link-archer-c6-v3/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-archer-c6-v3/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/tp-link-archer-c6-v3/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -132,24 +192,45 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/tp-link-deco-x20/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-deco-x20/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/tp-link-deco-x20/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/technicolor-dga4132/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/technicolor-dga4132/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/technicolor-dga4132/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/ubiquiti-unifi-6-lite/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-6-lite/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/ubiquiti-unifi-6-lite/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/ubiquiti-unifi-6-pro/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-6-pro/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/ubiquiti-unifi-6-pro/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/ubiquiti-unifi-6-plus/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-6-plus/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/ubiquiti-unifi-6-plus/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/ubiquiti-unifi-ac-pro/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-ac-pro/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/ubiquiti-unifi-ac-pro/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/ubiquiti-unifi-nanohd/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-nanohd/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/ubiquiti-unifi-nanohd/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/xiaomi-ax9000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/xiaomi-ax9000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/xiaomi-ax9000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/xiaomi-redmi-ax6000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/xiaomi-redmi-ax6000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/xiaomi-redmi-ax6000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/xiaomi-router-7000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/xiaomi-router-7000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/xiaomi-router-7000/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/xiaomi-ax3000t/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/xiaomi-ax3000t/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/xiaomi-ax3000t/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/orange-pi-r1-plus-lts/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/orange-pi-r1-plus-lts/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/orange-pi-r1-plus-lts/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/zte-mf286d/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/zte-mf286d/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/zte-mf286d/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/zyxel-gs1900-24/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/zyxel-gs1900-24/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/zyxel-gs1900-24/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/devices/zyxel-gs1900-8/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/zyxel-gs1900-8/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/zyxel-gs1900-8/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
@@ -158,17 +239,22 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/zyxel-nwa50ax/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/broadcom-bcm2711/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/broadcom-bcm4908/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/broadcom-bcm63138/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/intel-x86-64-generic/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/marvell-armada-385/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/mediatek-mt7621a/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/mediatek-mt7622bv/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/mediatek-mt7981b/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/mediatek-mt7986a/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/mediatek-mt7988a/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-ipq4019/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-ipq5018/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-ipq6018/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-ipq8065/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-ipq8072a/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-qca9563/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/realtek-rtl8380m/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/rockchip-rk3328/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/rockchip-rk3399/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/rockchip-rk3568/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
 </urlset>
