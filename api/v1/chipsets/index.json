@@ -1,0 +1,267 @@
+{
+  "api_version": "v1",
+  "generated_at": "2026-11-15T07:15:06.240449+00:00",
+  "total_count": 20,
+  "data": [
+    {
+      "id": "broadcom-bcm2711",
+      "vendor": "Broadcom",
+      "part_number": "BCM2711",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "bcm27xx",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/broadcom-bcm2711.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/broadcom-bcm2711/"
+      }
+    },
+    {
+      "id": "broadcom-bcm4908",
+      "vendor": "Broadcom",
+      "part_number": "BCM4908 / BCM4906",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "bcm4908",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/broadcom-bcm4908.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/broadcom-bcm4908/"
+      }
+    },
+    {
+      "id": "broadcom-bcm63138",
+      "vendor": "Broadcom",
+      "part_number": "BCM63138",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "bcm63xx",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/broadcom-bcm63138.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/broadcom-bcm63138/"
+      }
+    },
+    {
+      "id": "intel-x86-64-generic",
+      "vendor": "Intel/x86",
+      "part_number": "x86_64 Generic (Intel N100 / J4125 / Core / Xeon)",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "x86",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/intel-x86-64-generic.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/intel-x86-64-generic/"
+      }
+    },
+    {
+      "id": "marvell-armada-385",
+      "vendor": "Marvell",
+      "part_number": "88F6820 (Armada 385)",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "mvebu",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/marvell-armada-385.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/marvell-armada-385/"
+      }
+    },
+    {
+      "id": "mediatek-mt7621a",
+      "vendor": "MediaTek",
+      "part_number": "MT7621A / MT7621AT",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "ramips",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/mediatek-mt7621a.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/mediatek-mt7621a/"
+      }
+    },
+    {
+      "id": "mediatek-mt7622bv",
+      "vendor": "MediaTek",
+      "part_number": "MT7622BV",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "mediatek",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/mediatek-mt7622bv.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/mediatek-mt7622bv/"
+      }
+    },
+    {
+      "id": "mediatek-mt7981b",
+      "vendor": "MediaTek",
+      "part_number": "MT7981B",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "mediatek",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/mediatek-mt7981b.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/mediatek-mt7981b/"
+      }
+    },
+    {
+      "id": "mediatek-mt7986a",
+      "vendor": "MediaTek",
+      "part_number": "MT7986A",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "mediatek",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/mediatek-mt7986a.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/mediatek-mt7986a/"
+      }
+    },
+    {
+      "id": "mediatek-mt7988a",
+      "vendor": "MediaTek",
+      "part_number": "MT7988A",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "mediatek",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/mediatek-mt7988a.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/mediatek-mt7988a/"
+      }
+    },
+    {
+      "id": "qualcomm-ipq4019",
+      "vendor": "Qualcomm",
+      "part_number": "IPQ4018 / IPQ4019",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "ipq40xx",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/qualcomm-ipq4019.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-ipq4019/"
+      }
+    },
+    {
+      "id": "qualcomm-ipq5018",
+      "vendor": "Qualcomm",
+      "part_number": "IPQ5018",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "qualcommax",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/qualcomm-ipq5018.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-ipq5018/"
+      }
+    },
+    {
+      "id": "qualcomm-ipq6018",
+      "vendor": "Qualcomm",
+      "part_number": "IPQ6018 / IPQ6000",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "qualcommax",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/qualcomm-ipq6018.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-ipq6018/"
+      }
+    },
+    {
+      "id": "qualcomm-ipq8065",
+      "vendor": "Qualcomm",
+      "part_number": "IPQ8065",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "ipq806x",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/qualcomm-ipq8065.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-ipq8065/"
+      }
+    },
+    {
+      "id": "qualcomm-ipq8072a",
+      "vendor": "Qualcomm",
+      "part_number": "IPQ8072A / IPQ8074",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "qualcommax",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/qualcomm-ipq8072a.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-ipq8072a/"
+      }
+    },
+    {
+      "id": "qualcomm-qca9563",
+      "vendor": "Qualcomm",
+      "part_number": "QCA9563",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "ath79",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/qualcomm-qca9563.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/qualcomm-qca9563/"
+      }
+    },
+    {
+      "id": "realtek-rtl8380m",
+      "vendor": "Realtek",
+      "part_number": "RTL8380M / RTL8382M",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "realtek",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/realtek-rtl8380m.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/realtek-rtl8380m/"
+      }
+    },
+    {
+      "id": "rockchip-rk3328",
+      "vendor": "Rockchip",
+      "part_number": "RK3328",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "rockchip",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/rockchip-rk3328.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/rockchip-rk3328/"
+      }
+    },
+    {
+      "id": "rockchip-rk3399",
+      "vendor": "Rockchip",
+      "part_number": "RK3399",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "rockchip",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/rockchip-rk3399.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/rockchip-rk3399/"
+      }
+    },
+    {
+      "id": "rockchip-rk3568",
+      "vendor": "Rockchip",
+      "part_number": "RK3568 / RK3568B2",
+      "architecture": null,
+      "cores": null,
+      "max_frequency_mhz": null,
+      "openwrt_target": "rockchip",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/rockchip-rk3568.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/rockchip-rk3568/"
+      }
+    }
+  ]
+}

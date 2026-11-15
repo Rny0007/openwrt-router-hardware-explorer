@@ -1,0 +1,2208 @@
+{
+  "api_version": "v1",
+  "generated_at": "2026-11-15T07:15:06.240449+00:00",
+  "total_count": 72,
+  "data": [
+    {
+      "id": "asus-gt-ax11000",
+      "manufacturer": "ASUS",
+      "model": "ROG Rapture GT-AX11000",
+      "hardware_revision": "A1",
+      "support_status": "PARTIALLY_VERIFIED",
+      "target": "bcm4908/generic",
+      "profile": "asus_gt-ax11000",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM4908",
+        "family": "StrataGX"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 1024,
+      "flash_mb": 256,
+      "port_count": 6,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/asus-gt-ax11000.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-gt-ax11000/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-gt-ax11000/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-gt-ax11000/"
+      }
+    },
+    {
+      "id": "asus-rt-ac68u",
+      "manufacturer": "ASUS",
+      "model": "RT-AC68U / RT-AC1900P",
+      "hardware_revision": "v1 (A1/A2/B1)",
+      "support_status": "PARTIALLY_VERIFIED",
+      "target": "bcm53xx/generic",
+      "profile": "asus_rt-ac68u",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM4708A0",
+        "family": "Northstar"
+      },
+      "architecture": "arm_cortex-a9",
+      "ram_mb": 256,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/asus-rt-ac68u.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-rt-ac68u/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-rt-ac68u/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-rt-ac68u/"
+      }
+    },
+    {
+      "id": "asus-rt-ax53u",
+      "manufacturer": "ASUS",
+      "model": "RT-AX53U",
+      "hardware_revision": "v1 (A1)",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ramips/mt7621",
+      "profile": "asus_rt-ax53u",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621AT",
+        "family": "MT7621"
+      },
+      "architecture": "mips_1004kc",
+      "ram_mb": 256,
+      "flash_mb": 128,
+      "port_count": 4,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/asus-rt-ax53u.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-rt-ax53u/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-rt-ax53u/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-rt-ax53u/"
+      }
+    },
+    {
+      "id": "asus-rt-ax59u",
+      "manufacturer": "ASUS",
+      "model": "RT-AX59U",
+      "hardware_revision": "A1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "asus_rt-ax59u",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 4,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/asus-rt-ax59u.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-rt-ax59u/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-rt-ax59u/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-rt-ax59u/"
+      }
+    },
+    {
+      "id": "asus-rt-ax86u",
+      "manufacturer": "ASUS",
+      "model": "RT-AX86U / RT-AX86S",
+      "hardware_revision": "v1 (A1)",
+      "support_status": "UNSUPPORTED",
+      "target": "bcm4908",
+      "profile": "asus_rt-ax86u",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM4908",
+        "family": "Brahma-B53"
+      },
+      "architecture": "arm_cortex-a53",
+      "ram_mb": 1024,
+      "flash_mb": 256,
+      "port_count": 6,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "UNSUPPORTED",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/asus-rt-ax86u.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-rt-ax86u/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-rt-ax86u/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-rt-ax86u/"
+      }
+    },
+    {
+      "id": "asus-rt-ax88u-pro",
+      "manufacturer": "ASUS",
+      "model": "RT-AX88U Pro (AX6000 Dual 2.5G)",
+      "hardware_revision": "v1 (A1)",
+      "support_status": "UNSUPPORTED",
+      "target": "bcm4908/generic",
+      "profile": "asus_rt-ax88u-pro",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM4912",
+        "family": "StrataGX BCM4912"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 1024,
+      "flash_mb": 256,
+      "port_count": 6,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/asus-rt-ax88u-pro.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-rt-ax88u-pro/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-rt-ax88u-pro/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-rt-ax88u-pro/"
+      }
+    },
+    {
+      "id": "asus-rt-be96u",
+      "manufacturer": "ASUS",
+      "model": "RT-BE96U (ROG Rapture / Wi-Fi 7)",
+      "hardware_revision": "v1",
+      "support_status": "UNSUPPORTED",
+      "target": "bcm4908",
+      "profile": "asus_rt-be96u",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM4916",
+        "family": "Brahma-B53"
+      },
+      "architecture": "arm_cortex-a53",
+      "ram_mb": 2048,
+      "flash_mb": 256,
+      "port_count": 7,
+      "wifi_generations": [
+        "Wi-Fi 7",
+        "Wi-Fi 7",
+        "Wi-Fi 7"
+      ],
+      "lifecycle_status": "UNSUPPORTED",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/asus-rt-be96u.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/asus-rt-be96u/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/asus-rt-be96u/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/asus-rt-be96u/"
+      }
+    },
+    {
+      "id": "avm-fritzbox-4040",
+      "manufacturer": "AVM",
+      "model": "FRITZ!Box 4040",
+      "hardware_revision": "v1 (Edition International / DACH)",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ipq40xx/generic",
+      "profile": "avm_fritzbox-4040",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ4018",
+        "family": "Dakota"
+      },
+      "architecture": "arm_cortex-a7",
+      "ram_mb": 256,
+      "flash_mb": 32,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/avm-fritzbox-4040.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/avm-fritzbox-4040/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/avm-fritzbox-4040/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/avm-fritzbox-4040/"
+      }
+    },
+    {
+      "id": "acer-predator-connect-w6",
+      "manufacturer": "Acer",
+      "model": "Predator Connect W6 (FF.G22TA.001)",
+      "hardware_revision": "v1 (Standard W6)",
+      "support_status": "PARTIALLY_VERIFIED",
+      "target": "mediatek/filogic",
+      "profile": "acer_predator-w6",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 1024,
+      "flash_mb": 4096,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/acer-predator-connect-w6.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/acer-predator-connect-w6/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/acer-predator-connect-w6/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/acer-predator-connect-w6/"
+      }
+    },
+    {
+      "id": "banana-pi-bpi-r3",
+      "manufacturer": "Banana Pi",
+      "model": "BPI-R3",
+      "hardware_revision": "v1.2",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "bananapi_bpi-r3",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 2048,
+      "flash_mb": 8192,
+      "port_count": 7,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/banana-pi-bpi-r3.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/banana-pi-bpi-r3/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/banana-pi-bpi-r3/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/banana-pi-bpi-r3/"
+      }
+    },
+    {
+      "id": "banana-pi-bpi-r4",
+      "manufacturer": "Banana Pi",
+      "model": "BPI-R4",
+      "hardware_revision": "v1.1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "bananapi_bpi-r4",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7988A",
+        "family": "Filogic 880"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 4096,
+      "flash_mb": 8192,
+      "port_count": 6,
+      "wifi_generations": [],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/banana-pi-bpi-r4.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/banana-pi-bpi-r4/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/banana-pi-bpi-r4/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/banana-pi-bpi-r4/"
+      }
+    },
+    {
+      "id": "buffalo-wsr-2533dhpl2",
+      "manufacturer": "Buffalo",
+      "model": "WSR-2533DHPL2",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ramips",
+      "profile": "buffalo_wsr-2533dhpl2",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621AT",
+        "family": "MT7621"
+      },
+      "architecture": "mipsel_24kc",
+      "ram_mb": 128,
+      "flash_mb": 64,
+      "port_count": 5,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/buffalo-wsr-2533dhpl2.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/buffalo-wsr-2533dhpl2/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/buffalo-wsr-2533dhpl2/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/buffalo-wsr-2533dhpl2/"
+      }
+    },
+    {
+      "id": "buffalo-wsr-3200ax4s",
+      "manufacturer": "Buffalo",
+      "model": "WSR-3200AX4S",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek",
+      "profile": "buffalo_wsr-3200ax4s",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7622BV",
+        "family": "MediaTek Filogic (Gen 1)"
+      },
+      "architecture": "arm_cortex-a53",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/buffalo-wsr-3200ax4s.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/buffalo-wsr-3200ax4s/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/buffalo-wsr-3200ax4s/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/buffalo-wsr-3200ax4s/"
+      }
+    },
+    {
+      "id": "turris-omnia",
+      "manufacturer": "CZ.NIC / Turris",
+      "model": "Omnia (2020 Edition)",
+      "hardware_revision": "rev 2020",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mvebu",
+      "profile": "cznic_turris-omnia",
+      "soc": {
+        "vendor": "Marvell",
+        "model": "88F6820",
+        "family": "Armada 385"
+      },
+      "architecture": "arm_cortex-a9",
+      "ram_mb": 2048,
+      "flash_mb": 8192,
+      "port_count": 7,
+      "wifi_generations": [
+        "Wi-Fi 5",
+        "Wi-Fi 4"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/turris-omnia.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/turris-omnia/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/turris-omnia/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/turris-omnia/"
+      }
+    },
+    {
+      "id": "comfast-cf-e390ax",
+      "manufacturer": "Comfast",
+      "model": "CF-E390AX",
+      "hardware_revision": "v1",
+      "support_status": "COMMUNITY_VERIFIED",
+      "target": "ramips",
+      "profile": "comfast_cf-e390ax",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621AT",
+        "family": "MT7621"
+      },
+      "architecture": "mipsel_24kc",
+      "ram_mb": 256,
+      "flash_mb": 16,
+      "port_count": 2,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "GOLD",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/comfast-cf-e390ax.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/comfast-cf-e390ax/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/comfast-cf-e390ax/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/comfast-cf-e390ax/"
+      }
+    },
+    {
+      "id": "cudy-wr3000-v1",
+      "manufacturer": "Cudy",
+      "model": "WR3000",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "cudy_wr3000-v1",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981BA",
+        "family": "Filogic 820"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 256,
+      "flash_mb": 16,
+      "port_count": 4,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/cudy-wr3000-v1.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/cudy-wr3000-v1/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/cudy-wr3000-v1/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/cudy-wr3000-v1/"
+      }
+    },
+    {
+      "id": "d-link-dgs-1210-10p",
+      "manufacturer": "D-Link",
+      "model": "DGS-1210-10P",
+      "hardware_revision": "F1 / ME",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "realtek/rtl838x",
+      "profile": "dlink_dgs-1210-10p",
+      "soc": {
+        "vendor": "Realtek",
+        "model": "RTL8382M",
+        "family": "RTL838x"
+      },
+      "architecture": "mips_24kc",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 10,
+      "wifi_generations": [],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/d-link-dgs-1210-10p.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/d-link-dgs-1210-10p/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/d-link-dgs-1210-10p/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/d-link-dgs-1210-10p/"
+      }
+    },
+    {
+      "id": "d-link-dir-882-a1",
+      "manufacturer": "D-Link",
+      "model": "DIR-882 (EXO AC2600)",
+      "hardware_revision": "A1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ramips/mt7621",
+      "profile": "dlink_dir-882-a1",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621AT",
+        "family": "MT7621"
+      },
+      "architecture": "mips_1004kc",
+      "ram_mb": 128,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/d-link-dir-882-a1.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/d-link-dir-882-a1/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/d-link-dir-882-a1/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/d-link-dir-882-a1/"
+      }
+    },
+    {
+      "id": "friendlyelec-nanopi-r4s",
+      "manufacturer": "FriendlyElec",
+      "model": "NanoPi R4S",
+      "hardware_revision": "v1 (1GB / 4GB)",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "rockchip/armv8",
+      "profile": "friendlyarm_nanopi-r4s",
+      "soc": {
+        "vendor": "Rockchip",
+        "model": "RK3399",
+        "family": "RK3399"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 4096,
+      "flash_mb": 32,
+      "port_count": 2,
+      "wifi_generations": [],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/friendlyelec-nanopi-r4s.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/friendlyelec-nanopi-r4s/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/friendlyelec-nanopi-r4s/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/friendlyelec-nanopi-r4s/"
+      }
+    },
+    {
+      "id": "friendlyelec-nanopi-r5s",
+      "manufacturer": "FriendlyElec",
+      "model": "NanoPi R5S",
+      "hardware_revision": "v1.0",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "rockchip/armv8",
+      "profile": "friendlyarm_nanopi-r5s",
+      "soc": {
+        "vendor": "Rockchip",
+        "model": "RK3568B2",
+        "family": "RK3568"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 2048,
+      "flash_mb": 8192,
+      "port_count": 3,
+      "wifi_generations": [],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/friendlyelec-nanopi-r5s.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/friendlyelec-nanopi-r5s/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/friendlyelec-nanopi-r5s/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/friendlyelec-nanopi-r5s/"
+      }
+    },
+    {
+      "id": "friendlyelec-nanopi-r6s",
+      "manufacturer": "FriendlyElec",
+      "model": "NanoPi R6S",
+      "hardware_revision": "v1 (8GB RAM)",
+      "support_status": "COMMUNITY_VERIFIED",
+      "target": "rockchip/armv8",
+      "profile": "friendlyelec_nanopi-r6s",
+      "soc": {
+        "vendor": "Rockchip",
+        "model": "RK3588S",
+        "family": "RK3588"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 8192,
+      "flash_mb": 32768,
+      "port_count": 3,
+      "wifi_generations": [],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/friendlyelec-nanopi-r6s.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/friendlyelec-nanopi-r6s/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/friendlyelec-nanopi-r6s/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/friendlyelec-nanopi-r6s/"
+      }
+    },
+    {
+      "id": "gl-inet-gl-ar300m16",
+      "manufacturer": "GL.iNet",
+      "model": "GL-AR300M16 (Shadow)",
+      "hardware_revision": "v1 (16MB NOR)",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ath79",
+      "profile": "glinet_gl-ar300m-nor",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "QCA9531",
+        "family": "Honey Bee"
+      },
+      "architecture": "mips_24kc",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 2,
+      "wifi_generations": [
+        "Wi-Fi 4"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/gl-inet-gl-ar300m16.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-ar300m16/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-ar300m16/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-ar300m16/"
+      }
+    },
+    {
+      "id": "gl-inet-gl-ar750s",
+      "manufacturer": "GL.iNet",
+      "model": "GL-AR750S (Slate)",
+      "hardware_revision": "v1 (Ext)",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ath79",
+      "profile": "glinet_gl-ar750s-nor-nand",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "QCA9563",
+        "family": "Dragonfly"
+      },
+      "architecture": "mips_74kc",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 3,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/gl-inet-gl-ar750s.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-ar750s/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-ar750s/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-ar750s/"
+      }
+    },
+    {
+      "id": "gl-inet-gl-ax1800",
+      "manufacturer": "GL.iNet",
+      "model": "GL-AX1800 (Flint)",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "qualcommax/ipq60xx",
+      "profile": "glinet_gl-ax1800",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ6000",
+        "family": "Cypress"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/gl-inet-gl-ax1800.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-ax1800/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-ax1800/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-ax1800/"
+      }
+    },
+    {
+      "id": "gl-inet-gl-axt1800",
+      "manufacturer": "GL.iNet",
+      "model": "GL-AXT1800 (Slate AX)",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "qualcommax/ipq60xx",
+      "profile": "glinet_gl-axt1800",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ6000",
+        "family": "Cypress"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 3,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/gl-inet-gl-axt1800.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-axt1800/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-axt1800/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-axt1800/"
+      }
+    },
+    {
+      "id": "gl-inet-gl-mt2500",
+      "manufacturer": "GL.iNet",
+      "model": "GL-MT2500 / GL-MT2500A (Brume 2)",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "glinet_gl-mt2500",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981B",
+        "family": "Filogic 820"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 1024,
+      "flash_mb": 8192,
+      "port_count": 2,
+      "wifi_generations": [],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/gl-inet-gl-mt2500.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-mt2500/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-mt2500/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-mt2500/"
+      }
+    },
+    {
+      "id": "gl-inet-gl-mt3000",
+      "manufacturer": "GL.iNet",
+      "model": "GL-MT3000",
+      "hardware_revision": "Beryl AX",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "glinet_gl-mt3000",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981B",
+        "family": "Filogic 820"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash_mb": 256,
+      "port_count": 2,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/gl-inet-gl-mt3000.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-mt3000/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-mt3000/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-mt3000/"
+      }
+    },
+    {
+      "id": "gl-inet-gl-mt6000",
+      "manufacturer": "GL.iNet",
+      "model": "GL-MT6000",
+      "hardware_revision": "Flint 2",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "glinet_gl-mt6000",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 1024,
+      "flash_mb": 8192,
+      "port_count": 6,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/gl-inet-gl-mt6000.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-mt6000/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-mt6000/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-mt6000/"
+      }
+    },
+    {
+      "id": "gl-inet-gl-sft1200",
+      "manufacturer": "GL.iNet",
+      "model": "GL-SFT1200 (Opal)",
+      "hardware_revision": "v1",
+      "support_status": "COMMUNITY_VERIFIED",
+      "target": "siflower",
+      "profile": "glinet_gl-sft1200",
+      "soc": {
+        "vendor": "Siflower",
+        "model": "SF19A2890",
+        "family": "Siflower Full-Gigabit"
+      },
+      "architecture": "mips_1004kc",
+      "ram_mb": 128,
+      "flash_mb": 128,
+      "port_count": 3,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/gl-inet-gl-sft1200.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/gl-inet-gl-sft1200/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/gl-inet-gl-sft1200/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/gl-inet-gl-sft1200/"
+      }
+    },
+    {
+      "id": "huawei-b535-232",
+      "manufacturer": "Huawei",
+      "model": "4G Router 3 Pro (B535-232)",
+      "hardware_revision": "v1",
+      "support_status": "UNSUPPORTED",
+      "target": "hisilicon",
+      "profile": "huawei_b535-232",
+      "soc": {
+        "vendor": "HiSilicon",
+        "model": "Balong 711 (Hi6932)",
+        "family": "Balong"
+      },
+      "architecture": "arm_cortex-a7",
+      "ram_mb": 128,
+      "flash_mb": 128,
+      "port_count": 4,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "UNSUPPORTED",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/huawei-b535-232.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/huawei-b535-232/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/huawei-b535-232/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/huawei-b535-232/"
+      }
+    },
+    {
+      "id": "jio-jidu6101",
+      "manufacturer": "Jio / Arcadyan",
+      "model": "JIDU6101",
+      "hardware_revision": "6j01",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "jiorouter_ax6000-jidu6101",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash_mb": 256,
+      "port_count": 4,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "GOLD",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/jio-jidu6101.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/jio-jidu6101/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/jio-jidu6101/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/jio-jidu6101/"
+      }
+    },
+    {
+      "id": "jio-jidu6201",
+      "manufacturer": "Jio / Arcadyan",
+      "model": "JIDU6201",
+      "hardware_revision": "6j02",
+      "support_status": "COMMUNITY_VERIFIED",
+      "target": "mediatek/filogic",
+      "profile": "jiorouter_ax3000-jidu6201",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981B",
+        "family": "Filogic 820"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 256,
+      "flash_mb": 128,
+      "port_count": 3,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "GOLD",
+      "last_verified": "2026-11-10",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/jio-jidu6201.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/jio-jidu6201/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/jio-jidu6201/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/jio-jidu6201/"
+      }
+    },
+    {
+      "id": "linksys-e8450",
+      "manufacturer": "Linksys",
+      "model": "E8450 / Belkin RT3200",
+      "hardware_revision": "v1 (UBI / Stock)",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/mt7622",
+      "profile": "linksys_e8450-ubi",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7622BV",
+        "family": "MT7622"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/linksys-e8450.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/linksys-e8450/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/linksys-e8450/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/linksys-e8450/"
+      }
+    },
+    {
+      "id": "linksys-velop-whw03",
+      "manufacturer": "Linksys",
+      "model": "Velop Tri-Band (WHW03)",
+      "hardware_revision": "v1 / v2",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ipq40xx",
+      "profile": "linksys_whw03",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ4019",
+        "family": "Dakota"
+      },
+      "architecture": "arm_cortex-a7",
+      "ram_mb": 512,
+      "flash_mb": 4096,
+      "port_count": 2,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/linksys-velop-whw03.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/linksys-velop-whw03/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/linksys-velop-whw03/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/linksys-velop-whw03/"
+      }
+    },
+    {
+      "id": "linksys-wrt1900acs",
+      "manufacturer": "Linksys",
+      "model": "WRT1900ACS",
+      "hardware_revision": "v1 / v2",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mvebu",
+      "profile": "linksys_wrt1900acs",
+      "soc": {
+        "vendor": "Marvell",
+        "model": "88F6820",
+        "family": "Armada 385"
+      },
+      "architecture": "arm_cortex-a9",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/linksys-wrt1900acs.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/linksys-wrt1900acs/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/linksys-wrt1900acs/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/linksys-wrt1900acs/"
+      }
+    },
+    {
+      "id": "linksys-wrt3200acm",
+      "manufacturer": "Linksys",
+      "model": "WRT3200ACM",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mvebu/cortexa9",
+      "profile": "linksys_wrt3200acm",
+      "soc": {
+        "vendor": "Marvell",
+        "model": "Armada 388 (88F6820)",
+        "family": "Armada 38x"
+      },
+      "architecture": "arm_cortex-a9",
+      "ram_mb": 512,
+      "flash_mb": 256,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/linksys-wrt3200acm.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/linksys-wrt3200acm/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/linksys-wrt3200acm/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/linksys-wrt3200acm/"
+      }
+    },
+    {
+      "id": "mercusys-mr70x-v1",
+      "manufacturer": "Mercusys",
+      "model": "MR70X",
+      "hardware_revision": "v1.0",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ramips/mt7621",
+      "profile": "mercusys_mr70x-v1",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621DAT",
+        "family": "MT7621"
+      },
+      "architecture": "mips_1004kc",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 4,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/mercusys-mr70x-v1.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/mercusys-mr70x-v1/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/mercusys-mr70x-v1/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/mercusys-mr70x-v1/"
+      }
+    },
+    {
+      "id": "mikrotik-rb750gr3",
+      "manufacturer": "MikroTik",
+      "model": "RouterBOARD hEX (RB750Gr3)",
+      "hardware_revision": "r3",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ramips/mt7621",
+      "profile": "mikrotik_rb750gr3",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621AT",
+        "family": "MT7621"
+      },
+      "architecture": "mips_1004kc",
+      "ram_mb": 256,
+      "flash_mb": 16,
+      "port_count": 5,
+      "wifi_generations": [],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/mikrotik-rb750gr3.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/mikrotik-rb750gr3/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/mikrotik-rb750gr3/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/mikrotik-rb750gr3/"
+      }
+    },
+    {
+      "id": "mikrotik-cap-ac",
+      "manufacturer": "MikroTik",
+      "model": "cAP ac (RBcAPGi-5acD2nD)",
+      "hardware_revision": "r2",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ipq40xx",
+      "profile": "mikrotik_cap-ac",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ4018",
+        "family": "Dakota"
+      },
+      "architecture": "arm_cortex-a7",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 2,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/mikrotik-cap-ac.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/mikrotik-cap-ac/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/mikrotik-cap-ac/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/mikrotik-cap-ac/"
+      }
+    },
+    {
+      "id": "netgear-r6700-v3",
+      "manufacturer": "Netgear",
+      "model": "Nighthawk R6700",
+      "hardware_revision": "v3",
+      "support_status": "PARTIALLY_VERIFIED",
+      "target": "bcm53xx",
+      "profile": "netgear_r6700-v3",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM4708C0",
+        "family": "Northstar"
+      },
+      "architecture": "arm_cortex-a9",
+      "ram_mb": 256,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/netgear-r6700-v3.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/netgear-r6700-v3/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/netgear-r6700-v3/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/netgear-r6700-v3/"
+      }
+    },
+    {
+      "id": "netgear-r7000",
+      "manufacturer": "Netgear",
+      "model": "Nighthawk R7000 (AC1900)",
+      "hardware_revision": "v1",
+      "support_status": "PARTIALLY_VERIFIED",
+      "target": "bcm53xx/generic",
+      "profile": "netgear_r7000",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM4709A0",
+        "family": "Northstar"
+      },
+      "architecture": "arm_cortex-a9",
+      "ram_mb": 256,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/netgear-r7000.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/netgear-r7000/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/netgear-r7000/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/netgear-r7000/"
+      }
+    },
+    {
+      "id": "netgear-r7800",
+      "manufacturer": "Netgear",
+      "model": "Nighthawk X4S (R7800)",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ipq806x/generic",
+      "profile": "netgear_r7800",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ8065",
+        "family": "Akronite"
+      },
+      "architecture": "arm_cortex-a15",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/netgear-r7800.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/netgear-r7800/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/netgear-r7800/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/netgear-r7800/"
+      }
+    },
+    {
+      "id": "netgear-wax206",
+      "manufacturer": "Netgear",
+      "model": "WAX206",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/mt7622",
+      "profile": "netgear_wax206",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7622BV",
+        "family": "Filogic / MT7622"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/netgear-wax206.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/netgear-wax206/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/netgear-wax206/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/netgear-wax206/"
+      }
+    },
+    {
+      "id": "nokia-fastmile-5g-gateway-3-2",
+      "manufacturer": "Nokia",
+      "model": "FastMile 5G Gateway 3.2 (5G14-B)",
+      "hardware_revision": "v3.2",
+      "support_status": "POTENTIALLY_COMPATIBLE",
+      "target": "mediatek/t750",
+      "profile": "nokia_fastmile-5g-3-2",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "T750 (MT6890)",
+        "family": "MediaTek T750"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 4096,
+      "flash_mb": 8192,
+      "port_count": 2,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/nokia-fastmile-5g-gateway-3-2.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/nokia-fastmile-5g-gateway-3-2/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/nokia-fastmile-5g-gateway-3-2/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/nokia-fastmile-5g-gateway-3-2/"
+      }
+    },
+    {
+      "id": "openwrt-one",
+      "manufacturer": "OpenWrt / Banana Pi",
+      "model": "OpenWrt One / AP-24.XY",
+      "hardware_revision": "v1 (20th Anniversary Edition)",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "openwrt_one",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981B",
+        "family": "Filogic 820"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 1024,
+      "flash_mb": 144,
+      "port_count": 2,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/openwrt-one.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/openwrt-one/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/openwrt-one/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/openwrt-one/"
+      }
+    },
+    {
+      "id": "protectli-vault-fw4b",
+      "manufacturer": "Protectli",
+      "model": "Vault FW4B",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "x86",
+      "profile": "generic",
+      "soc": {
+        "vendor": "Intel/x86",
+        "model": "Celeron J3160",
+        "family": "Braswell"
+      },
+      "architecture": "x86_64",
+      "ram_mb": 4096,
+      "flash_mb": 32768,
+      "port_count": 4,
+      "wifi_generations": [],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/protectli-vault-fw4b.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/protectli-vault-fw4b/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/protectli-vault-fw4b/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/protectli-vault-fw4b/"
+      }
+    },
+    {
+      "id": "qotom-q355g4",
+      "manufacturer": "Qotom",
+      "model": "Q355G4",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "x86",
+      "profile": "generic",
+      "soc": {
+        "vendor": "Intel/x86",
+        "model": "Core i5-5200U",
+        "family": "Broadwell"
+      },
+      "architecture": "x86_64",
+      "ram_mb": 8192,
+      "flash_mb": 65536,
+      "port_count": 4,
+      "wifi_generations": [],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/qotom-q355g4.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/qotom-q355g4/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/qotom-q355g4/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/qotom-q355g4/"
+      }
+    },
+    {
+      "id": "raspberry-pi-4b",
+      "manufacturer": "Raspberry Pi",
+      "model": "Raspberry Pi 4 Model B",
+      "hardware_revision": "v1.1 / v1.2 / v1.4 / v1.5",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "bcm27xx/bcm2711",
+      "profile": "rpi-4",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM2711",
+        "family": "BCM2711"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 4096,
+      "flash_mb": 64,
+      "port_count": 1,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/raspberry-pi-4b.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/raspberry-pi-4b/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/raspberry-pi-4b/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/raspberry-pi-4b/"
+      }
+    },
+    {
+      "id": "raspberry-pi-5",
+      "manufacturer": "Raspberry Pi",
+      "model": "Raspberry Pi 5",
+      "hardware_revision": "v1.0",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "bcm27xx/bcm2712",
+      "profile": "rpi-5",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM2712",
+        "family": "BCM2712"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 8192,
+      "flash_mb": 64,
+      "port_count": 1,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/raspberry-pi-5.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/raspberry-pi-5/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/raspberry-pi-5/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/raspberry-pi-5/"
+      }
+    },
+    {
+      "id": "reyee-rg-ew3200gx-pro",
+      "manufacturer": "Reyee / Ruijie",
+      "model": "RG-EW3200GX PRO",
+      "hardware_revision": "v1.0",
+      "support_status": "COMMUNITY_VERIFIED",
+      "target": "mediatek/mt7622",
+      "profile": "reyee_rg-ew3200gx-pro",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7622BV",
+        "family": "MT7622"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 256,
+      "flash_mb": 16,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/reyee-rg-ew3200gx-pro.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/reyee-rg-ew3200gx-pro/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/reyee-rg-ew3200gx-pro/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/reyee-rg-ew3200gx-pro/"
+      }
+    },
+    {
+      "id": "sercomm-airtel-a622g",
+      "manufacturer": "Sercomm / Airtel",
+      "model": "A-622G (Airtel Xstream Fiber ONT)",
+      "hardware_revision": "v1.0 (GPON ONT)",
+      "support_status": "UNSUPPORTED",
+      "target": "realtek/rtl960x",
+      "profile": "sercomm_airtel-a622g",
+      "soc": {
+        "vendor": "Realtek",
+        "model": "RTL9607C",
+        "family": "RTL960x"
+      },
+      "architecture": "mips_34kc",
+      "ram_mb": 256,
+      "flash_mb": 128,
+      "port_count": 4,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/sercomm-airtel-a622g.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/sercomm-airtel-a622g/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/sercomm-airtel-a622g/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/sercomm-airtel-a622g/"
+      }
+    },
+    {
+      "id": "tp-link-archer-ax23-v1",
+      "manufacturer": "TP-Link",
+      "model": "Archer AX23",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ramips/mt7621",
+      "profile": "tplink_archer-ax23-v1",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621DAT",
+        "family": "MT7621"
+      },
+      "architecture": "mips_1004kc",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/tp-link-archer-ax23-v1.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/tp-link-archer-ax23-v1/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-archer-ax23-v1/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/tp-link-archer-ax23-v1/"
+      }
+    },
+    {
+      "id": "tp-link-archer-ax50-v1",
+      "manufacturer": "TP-Link",
+      "model": "Archer AX50",
+      "hardware_revision": "v1",
+      "support_status": "UNSUPPORTED",
+      "target": "lantiq/xrx200",
+      "profile": "tplink_archer-ax50-v1",
+      "soc": {
+        "vendor": "Intel/x86",
+        "model": "AnyWAN GRX350 (Intel Lantiq)",
+        "family": "GRX350"
+      },
+      "architecture": "mips_34kc",
+      "ram_mb": 256,
+      "flash_mb": 128,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/tp-link-archer-ax50-v1.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/tp-link-archer-ax50-v1/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-archer-ax50-v1/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/tp-link-archer-ax50-v1/"
+      }
+    },
+    {
+      "id": "tp-link-archer-be800-v1",
+      "manufacturer": "TP-Link",
+      "model": "Archer BE800",
+      "hardware_revision": "v1",
+      "support_status": "POTENTIALLY_COMPATIBLE",
+      "target": "qualcommax",
+      "profile": "tplink_archer-be800-v1",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ9574",
+        "family": "Networking Pro 1620"
+      },
+      "architecture": "arm_cortex-a73",
+      "ram_mb": 2048,
+      "flash_mb": 512,
+      "port_count": 6,
+      "wifi_generations": [
+        "Wi-Fi 7",
+        "Wi-Fi 7",
+        "Wi-Fi 7"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/tp-link-archer-be800-v1.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/tp-link-archer-be800-v1/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-archer-be800-v1/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/tp-link-archer-be800-v1/"
+      }
+    },
+    {
+      "id": "tp-link-archer-c6-v3",
+      "manufacturer": "TP-Link",
+      "model": "Archer C6",
+      "hardware_revision": "v3.2",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ramips/mt7621",
+      "profile": "tplink_archer-c6-v3",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621AT",
+        "family": "MT7621"
+      },
+      "architecture": "mips_1004kc",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 5,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/tp-link-archer-c6-v3.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/tp-link-archer-c6-v3/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-archer-c6-v3/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/tp-link-archer-c6-v3/"
+      }
+    },
+    {
+      "id": "tp-link-archer-c7-v5",
+      "manufacturer": "TP-Link",
+      "model": "Archer C7",
+      "hardware_revision": "v5",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ath79/generic",
+      "profile": "tplink_archer-c7-v5",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "QCA9563",
+        "family": "Dragonfly"
+      },
+      "architecture": "mips_24kc",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 5,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/tp-link-archer-c7-v5.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/tp-link-archer-c7-v5/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-archer-c7-v5/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/tp-link-archer-c7-v5/"
+      }
+    },
+    {
+      "id": "tp-link-deco-x20",
+      "manufacturer": "TP-Link",
+      "model": "Deco X20",
+      "hardware_revision": "v1 / v2",
+      "support_status": "COMMUNITY_VERIFIED",
+      "target": "qualcommax/ipq60xx",
+      "profile": "tplink_deco-x20",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ6000",
+        "family": "Cypress"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 2,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "GOLD",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/tp-link-deco-x20.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/tp-link-deco-x20/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-deco-x20/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/tp-link-deco-x20/"
+      }
+    },
+    {
+      "id": "technicolor-dga4132",
+      "manufacturer": "Technicolor",
+      "model": "DGA4132 (TIM HUB)",
+      "hardware_revision": "v1",
+      "support_status": "COMMUNITY_VERIFIED",
+      "target": "bcm63xx",
+      "profile": "technicolor_dga4132",
+      "soc": {
+        "vendor": "Broadcom",
+        "model": "BCM63138",
+        "family": "BCM63xx"
+      },
+      "architecture": "arm_cortex-a9",
+      "ram_mb": 512,
+      "flash_mb": 256,
+      "port_count": 6,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "UNKNOWN",
+      "evidence_tier": "GOLD",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/technicolor-dga4132.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/technicolor-dga4132/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/technicolor-dga4132/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/technicolor-dga4132/"
+      }
+    },
+    {
+      "id": "ubiquiti-unifi-6-lite",
+      "manufacturer": "Ubiquiti",
+      "model": "UniFi 6 Lite (U6-Lite)",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ramips/mt7621",
+      "profile": "ubnt_unifi-6-lite",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621AT",
+        "family": "MT7621"
+      },
+      "architecture": "mips_1004kc",
+      "ram_mb": 256,
+      "flash_mb": 64,
+      "port_count": 1,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/ubiquiti-unifi-6-lite.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/ubiquiti-unifi-6-lite/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-6-lite/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/ubiquiti-unifi-6-lite/"
+      }
+    },
+    {
+      "id": "ubiquiti-unifi-6-pro",
+      "manufacturer": "Ubiquiti",
+      "model": "UniFi 6 Pro (U6-Pro)",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "qualcommax",
+      "profile": "ubnt_unifi-6-pro",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ5018",
+        "family": "Maple"
+      },
+      "architecture": "arm_cortex-a53",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 1,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/ubiquiti-unifi-6-pro.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/ubiquiti-unifi-6-pro/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-6-pro/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/ubiquiti-unifi-6-pro/"
+      }
+    },
+    {
+      "id": "ubiquiti-unifi-6-plus",
+      "manufacturer": "Ubiquiti",
+      "model": "UniFi 6+",
+      "hardware_revision": "U6+",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "ubnt_unifi-6-plus",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981B",
+        "family": "Filogic 820"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 256,
+      "flash_mb": 4096,
+      "port_count": 1,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/ubiquiti-unifi-6-plus.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/ubiquiti-unifi-6-plus/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-6-plus/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/ubiquiti-unifi-6-plus/"
+      }
+    },
+    {
+      "id": "ubiquiti-unifi-ac-pro",
+      "manufacturer": "Ubiquiti",
+      "model": "UniFi AC Pro (UAP-AC-Pro)",
+      "hardware_revision": "v1 (Board rev 20/26)",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ath79/generic",
+      "profile": "ubnt_unifi-ac-pro",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "QCA9563",
+        "family": "Dragonfly"
+      },
+      "architecture": "mips_24kc",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 2,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/ubiquiti-unifi-ac-pro.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/ubiquiti-unifi-ac-pro/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-ac-pro/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/ubiquiti-unifi-ac-pro/"
+      }
+    },
+    {
+      "id": "ubiquiti-unifi-nanohd",
+      "manufacturer": "Ubiquiti",
+      "model": "UniFi nanoHD (UAP-nanoHD)",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ramips",
+      "profile": "ubnt_unifi-nanohd",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7621AT",
+        "family": "MT7621"
+      },
+      "architecture": "mipsel_24kc",
+      "ram_mb": 256,
+      "flash_mb": 32,
+      "port_count": 1,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/ubiquiti-unifi-nanohd.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/ubiquiti-unifi-nanohd/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-nanohd/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/ubiquiti-unifi-nanohd/"
+      }
+    },
+    {
+      "id": "xiaomi-ax9000",
+      "manufacturer": "Xiaomi",
+      "model": "Mi Router AX9000",
+      "hardware_revision": "RA70",
+      "support_status": "COMMUNITY_VERIFIED",
+      "target": "qualcommax/ipq807x",
+      "profile": "xiaomi_ax9000",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ8072A",
+        "family": "Hawkeye"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 1024,
+      "flash_mb": 4096,
+      "port_count": 5,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "BRONZE",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/xiaomi-ax9000.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/xiaomi-ax9000/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/xiaomi-ax9000/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/xiaomi-ax9000/"
+      }
+    },
+    {
+      "id": "xiaomi-redmi-ax6000",
+      "manufacturer": "Xiaomi",
+      "model": "Redmi Router AX6000",
+      "hardware_revision": "RB06",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "redmi_ax6000",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7986A",
+        "family": "Filogic 830"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 512,
+      "flash_mb": 128,
+      "port_count": 4,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/xiaomi-redmi-ax6000.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/xiaomi-redmi-ax6000/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/xiaomi-redmi-ax6000/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/xiaomi-redmi-ax6000/"
+      }
+    },
+    {
+      "id": "xiaomi-router-7000",
+      "manufacturer": "Xiaomi",
+      "model": "Router 7000 (AX7000)",
+      "hardware_revision": "v1 (RB01)",
+      "support_status": "COMMUNITY_VERIFIED",
+      "target": "qualcommax",
+      "profile": "xiaomi_router-7000",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ9554",
+        "family": "Networking Pro 820"
+      },
+      "architecture": "arm_cortex-a73",
+      "ram_mb": 1024,
+      "flash_mb": 128,
+      "port_count": 4,
+      "wifi_generations": [
+        "Wi-Fi 7",
+        "Wi-Fi 7"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "GOLD",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/xiaomi-router-7000.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/xiaomi-router-7000/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/xiaomi-router-7000/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/xiaomi-router-7000/"
+      }
+    },
+    {
+      "id": "xiaomi-ax3000t",
+      "manufacturer": "Xiaomi",
+      "model": "Router AX3000T",
+      "hardware_revision": "v1 (RD23)",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "xiaomi_ax3000t",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981B",
+        "family": "Filogic 820"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 256,
+      "flash_mb": 128,
+      "port_count": 4,
+      "wifi_generations": [
+        null,
+        null
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/xiaomi-ax3000t.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/xiaomi-ax3000t/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/xiaomi-ax3000t/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/xiaomi-ax3000t/"
+      }
+    },
+    {
+      "id": "orange-pi-r1-plus-lts",
+      "manufacturer": "Xunlong / Orange Pi",
+      "model": "Orange Pi R1 Plus LTS",
+      "hardware_revision": "v1.1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "rockchip",
+      "profile": "xunlong_orangepi-r1-plus-lts",
+      "soc": {
+        "vendor": "Rockchip",
+        "model": "RK3328",
+        "family": "RK33xx"
+      },
+      "architecture": "arm_cortex-a53",
+      "ram_mb": 1024,
+      "flash_mb": 16,
+      "port_count": 2,
+      "wifi_generations": [],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/orange-pi-r1-plus-lts.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/orange-pi-r1-plus-lts/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/orange-pi-r1-plus-lts/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/orange-pi-r1-plus-lts/"
+      }
+    },
+    {
+      "id": "zte-mf286d",
+      "manufacturer": "ZTE",
+      "model": "MF286D",
+      "hardware_revision": "v1",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "ipq40xx",
+      "profile": "zte_mf286d",
+      "soc": {
+        "vendor": "Qualcomm",
+        "model": "IPQ4019",
+        "family": "Dakota"
+      },
+      "architecture": "arm_cortex-a7",
+      "ram_mb": 256,
+      "flash_mb": 128,
+      "port_count": 4,
+      "wifi_generations": [
+        "Wi-Fi 4",
+        "Wi-Fi 5"
+      ],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/zte-mf286d.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/zte-mf286d/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/zte-mf286d/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/zte-mf286d/"
+      }
+    },
+    {
+      "id": "zyxel-gs1900-24",
+      "manufacturer": "Zyxel",
+      "model": "GS1900-24",
+      "hardware_revision": "v1 / v2",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "realtek",
+      "profile": "zyxel_gs1900-24",
+      "soc": {
+        "vendor": "Realtek",
+        "model": "RTL8382M",
+        "family": "RTL838x Managed Switch"
+      },
+      "architecture": "mips_24kc",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 26,
+      "wifi_generations": [],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-15",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/zyxel-gs1900-24.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/zyxel-gs1900-24/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/zyxel-gs1900-24/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/zyxel-gs1900-24/"
+      }
+    },
+    {
+      "id": "zyxel-gs1900-8",
+      "manufacturer": "Zyxel",
+      "model": "GS1900-8",
+      "hardware_revision": "v1.0",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "realtek/rtl838x",
+      "profile": "zyxel_gs1900-8",
+      "soc": {
+        "vendor": "Realtek",
+        "model": "RTL8380M",
+        "family": "RTL838x"
+      },
+      "architecture": "mips_24kc",
+      "ram_mb": 128,
+      "flash_mb": 16,
+      "port_count": 8,
+      "wifi_generations": [],
+      "lifecycle_status": "STABLE_SUPPORTED",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/zyxel-gs1900-8.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/zyxel-gs1900-8/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/zyxel-gs1900-8/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/zyxel-gs1900-8/"
+      }
+    },
+    {
+      "id": "zyxel-nwa50ax",
+      "manufacturer": "Zyxel",
+      "model": "NWA50AX",
+      "hardware_revision": "v1.0",
+      "support_status": "OFFICIALLY_SUPPORTED",
+      "target": "mediatek/filogic",
+      "profile": "zyxel_nwa50ax",
+      "soc": {
+        "vendor": "MediaTek",
+        "model": "MT7981BA",
+        "family": "Filogic 820"
+      },
+      "architecture": "aarch64",
+      "ram_mb": 256,
+      "flash_mb": 128,
+      "port_count": 1,
+      "wifi_generations": [
+        "Wi-Fi 6",
+        "Wi-Fi 6"
+      ],
+      "lifecycle_status": "ACTIVE_MAINTENANCE",
+      "evidence_tier": "SILVER",
+      "last_verified": "2026-11-14",
+      "links": {
+        "self": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/zyxel-nwa50ax.json",
+        "html_profile": "https://rny0007.github.io/openwrt-router-hardware-explorer/devices/zyxel-nwa50ax/",
+        "install_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/zyxel-nwa50ax/",
+        "recovery_guide": "https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/zyxel-nwa50ax/"
+      }
+    }
+  ]
+}

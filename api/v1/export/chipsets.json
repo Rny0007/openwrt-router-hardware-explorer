@@ -1,0 +1,891 @@
+[
+  {
+    "$schema": "../schemas/chipset.schema.json",
+    "id": "broadcom-bcm2711",
+    "vendor": "Broadcom",
+    "part_number": "BCM2711",
+    "marketing_name": "Broadcom BCM2711 (Raspberry Pi 4)",
+    "cpu": {
+      "architecture": "aarch64",
+      "core_type": "ARM Cortex-A72",
+      "cores": 4,
+      "max_clock_mhz": 1500
+    },
+    "process_node_nm": 28,
+    "openwrt_target": "bcm27xx",
+    "openwrt_subtarget": "bcm2711",
+    "linux_driver": {
+      "wireless_mac80211": "brcmfmac",
+      "ethernet_driver": "bcmgenet",
+      "switch_driver": null
+    },
+    "wireless_subsystem": {
+      "integrated": true,
+      "accompanying_rf_chips": [
+        "CYW43455"
+      ],
+      "wi_fi_generation": "Wi-Fi 5 (802.11ac)",
+      "mimo_capabilities": "1x1 SISO"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Software Only",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Quad-core 64-bit ARM processor widely deployed globally as a gigabit OpenWrt router/gateway via USB 3.0 NICs or Compute Module 4 dual-Ethernet carrier boards.",
+    "sources": [
+      {
+        "title": "OpenWrt Target: Broadcom BCM27xx",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/bcm27xx",
+        "type": "OPENWRT_GIT",
+        "date_accessed": "2026-11-15"
+      },
+      {
+        "title": "Raspberry Pi 4 Documentation",
+        "url": "https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi",
+        "type": "OPENWRT_TOH",
+        "date_accessed": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "id": "broadcom-bcm4908",
+    "vendor": "Broadcom",
+    "part_number": "BCM4908 / BCM4906",
+    "marketing_name": "StrataGX BCM4908",
+    "cpu": {
+      "architecture": "aarch64",
+      "core_type": "ARM Cortex-A53",
+      "cores": 4,
+      "max_clock_mhz": 1800
+    },
+    "process_node_nm": 28,
+    "openwrt_target": "bcm4908",
+    "openwrt_subtarget": "generic",
+    "linux_driver": {
+      "wireless_mac80211": "brcmfmac / b43 (Proprietary Broadcom SDK required for full Wi-Fi 6 operation)",
+      "ethernet_driver": "bcm4908_enet",
+      "switch_driver": "b53 (DSA)"
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [
+        "BCM43684"
+      ],
+      "wi_fi_generation": "Wi-Fi 6 (802.11ax)",
+      "mimo_capabilities": "4x4:4 (Dual or Tri-band via external PCIe)"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Software Only",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_4_UNSUPPORTED_PROPRIETARY",
+    "notes": "Powers high-end consumer routers like ASUS GT-AX11000 and Netgear RAX80. While the Linux CPU and DSA Ethernet switch work under OpenWrt bcm4908, the wireless transceivers require closed-source proprietary Broadcom binary blobs ('wl.ko') not redistributable in mainline OpenWrt, leaving wireless non-functional or severely degraded on pure open-source builds.",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: bcm4908",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/bcm4908"
+      },
+      {
+        "title": "OpenWrt Broadcom Wi-Fi Driver Limitations",
+        "url": "https://openwrt.org/docs/techref/instructionset/broadcom_bcm47xx#broadcom_wireless"
+      }
+    ]
+  },
+  {
+    "$schema": "../schemas/chipset.schema.json",
+    "id": "broadcom-bcm63138",
+    "vendor": "Broadcom",
+    "part_number": "BCM63138",
+    "marketing_name": "Broadcom BCM63138 (DSL / VDSL2 / Gigabit Gateway)",
+    "cpu": {
+      "architecture": "arm_cortex-a9",
+      "core_type": "ARM Cortex-A9 MPCore",
+      "cores": 2,
+      "max_clock_mhz": 1000
+    },
+    "process_node_nm": 40,
+    "openwrt_target": "bcm63xx",
+    "openwrt_subtarget": "arm",
+    "linux_driver": {
+      "wireless_mac80211": "b43 / brcmfmac",
+      "ethernet_driver": "bcm63xx_enet",
+      "switch_driver": "bcm_robo"
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [
+        "BCM4360",
+        "BCM4366"
+      ],
+      "wi_fi_generation": "Wi-Fi 5",
+      "mimo_capabilities": "3x3 / 4x4 PCIe Hosted"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Software Only",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_3_COMMUNITY_ONLY",
+    "notes": "Carrier-grade VDSL2 bonding and Gigabit Ethernet SoC deployed in millions of ISP residential gateways including Technicolor DGA4130, DGA4132, and TG789vac series. Runs OpenWrt-derived Technicolor Homeware firmware with active community root and customization support.",
+    "sources": [
+      {
+        "title": "OpenWrt Wiki: Broadcom BCM63xx Target",
+        "url": "https://openwrt.org/docs/techref/targets/bcm63xx"
+      },
+      {
+        "title": "Ansuel/tch-nginx-gui GitHub Community Repository",
+        "url": "https://github.com/Ansuel/tch-nginx-gui"
+      }
+    ]
+  },
+  {
+    "id": "intel-x86-64-generic",
+    "vendor": "Intel/x86",
+    "part_number": "x86_64 Generic (Intel N100 / J4125 / Core / Xeon)",
+    "marketing_name": "x86_64 Router Appliance Platform",
+    "cpu": {
+      "architecture": "x86_64",
+      "core_type": "x86-64 (Intel Gracemont / Tremont / Goldmont)",
+      "cores": 4,
+      "max_clock_mhz": 3400
+    },
+    "process_node_nm": 10,
+    "openwrt_target": "x86",
+    "openwrt_subtarget": "64",
+    "linux_driver": {
+      "wireless_mac80211": "iwlwifi / ath9k / mt76 (optional PCIe)",
+      "ethernet_driver": "igc (Intel i225-V / i226-V 2.5GbE), e1000e",
+      "switch_driver": null
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [],
+      "wi_fi_generation": "Varies by M.2 PCIe Wi-Fi card",
+      "mimo_capabilities": "Optional M.2 E-key slot"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Software Only",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Standard architecture for soft-routers and dedicated firewall appliances (e.g. Protectli Vault, Topton, Qotom, PC Engines APU, generic mini-PCs). Unmatched CPU throughput for complex routing, 10G WireGuard VPN, Suricata IDS, and heavy SQM CAKE traffic shaping.",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: x86/64",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/x86"
+      }
+    ]
+  },
+  {
+    "$schema": "../schemas/chipset.schema.json",
+    "id": "marvell-armada-385",
+    "vendor": "Marvell",
+    "part_number": "88F6820 (Armada 385)",
+    "marketing_name": "Marvell Armada 385 (88F6820 / 88F6828)",
+    "cpu": {
+      "architecture": "arm_cortex-a9",
+      "core_type": "ARM Cortex-A9 MPCore (v7-A)",
+      "cores": 2,
+      "max_clock_mhz": 1600
+    },
+    "process_node_nm": 28,
+    "openwrt_target": "mvebu",
+    "openwrt_subtarget": "cortexa9",
+    "linux_driver": {
+      "wireless_mac80211": null,
+      "ethernet_driver": "mvneta",
+      "switch_driver": "mv88e6xxx"
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [
+        "Marvell 88W8864",
+        "Qualcomm Atheros QCA9880"
+      ],
+      "wi_fi_generation": "Wi-Fi 5",
+      "mimo_capabilities": "PCIe Hosted Radio Cards"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Software Only",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Renowned high-performance 32-bit ARM SoC powering legendary open routers including the Turris Omnia and Linksys WRT1900AC/WRT1900ACS/WRT3200ACM series. Features dedicated hardware cryptographic acceleration (Marvell CESA) and mature upstream Linux mvneta Ethernet driver.",
+    "sources": [
+      {
+        "title": "OpenWrt Wiki: Marvell Armada 385 (mvebu target)",
+        "url": "https://openwrt.org/docs/techref/targets/mvebu"
+      },
+      {
+        "title": "Linux Kernel DTS: armada-385.dtsi",
+        "url": "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm/boot/dts/marvell/armada-385.dtsi"
+      }
+    ]
+  },
+  {
+    "id": "mediatek-mt7621a",
+    "vendor": "MediaTek",
+    "part_number": "MT7621A / MT7621AT",
+    "marketing_name": "MT7621",
+    "cpu": {
+      "architecture": "mips_1004kc",
+      "core_type": "MIPS 1004Kc (Dual-Core / 4 Threads via VPE)",
+      "cores": 2,
+      "max_clock_mhz": 880
+    },
+    "process_node_nm": 65,
+    "openwrt_target": "ramips",
+    "openwrt_subtarget": "mt7621",
+    "linux_driver": {
+      "wireless_mac80211": "mt76 (mt7603e / mt7612e / mt7615e / mt7915e)",
+      "ethernet_driver": "mtk_eth_soc",
+      "switch_driver": "mt7530 (DSA)"
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [
+        "MT7603E",
+        "MT7612E",
+        "MT7615E"
+      ],
+      "wi_fi_generation": "Wi-Fi 5 (802.11ac)",
+      "mimo_capabilities": "Varies by companion PCIe RF chip (typically 2x2 or 4x4)"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Supported (Hardware PPE / WED)",
+      "crypto_engine": false,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "The ubiquitous historical workhorse of budget Gigabit OpenWrt routers (e.g. TP-Link Archer C6 v3, Xiaomi Mi Router 4A Gigabit, D-Link DIR-882). Highly mature Linux target with hardware NAT flow offloading.",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: ramips/mt7621",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/ramips/mt7621"
+      }
+    ]
+  },
+  {
+    "$schema": "../schemas/chipset.schema.json",
+    "id": "mediatek-mt7622bv",
+    "vendor": "MediaTek",
+    "part_number": "MT7622BV",
+    "marketing_name": "MediaTek MT7622B",
+    "cpu": {
+      "architecture": "aarch64",
+      "core_type": "ARM Cortex-A53",
+      "cores": 2,
+      "max_clock_mhz": 1350
+    },
+    "process_node_nm": 28,
+    "openwrt_target": "mediatek",
+    "openwrt_subtarget": "mt7622",
+    "linux_driver": {
+      "wireless_mac80211": "mt76",
+      "ethernet_driver": "mtk_eth_soc",
+      "switch_driver": "mt7531"
+    },
+    "wireless_subsystem": {
+      "integrated": true,
+      "accompanying_rf_chips": [
+        "MT7915A",
+        "MT7975DN"
+      ],
+      "wi_fi_generation": "Wi-Fi 6 (802.11ax) / Wi-Fi 5 (802.11ac)",
+      "mimo_capabilities": "4x4 MU-MIMO (5GHz), 4x4 MU-MIMO (2.4GHz)"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Supported (Hardware PPE / WED)",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": true
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Powerhouse 64-bit ARM dual-core SoC powering the Linksys E8450, Belkin RT3200, and Banana Pi BPI-R64. Full upstream open-source driver support in mainline Linux via mt76.",
+    "sources": [
+      {
+        "title": "OpenWrt Target: MediaTek MT7622",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/mediatek/mt7622",
+        "type": "OPENWRT_GIT",
+        "date_accessed": "2026-11-15"
+      },
+      {
+        "title": "MediaTek MT7622 Product Brief",
+        "url": "https://www.mediatek.com/products/networking-and-connectivity/mt7622",
+        "type": "OEM_SPEC",
+        "date_accessed": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "id": "mediatek-mt7981b",
+    "vendor": "MediaTek",
+    "part_number": "MT7981B",
+    "marketing_name": "Filogic 820",
+    "cpu": {
+      "architecture": "aarch64",
+      "core_type": "ARM Cortex-A53",
+      "cores": 2,
+      "max_clock_mhz": 1300
+    },
+    "process_node_nm": 12,
+    "openwrt_target": "mediatek",
+    "openwrt_subtarget": "filogic",
+    "linux_driver": {
+      "wireless_mac80211": "mt76 (mt7981)",
+      "ethernet_driver": "mtk_eth_soc",
+      "switch_driver": "mt7531 (DSA)"
+    },
+    "wireless_subsystem": {
+      "integrated": true,
+      "accompanying_rf_chips": [
+        "MT7976CN"
+      ],
+      "wi_fi_generation": "Wi-Fi 6 (802.11ax)",
+      "mimo_capabilities": "2x2:2 (2.4 GHz) + 3x3:2 (5.0 GHz)"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Supported (Hardware PPE / WED)",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": true
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Cost-effective, highly efficient Wi-Fi 6 SoC prevalent in compact travel routers (e.g. GL-MT3000) and entry-to-midrange wireless access points.",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: mediatek/filogic",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/mediatek/filogic"
+      }
+    ]
+  },
+  {
+    "id": "mediatek-mt7986a",
+    "vendor": "MediaTek",
+    "part_number": "MT7986A",
+    "marketing_name": "Filogic 830",
+    "cpu": {
+      "architecture": "aarch64",
+      "core_type": "ARM Cortex-A53",
+      "cores": 4,
+      "max_clock_mhz": 2000
+    },
+    "process_node_nm": 12,
+    "openwrt_target": "mediatek",
+    "openwrt_subtarget": "filogic",
+    "linux_driver": {
+      "wireless_mac80211": "mt76 (mt7915 / mt7986)",
+      "ethernet_driver": "mtk_eth_soc",
+      "switch_driver": "mt7530 / mt7531 (DSA)"
+    },
+    "wireless_subsystem": {
+      "integrated": true,
+      "accompanying_rf_chips": [
+        "MT7976C",
+        "MT7976CN"
+      ],
+      "wi_fi_generation": "Wi-Fi 6 (802.11ax)",
+      "mimo_capabilities": "4x4:4 (2.4 GHz) + 4x4:4 (5.0 GHz)"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Supported (Hardware PPE / WED)",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": true
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Flagship Wi-Fi 6 router platform featuring dual 2.5G SGMII interfaces, hardware packet processing engine (PPE v2), and Wireless Ethernet Dispatch (WED v2) providing line-rate routing with sub-5% CPU utilization under OpenWrt flow offloading.",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: mediatek/filogic",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/mediatek/filogic"
+      },
+      {
+        "title": "MediaTek Filogic 830 Product Brief",
+        "url": "https://www.mediatek.com/products/broadband-wifi/mediatek-filogic-830"
+      }
+    ]
+  },
+  {
+    "id": "mediatek-mt7988a",
+    "vendor": "MediaTek",
+    "part_number": "MT7988A",
+    "marketing_name": "Filogic 880",
+    "cpu": {
+      "architecture": "aarch64",
+      "core_type": "ARM Cortex-A73",
+      "cores": 4,
+      "max_clock_mhz": 1800
+    },
+    "process_node_nm": 6,
+    "openwrt_target": "mediatek",
+    "openwrt_subtarget": "filogic",
+    "linux_driver": {
+      "wireless_mac80211": "mt76 (mt7996 for PCIe Wi-Fi 7 modules)",
+      "ethernet_driver": "mtk_eth_soc",
+      "switch_driver": "mt7531 / direct USXGMII"
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [
+        "MT7996AV",
+        "MT7992AV"
+      ],
+      "wi_fi_generation": "Wi-Fi 7 (802.11be)",
+      "mimo_capabilities": "Tri-band 4x4 + 4x4 + 4x4 via PCIe NIC"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Supported (Hardware PPE / WED)",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": true
+    },
+    "openwrt_support_tier": "TIER_2_STABLE",
+    "notes": "State-of-the-art 6nm networking platform engineered for multi-gigabit gateways (Banana Pi BPI-R4). Supports quad 10GbE interfaces (USXGMII) and PCIe 3.0 interfaces for Wi-Fi 7 MLO (Multi-Link Operation).",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: mediatek/filogic (MT7988 Support)",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/mediatek/filogic"
+      }
+    ]
+  },
+  {
+    "id": "qualcomm-ipq4019",
+    "vendor": "Qualcomm",
+    "part_number": "IPQ4018 / IPQ4019",
+    "marketing_name": "Dakota",
+    "cpu": {
+      "architecture": "arm_cortex-a7",
+      "core_type": "ARM Cortex-A7",
+      "cores": 4,
+      "max_clock_mhz": 716
+    },
+    "process_node_nm": 40,
+    "openwrt_target": "ipq40xx",
+    "openwrt_subtarget": "generic",
+    "linux_driver": {
+      "wireless_mac80211": "ath10k",
+      "ethernet_driver": "essedma",
+      "switch_driver": "qca8k"
+    },
+    "wireless_subsystem": {
+      "integrated": true,
+      "accompanying_rf_chips": [],
+      "wi_fi_generation": "Wi-Fi 5 (802.11ac Wave 2)",
+      "mimo_capabilities": "2x2:2 (2.4 GHz) + 2x2:2 (5.0 GHz)"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Software Only",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Highly popular Wave-2 AC chipset (e.g. GL.iNet GL-B1300, Linksys EA8300, ASUS RT-AC58U, Netgear Orbi RBR50). Outstanding open-source driver maturity via ath10k.",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: ipq40xx",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/ipq40xx"
+      }
+    ]
+  },
+  {
+    "$schema": "../schemas/chipset.schema.json",
+    "id": "qualcomm-ipq5018",
+    "vendor": "Qualcomm",
+    "part_number": "IPQ5018",
+    "marketing_name": "Qualcomm IPQ5018 (Maple / Immersive Home 216)",
+    "cpu": {
+      "architecture": "arm_cortex-a53",
+      "core_type": "ARM Cortex-A53",
+      "cores": 2,
+      "max_clock_mhz": 1000
+    },
+    "process_node_nm": 14,
+    "openwrt_target": "qualcommax",
+    "openwrt_subtarget": "ipq50xx",
+    "linux_driver": {
+      "wireless_mac80211": "ath11k",
+      "ethernet_driver": "qcom-nss-dp",
+      "switch_driver": "qca8075"
+    },
+    "wireless_subsystem": {
+      "integrated": true,
+      "accompanying_rf_chips": [
+        "QCN6102",
+        "QCN9074"
+      ],
+      "wi_fi_generation": "Wi-Fi 6",
+      "mimo_capabilities": "2x2 2.4GHz 802.11ax (574Mbps) + PCIe 5GHz"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Supported (NSS / PPE)",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": true
+    },
+    "openwrt_support_tier": "TIER_2_STABLE",
+    "notes": "Cost-effective dual-core 64-bit ARM Wi-Fi 6 platform heavily utilized in mainstream mesh access points and routers including Ubiquiti UniFi 6 Pro, TP-Link Deco X60, and Xiaomi AX3000 mesh systems. Supported via ath11k driver.",
+    "sources": [
+      {
+        "title": "Qualcomm IPQ5018 Product Brief",
+        "url": "https://www.qualcomm.com/products/internet-of-things/networking/wi-fi-networks/immersive-home-platforms"
+      },
+      {
+        "title": "OpenWrt Wiki: qualcommax target",
+        "url": "https://openwrt.org/docs/techref/targets/qualcommax"
+      }
+    ]
+  },
+  {
+    "id": "qualcomm-ipq6018",
+    "vendor": "Qualcomm",
+    "part_number": "IPQ6018 / IPQ6000",
+    "marketing_name": "Networking Pro 400 / Cypress",
+    "cpu": {
+      "architecture": "aarch64",
+      "core_type": "ARM Cortex-A53",
+      "cores": 4,
+      "max_clock_mhz": 1800
+    },
+    "process_node_nm": 14,
+    "openwrt_target": "qualcommax",
+    "openwrt_subtarget": "ipq60xx",
+    "linux_driver": {
+      "wireless_mac80211": "ath11k",
+      "ethernet_driver": "qca_nss_dp",
+      "switch_driver": "qca8k"
+    },
+    "wireless_subsystem": {
+      "integrated": true,
+      "accompanying_rf_chips": [
+        "QCN5022",
+        "QCN5052"
+      ],
+      "wi_fi_generation": "Wi-Fi 6 (802.11ax)",
+      "mimo_capabilities": "2x2:2 (2.4 GHz) + 2x2:2 (5.0 GHz)"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Supported (NSS / PPE)",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Mid-tier Wi-Fi 6 chipset powering widespread models like Xiaomi AX1800, Redmi AX5, and GL.iNet Flint (GL-AX1800). Full upstream ath11k driver support.",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: qualcommax",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/qualcommax"
+      }
+    ]
+  },
+  {
+    "$schema": "../schemas/chipset.schema.json",
+    "id": "qualcomm-ipq8065",
+    "vendor": "Qualcomm",
+    "part_number": "IPQ8065",
+    "marketing_name": "Qualcomm Atheros IPQ8065 (Akronite)",
+    "cpu": {
+      "architecture": "arm_cortex-a15",
+      "core_type": "Qualcomm Krait 300",
+      "cores": 2,
+      "max_clock_mhz": 1700
+    },
+    "process_node_nm": 28,
+    "openwrt_target": "ipq806x",
+    "openwrt_subtarget": "generic",
+    "linux_driver": {
+      "wireless_mac80211": "ath10k",
+      "ethernet_driver": "qcom-emac",
+      "switch_driver": "qca8k"
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [
+        "QCA9984"
+      ],
+      "wi_fi_generation": "Wi-Fi 5 (802.11ac Wave 2)",
+      "mimo_capabilities": "4x4 MU-MIMO 160MHz"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Supported (NSS / PPE)",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Legendary dual-core Krait SoC powering the Netgear Nighthawk R7800 (X4S). Exceptional ath10k open-source Wi-Fi stability and NSS hardware offload support in OpenWrt.",
+    "sources": [
+      {
+        "title": "OpenWrt Target: Qualcomm IPQ806x",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/ipq806x",
+        "type": "OPENWRT_GIT",
+        "date_accessed": "2026-11-15"
+      },
+      {
+        "title": "Netgear R7800 Hardware Overview",
+        "url": "https://openwrt.org/toh/netgear/r7800",
+        "type": "OPENWRT_TOH",
+        "date_accessed": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "id": "qualcomm-ipq8072a",
+    "vendor": "Qualcomm",
+    "part_number": "IPQ8072A / IPQ8074",
+    "marketing_name": "Networking Pro 1200 / Hawkeye",
+    "cpu": {
+      "architecture": "aarch64",
+      "core_type": "ARM Cortex-A53",
+      "cores": 4,
+      "max_clock_mhz": 2200
+    },
+    "process_node_nm": 14,
+    "openwrt_target": "qualcommax",
+    "openwrt_subtarget": "ipq807x",
+    "linux_driver": {
+      "wireless_mac80211": "ath11k",
+      "ethernet_driver": "qca_nss_dp",
+      "switch_driver": "qca8k (DSA)"
+    },
+    "wireless_subsystem": {
+      "integrated": true,
+      "accompanying_rf_chips": [
+        "QCN5024",
+        "QCN5054"
+      ],
+      "wi_fi_generation": "Wi-Fi 6 (802.11ax)",
+      "mimo_capabilities": "4x4:4 (2.4 GHz) + 8x8:8 (5.0 GHz)"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Supported (NSS / PPE)",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "High-performance enterprise and prosumer Wi-Fi 6 platform powering routers such as Xiaomi AX9000, GL.iNet GL-AXT1800, and Netgear WAX218. Features dedicated Network Subsystem (NSS) coprocessors.",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: qualcommax/ipq807x",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/qualcommax/ipq807x"
+      }
+    ]
+  },
+  {
+    "$schema": "../schemas/chipset.schema.json",
+    "id": "qualcomm-qca9563",
+    "vendor": "Qualcomm",
+    "part_number": "QCA9563",
+    "marketing_name": "Qualcomm Atheros QCA9563 (Dragonfly)",
+    "cpu": {
+      "architecture": "mips_74kc",
+      "core_type": "MIPS 74Kc",
+      "cores": 1,
+      "max_clock_mhz": 775
+    },
+    "process_node_nm": 65,
+    "openwrt_target": "ath79",
+    "openwrt_subtarget": "generic",
+    "linux_driver": {
+      "wireless_mac80211": "ath9k",
+      "ethernet_driver": "ag71xx",
+      "switch_driver": "qca8k"
+    },
+    "wireless_subsystem": {
+      "integrated": true,
+      "accompanying_rf_chips": [
+        "QCA9880",
+        "QCA9886",
+        "QCA9888"
+      ],
+      "wi_fi_generation": "Wi-Fi 5",
+      "mimo_capabilities": "3x3 2.4GHz b/g/n (450Mbps) + PCIe 5GHz"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Software Only",
+      "crypto_engine": false,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Classic, battle-tested Qualcomm Atheros MIPS SoC deployed in millions of routers worldwide including TP-Link Archer C7 v2/v4/v5, GL.iNet GL-AR750S Slate, and many enterprise outdoor APs. Supported with 100% open-source ath9k drivers.",
+    "sources": [
+      {
+        "title": "OpenWrt ath79 target documentation",
+        "url": "https://openwrt.org/docs/techref/targets/ath79"
+      },
+      {
+        "title": "Linux Wireless: ath9k driver documentation",
+        "url": "https://wireless.docs.kernel.org/en/latest/en/users/drivers/ath9k.html"
+      }
+    ]
+  },
+  {
+    "id": "realtek-rtl8380m",
+    "vendor": "Realtek",
+    "part_number": "RTL8380M / RTL8382M",
+    "marketing_name": "RTL838x Managed Switch Platform",
+    "cpu": {
+      "architecture": "mips_24kc",
+      "core_type": "MIPS 4KEc / 24Kc",
+      "cores": 1,
+      "max_clock_mhz": 500
+    },
+    "process_node_nm": 40,
+    "openwrt_target": "realtek",
+    "openwrt_subtarget": "rtl838x",
+    "linux_driver": {
+      "wireless_mac80211": null,
+      "ethernet_driver": "rtl838x_eth",
+      "switch_driver": "rtl838x (DSA)"
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [],
+      "wi_fi_generation": "None (Dedicated Ethernet Switch)",
+      "mimo_capabilities": "N/A"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Supported (Hardware L2/L3 ASIC Switch Engine)",
+      "crypto_engine": false,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_2_STABLE",
+    "notes": "Dedicated managed switch platform powering 8-port to 24-port Gigabit smart switches (e.g. Zyxel GS1900-8, D-Link DGS-1210). Fully supported via upstream OpenWrt realtek/rtl838x target with Linux DSA switch fabric integration.",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: realtek/rtl838x",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/realtek"
+      }
+    ]
+  },
+  {
+    "$schema": "../schemas/chipset.schema.json",
+    "id": "rockchip-rk3328",
+    "vendor": "Rockchip",
+    "part_number": "RK3328",
+    "marketing_name": "Rockchip RK3328",
+    "cpu": {
+      "architecture": "arm_cortex-a53",
+      "core_type": "ARM Cortex-A53",
+      "cores": 4,
+      "max_clock_mhz": 1300
+    },
+    "process_node_nm": 28,
+    "openwrt_target": "rockchip",
+    "openwrt_subtarget": "armv8",
+    "linux_driver": {
+      "wireless_mac80211": null,
+      "ethernet_driver": "stmmac",
+      "switch_driver": null
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [],
+      "wi_fi_generation": "Ethernet Only",
+      "mimo_capabilities": "USB / PCIe Wi-Fi expansion"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Software Only",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Quad-core 64-bit ARM SoC with native Gigabit Ethernet MAC and USB 3.0 controller. Popularized as an ultra-compact dual-GbE mini-router platform by the FriendlyElec NanoPi R2S and Xunlong Orange Pi R1 Plus LTS.",
+    "sources": [
+      {
+        "title": "Rockchip RK3328 Technical Reference Manual",
+        "url": "https://www.rock-chips.com/a/en/products/RK33_Series/2017/0118/836.html"
+      },
+      {
+        "title": "OpenWrt rockchip target documentation",
+        "url": "https://openwrt.org/docs/techref/targets/rockchip"
+      }
+    ]
+  },
+  {
+    "$schema": "../schemas/chipset.schema.json",
+    "id": "rockchip-rk3399",
+    "vendor": "Rockchip",
+    "part_number": "RK3399",
+    "marketing_name": "Rockchip RK3399 (Dual-A72 + Quad-A53)",
+    "cpu": {
+      "architecture": "aarch64",
+      "core_type": "ARM big.LITTLE (2x A72 + 4x A53)",
+      "cores": 6,
+      "max_clock_mhz": 1800
+    },
+    "process_node_nm": 28,
+    "openwrt_target": "rockchip",
+    "openwrt_subtarget": "armv8",
+    "linux_driver": {
+      "wireless_mac80211": null,
+      "ethernet_driver": "stmmac",
+      "switch_driver": null
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [],
+      "wi_fi_generation": "None (External PCIe/USB only)",
+      "mimo_capabilities": "N/A"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Software Only",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Hexa-core 64-bit ARM processor powering the FriendlyElec NanoPi R4S dual-GbE mini-router. Capable of handling full gigabit WireGuard throughput in OpenWrt.",
+    "sources": [
+      {
+        "title": "OpenWrt Target: Rockchip ARMv8",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/rockchip/armv8",
+        "type": "OPENWRT_GIT",
+        "date_accessed": "2026-11-15"
+      },
+      {
+        "title": "FriendlyElec NanoPi R4S OpenWrt Profile",
+        "url": "https://openwrt.org/toh/friendlyarm/nanopi_r4s",
+        "type": "OPENWRT_TOH",
+        "date_accessed": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "id": "rockchip-rk3568",
+    "vendor": "Rockchip",
+    "part_number": "RK3568 / RK3568B2",
+    "marketing_name": "RK3568",
+    "cpu": {
+      "architecture": "aarch64",
+      "core_type": "ARM Cortex-A55",
+      "cores": 4,
+      "max_clock_mhz": 2000
+    },
+    "process_node_nm": 22,
+    "openwrt_target": "rockchip",
+    "openwrt_subtarget": "armv8",
+    "linux_driver": {
+      "wireless_mac80211": null,
+      "ethernet_driver": "r8125 / stmmac",
+      "switch_driver": null
+    },
+    "wireless_subsystem": {
+      "integrated": false,
+      "accompanying_rf_chips": [],
+      "wi_fi_generation": "Varies by M.2 / PCIe Wi-Fi card",
+      "mimo_capabilities": "Optional M.2 E-key slot"
+    },
+    "hardware_acceleration": {
+      "flow_offload": "Software Only",
+      "crypto_engine": true,
+      "wireless_ethernet_dispatch": false
+    },
+    "openwrt_support_tier": "TIER_1_MAINSTREAM",
+    "notes": "Workhorse of modern multi-gigabit SBC routers (e.g. FriendlyElec NanoPi R5S / R5C, Radxa E25). Features native dual PCIe 2.5GbE PHYs (Realtek RTL8125BG) delivering full 2.5 Gbps wire speed under OpenWrt.",
+    "sources": [
+      {
+        "title": "OpenWrt Target Definition: rockchip/armv8",
+        "url": "https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/rockchip"
+      }
+    ]
+  }
+]

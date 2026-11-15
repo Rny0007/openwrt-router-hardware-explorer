@@ -1,0 +1,265 @@
+{
+  "api_version": "v1",
+  "generated_at": "2026-11-15T07:15:06.240449+00:00",
+  "total_count": 31,
+  "data": [
+    {
+      "manufacturer": "ASUS",
+      "device_count": 7,
+      "device_ids": [
+        "asus-gt-ax11000",
+        "asus-rt-ac68u",
+        "asus-rt-ax53u",
+        "asus-rt-ax59u",
+        "asus-rt-ax86u",
+        "asus-rt-ax88u-pro",
+        "asus-rt-be96u"
+      ]
+    },
+    {
+      "manufacturer": "AVM",
+      "device_count": 1,
+      "device_ids": [
+        "avm-fritzbox-4040"
+      ]
+    },
+    {
+      "manufacturer": "Acer",
+      "device_count": 1,
+      "device_ids": [
+        "acer-predator-connect-w6"
+      ]
+    },
+    {
+      "manufacturer": "Banana Pi",
+      "device_count": 2,
+      "device_ids": [
+        "banana-pi-bpi-r3",
+        "banana-pi-bpi-r4"
+      ]
+    },
+    {
+      "manufacturer": "Buffalo",
+      "device_count": 2,
+      "device_ids": [
+        "buffalo-wsr-2533dhpl2",
+        "buffalo-wsr-3200ax4s"
+      ]
+    },
+    {
+      "manufacturer": "CZ.NIC / Turris",
+      "device_count": 1,
+      "device_ids": [
+        "turris-omnia"
+      ]
+    },
+    {
+      "manufacturer": "Comfast",
+      "device_count": 1,
+      "device_ids": [
+        "comfast-cf-e390ax"
+      ]
+    },
+    {
+      "manufacturer": "Cudy",
+      "device_count": 1,
+      "device_ids": [
+        "cudy-wr3000-v1"
+      ]
+    },
+    {
+      "manufacturer": "D-Link",
+      "device_count": 2,
+      "device_ids": [
+        "d-link-dgs-1210-10p",
+        "d-link-dir-882-a1"
+      ]
+    },
+    {
+      "manufacturer": "FriendlyElec",
+      "device_count": 3,
+      "device_ids": [
+        "friendlyelec-nanopi-r4s",
+        "friendlyelec-nanopi-r5s",
+        "friendlyelec-nanopi-r6s"
+      ]
+    },
+    {
+      "manufacturer": "GL.iNet",
+      "device_count": 8,
+      "device_ids": [
+        "gl-inet-gl-ar300m16",
+        "gl-inet-gl-ar750s",
+        "gl-inet-gl-ax1800",
+        "gl-inet-gl-axt1800",
+        "gl-inet-gl-mt2500",
+        "gl-inet-gl-mt3000",
+        "gl-inet-gl-mt6000",
+        "gl-inet-gl-sft1200"
+      ]
+    },
+    {
+      "manufacturer": "Huawei",
+      "device_count": 1,
+      "device_ids": [
+        "huawei-b535-232"
+      ]
+    },
+    {
+      "manufacturer": "Jio / Arcadyan",
+      "device_count": 2,
+      "device_ids": [
+        "jio-jidu6101",
+        "jio-jidu6201"
+      ]
+    },
+    {
+      "manufacturer": "Linksys",
+      "device_count": 4,
+      "device_ids": [
+        "linksys-e8450",
+        "linksys-velop-whw03",
+        "linksys-wrt1900acs",
+        "linksys-wrt3200acm"
+      ]
+    },
+    {
+      "manufacturer": "Mercusys",
+      "device_count": 1,
+      "device_ids": [
+        "mercusys-mr70x-v1"
+      ]
+    },
+    {
+      "manufacturer": "MikroTik",
+      "device_count": 2,
+      "device_ids": [
+        "mikrotik-rb750gr3",
+        "mikrotik-cap-ac"
+      ]
+    },
+    {
+      "manufacturer": "Netgear",
+      "device_count": 4,
+      "device_ids": [
+        "netgear-r6700-v3",
+        "netgear-r7000",
+        "netgear-r7800",
+        "netgear-wax206"
+      ]
+    },
+    {
+      "manufacturer": "Nokia",
+      "device_count": 1,
+      "device_ids": [
+        "nokia-fastmile-5g-gateway-3-2"
+      ]
+    },
+    {
+      "manufacturer": "OpenWrt / Banana Pi",
+      "device_count": 1,
+      "device_ids": [
+        "openwrt-one"
+      ]
+    },
+    {
+      "manufacturer": "Protectli",
+      "device_count": 1,
+      "device_ids": [
+        "protectli-vault-fw4b"
+      ]
+    },
+    {
+      "manufacturer": "Qotom",
+      "device_count": 1,
+      "device_ids": [
+        "qotom-q355g4"
+      ]
+    },
+    {
+      "manufacturer": "Raspberry Pi",
+      "device_count": 2,
+      "device_ids": [
+        "raspberry-pi-4b",
+        "raspberry-pi-5"
+      ]
+    },
+    {
+      "manufacturer": "Reyee / Ruijie",
+      "device_count": 1,
+      "device_ids": [
+        "reyee-rg-ew3200gx-pro"
+      ]
+    },
+    {
+      "manufacturer": "Sercomm / Airtel",
+      "device_count": 1,
+      "device_ids": [
+        "sercomm-airtel-a622g"
+      ]
+    },
+    {
+      "manufacturer": "TP-Link",
+      "device_count": 6,
+      "device_ids": [
+        "tp-link-archer-ax23-v1",
+        "tp-link-archer-ax50-v1",
+        "tp-link-archer-be800-v1",
+        "tp-link-archer-c6-v3",
+        "tp-link-archer-c7-v5",
+        "tp-link-deco-x20"
+      ]
+    },
+    {
+      "manufacturer": "Technicolor",
+      "device_count": 1,
+      "device_ids": [
+        "technicolor-dga4132"
+      ]
+    },
+    {
+      "manufacturer": "Ubiquiti",
+      "device_count": 5,
+      "device_ids": [
+        "ubiquiti-unifi-6-lite",
+        "ubiquiti-unifi-6-pro",
+        "ubiquiti-unifi-6-plus",
+        "ubiquiti-unifi-ac-pro",
+        "ubiquiti-unifi-nanohd"
+      ]
+    },
+    {
+      "manufacturer": "Xiaomi",
+      "device_count": 4,
+      "device_ids": [
+        "xiaomi-ax9000",
+        "xiaomi-redmi-ax6000",
+        "xiaomi-router-7000",
+        "xiaomi-ax3000t"
+      ]
+    },
+    {
+      "manufacturer": "Xunlong / Orange Pi",
+      "device_count": 1,
+      "device_ids": [
+        "orange-pi-r1-plus-lts"
+      ]
+    },
+    {
+      "manufacturer": "ZTE",
+      "device_count": 1,
+      "device_ids": [
+        "zte-mf286d"
+      ]
+    },
+    {
+      "manufacturer": "Zyxel",
+      "device_count": 3,
+      "device_ids": [
+        "zyxel-gs1900-24",
+        "zyxel-gs1900-8",
+        "zyxel-nwa50ax"
+      ]
+    }
+  ]
+}

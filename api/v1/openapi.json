@@ -1,0 +1,65 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Global OpenWrt Router Hardware Knowledge Base API",
+    "version": "1.0.0",
+    "description": "Zero-dependency, high-performance static RESTful API providing evidence-based specifications, CVE security intelligence, firmware metadata, and lifecycle statuses for OpenWrt router hardware worldwide.",
+    "license": {
+      "name": "CC BY 4.0 / MIT",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1",
+      "description": "Production Read-Only Public API"
+    }
+  ],
+  "paths": {
+    "/devices/index.json": {
+      "get": {
+        "summary": "List all cataloged router hardware devices",
+        "responses": {
+          "200": {
+            "description": "JSON array of device summaries"
+          }
+        }
+      }
+    },
+    "/devices/{id}.json": {
+      "get": {
+        "summary": "Get full technical specification, firmware, and CVE security profile for a device",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detailed device object"
+          }
+        }
+      }
+    },
+    "/chipsets/index.json": {
+      "get": {
+        "summary": "List all networking silicon architectures"
+      }
+    },
+    "/security.json": {
+      "get": {
+        "summary": "List CVE security vulnerabilities affecting OpenWrt components"
+      }
+    },
+    "/lifecycle.json": {
+      "get": {
+        "summary": "List hardware lifecycle, EOL, and deprecation statuses"
+      }
+    }
+  }
+}

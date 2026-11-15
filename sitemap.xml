@@ -9,6 +9,13 @@
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/installation/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/guides/multi-wan/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/api/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/devices/index.json</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/export/devices.csv</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/export/devices.json</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/chipsets/index.json</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/security.json</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/api/v1/lifecycle.json</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/methodology/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/contributing/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://rny0007.github.io/openwrt-router-hardware-explorer/about/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq></url>
