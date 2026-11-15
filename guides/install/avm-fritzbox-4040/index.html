@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AVM FRITZ!Box 4040 Installation Guide — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Step-by-step OpenWrt installation guide for AVM FRITZ!Box 4040. Flashing instructions, prerequisites, sysupgrade, and initial network configuration.">
+  <meta name="description" content="Verified OpenWrt installation guide, flashing instructions, and prerequisites for AVM FRITZ!Box 4040.">
   <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/avm-fritzbox-4040/">
   <meta property="og:title" content="AVM FRITZ!Box 4040 Installation Guide — OpenWrt Router Hardware Knowledge Base">
-  <meta property="og:description" content="Step-by-step OpenWrt installation guide for AVM FRITZ!Box 4040. Flashing instructions, prerequisites, sysupgrade, and initial network configuration.">
+  <meta property="og:description" content="Verified OpenWrt installation guide, flashing instructions, and prerequisites for AVM FRITZ!Box 4040.">
   <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/avm-fritzbox-4040/">
   <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AVM FRITZ!Box 4040 Installation Guide">
-  <meta name="twitter:description" content="Step-by-step OpenWrt installation guide for AVM FRITZ!Box 4040. Flashing instructions, prerequisites, sysupgrade, and initial network configuration.">
+  <meta name="twitter:description" content="Verified OpenWrt installation guide, flashing instructions, and prerequisites for AVM FRITZ!Box 4040.">
   <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
   <link rel="manifest" href="../../../manifest.webmanifest">
   <link rel="stylesheet" href="../../../assets/css/style.css">
@@ -127,96 +127,47 @@
       <div>
         <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
           <span class="badge badge-success">OFFICIALLY SUPPORTED</span>
-          <span class="badge badge-success">Installation Risk: LOW</span>
+          <span class="badge badge-success">Risk: LOW</span>
         </div>
-        <h1 style="font-size: 2.2rem; color: var(--text-heading);">AVM FRITZ!Box 4040 OpenWrt Installation Guide</h1>
-        <p style="color: var(--text-muted);">Architecture: <code>arm_cortex-a7</code> | Target: <code>ipq40xx/generic/generic</code> | Profile: <code>avm_fritzbox-4040</code></p>
+        <h1 style="font-size: 2.2rem; color: var(--text-heading);">AVM FRITZ!Box 4040 Installation Guide</h1>
+        <p style="color: var(--text-muted);">Method: <strong>TFTP Boot / Recovery</strong> | Target Architecture: <code>ipq40xx/generic</code></p>
       </div>
-    </div>
-
-    <div class="callout callout-warning">
-      <strong>MANDATORY FACTORY CALIBRATION BACKUP:</strong>
-      Before installing OpenWrt, backup all factory partition data (including ART, Factory, and EEPROM partitions). These contain factory RF calibration parameters, Wi-Fi MAC addresses, and regulatory domain constraints unique to your unit.
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">1. Hardware & Platform Prerequisites</h2>
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">1. Hardware Profile Summary</h2>
       <table class="spec-table">
-        <tr><th>Device Model</th><td>AVM FRITZ!Box 4040 (Rev: <code>v1 (Edition International / DACH)</code>)</td></tr>
-        <tr><th>Processor (SoC)</th><td>Qualcomm IPQ4018 (4 Cores @ 717 MHz)</td></tr>
-        <tr><th>RAM / Flash Storage</th><td>256 MB RAM / 32 MB SPI-NOR Flash</td></tr>
-        <tr><th>OpenWrt Target</th><td><code>ipq40xx/generic/generic</code></td></tr>
-        <tr><th>Target Profile</th><td><code>avm_fritzbox-4040</code></td></tr>
+        <tr><th>Device Model</th><td>AVM FRITZ!Box 4040 (v1 (Edition International / DACH))</td></tr>
+        <tr><th>SoC Platform</th><td>Qualcomm IPQ4018 (Dakota)</td></tr>
+        <tr><th>RAM / Flash</th><td>256 MB DDR / 32 MB SPI-NOR</td></tr>
+        <tr><th>OpenWrt Target</th><td><code>ipq40xx/generic</code> (avm_fritzbox-4040)</td></tr>
         <tr><th>First Supported Version</th><td>18.06.0</td></tr>
-        <tr><th>Flashing Method</th><td><strong>TFTP Boot / Recovery</strong></td></tr>
       </table>
-      <div style="margin-top: 1.25rem;">
-        <a href="https://firmware-selector.openwrt.org/?target=ipq40xx%2Fgeneric&id=avm_fritzbox-4040" target="_blank" rel="noopener" class="btn btn-primary">Download Official Firmware from OpenWrt &rarr;</a>
-      </div>
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
       <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">2. Step-by-Step Installation Procedure</h2>
       
         <ol style="margin-left: 1.5rem; line-height: 1.8;">
-          <li><strong>Configure Host PC:</strong> Connect Ethernet cable to router LAN Port 1. Assign static IP <code>192.168.1.2</code>, subnet mask <code>255.255.255.0</code> to host PC interface.</li>
-          <li><strong>Prepare TFTP Server:</strong> Place the OpenWrt factory image renamed as <code>avm-fritzbox-4040.bin</code> into your TFTP root directory. Start TFTP server (e.g. <code>dnsmasq</code>, <code>tftpd32</code>, or <code>atftpd</code>).</li>
-          <li><strong>Trigger Bootloader TFTP Recovery:</strong> Power off the router. Press and hold the Reset / WPS button, then apply power. Maintain button hold for 10-15 seconds until power/status LED starts pulsing rapidly.</li>
-          <li><strong>Monitor Transfer & Flash:</strong> Verify in TFTP server log that router requests <code>avm-fritzbox-4040.bin</code>. Allow 3 to 5 minutes for automated writing to flash. <strong>Do not disconnect power!</strong></li>
-          <li><strong>Access OpenWrt:</strong> Restore host PC to DHCP. Router will reboot into OpenWrt at <code>192.168.1.1</code>.</li>
+          <li><strong>Configure Host PC Static IP:</strong> Assign static IP <code>192.168.1.2</code> with netmask <code>255.255.255.0</code> to your PC Ethernet port. Connect Ethernet cable directly to router LAN Port 1.</li>
+          <li><strong>Prepare TFTP Server:</strong> Place the official OpenWrt factory firmware (renamed to expected bootloader filename: <code>openwrt-factory.bin</code>) in TFTP root folder. Launch TFTP server (e.g. <code>dnsmasq</code>, <code>tftpd64</code>, or <code>atftpd</code>).</li>
+          <li><strong>Trigger Bootloader TFTP Mode:</strong> Power off router. Hold the <strong>Reset / WPS</strong> button, connect power, and maintain button hold for 10-15 seconds until power/status LED blinks in recovery pattern.</li>
+          <li><strong>Monitor Automated Flash:</strong> Observe TFTP server log. The router bootloader will download <code>openwrt-factory.bin</code> and write to flash. <strong>Do not interrupt power for at least 5 minutes!</strong></li>
+          <li><strong>Access OpenWrt:</strong> Restore host PC Ethernet to DHCP. Router will reboot into OpenWrt at <code>http://192.168.1.1</code>.</li>
         </ol>
         
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">3. First Boot & Initial Configuration</h2>
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">3. Post-Installation Initial Configuration</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">After successfully flashing OpenWrt, complete these essential configuration steps:</p>
       <ol style="margin-left: 1.5rem; line-height: 1.8;">
-        <li>Connect your computer to LAN Port 1 using a Cat6 Ethernet patch cable.</li>
-        <li>Verify computer receives IP address in subnet <code>192.168.1.0/24</code> via DHCP (e.g. <code>192.168.1.150</code>).</li>
-        <li>Open terminal and verify ping to router gateway: <code>ping 192.168.1.1</code>.</li>
-        <li>SSH into router: <code>ssh root@192.168.1.1</code> (no password initially required).</li>
-        <li>Set secure administrator password immediately:
-          <pre><code>passwd</code></pre>
-        </li>
-        <li>Open web browser and navigate to <code>http://192.168.1.1</code> to log into LuCI Web Interface.</li>
+        <li>Connect your PC to any LAN port. Verify IP assignment via DHCP in subnet <code>192.168.1.0/24</code>.</li>
+        <li>Open browser to <code>http://192.168.1.1</code>. Stock OpenWrt boots with username <code>root</code> and <strong>no password set</strong>.</li>
+        <li>Immediately assign a strong root administrative password under <em>System &rarr; Administration</em>.</li>
+        <li>Connect WAN port to upstream ISP or modem. Navigate to <em>Network &rarr; Interfaces &rarr; WAN</em> to confirm DHCP or PPPoE connection.</li>
+        <li>Enable wireless radios under <em>Network &rarr; Wireless</em>. (Wi-Fi radios boot disabled by default for regulatory compliance).</li>
       </ol>
-    </div>
-
-    <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">4. Post-Installation Verification & Troubleshooting</h2>
-      <table class="spec-table">
-        <thead>
-          <tr><th>Symptom / Check</th><th>Probable Cause</th><th>Resolution Action</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>No DHCP lease on computer</td>
-            <td>Computer connected to WAN port instead of LAN port</td>
-            <td>Connect cable to LAN Port 1; assign static IP <code>192.168.1.50</code> on host PC.</td>
-          </tr>
-          <tr>
-            <td>Status LED pulsing continuously</td>
-            <td>Router booting into failsafe or storage expanding</td>
-            <td>Wait up to 3 minutes; if still pulsing, power cycle while holding reset for 2 sec to trigger failsafe.</td>
-          </tr>
-          <tr>
-            <td>LuCI web interface not loading</td>
-            <td>Minimal image installed without uhttpd/luci packages</td>
-            <td>Connect WAN port to upstream internet, SSH in, and run: <code>opkg update && opkg install luci</code>.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="guide-pagination">
-      <a href="../../../devices/avm-fritzbox-4040/index.html" class="guide-nav-link">
-        <span>&larr; Hardware Profile</span>
-        <strong>AVM FRITZ!Box 4040 Profile</strong>
-      </a>
-      <a href="../../recovery/avm-fritzbox-4040/index.html" class="guide-nav-link" style="text-align: right;">
-        <span>Recovery Guide &rarr;</span>
-        <strong>Disaster Recovery for FRITZ!Box 4040</strong>
-      </a>
     </div>
 
     

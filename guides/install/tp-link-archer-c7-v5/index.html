@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TP-Link Archer C7 Installation Guide — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Step-by-step OpenWrt installation guide for TP-Link Archer C7. Flashing instructions, prerequisites, sysupgrade, and initial network configuration.">
+  <meta name="description" content="Verified OpenWrt installation guide, flashing instructions, and prerequisites for TP-Link Archer C7.">
   <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-archer-c7-v5/">
   <meta property="og:title" content="TP-Link Archer C7 Installation Guide — OpenWrt Router Hardware Knowledge Base">
-  <meta property="og:description" content="Step-by-step OpenWrt installation guide for TP-Link Archer C7. Flashing instructions, prerequisites, sysupgrade, and initial network configuration.">
+  <meta property="og:description" content="Verified OpenWrt installation guide, flashing instructions, and prerequisites for TP-Link Archer C7.">
   <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/tp-link-archer-c7-v5/">
   <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="TP-Link Archer C7 Installation Guide">
-  <meta name="twitter:description" content="Step-by-step OpenWrt installation guide for TP-Link Archer C7. Flashing instructions, prerequisites, sysupgrade, and initial network configuration.">
+  <meta name="twitter:description" content="Verified OpenWrt installation guide, flashing instructions, and prerequisites for TP-Link Archer C7.">
   <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
   <link rel="manifest" href="../../../manifest.webmanifest">
   <link rel="stylesheet" href="../../../assets/css/style.css">
@@ -127,97 +127,53 @@
       <div>
         <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
           <span class="badge badge-success">OFFICIALLY SUPPORTED</span>
-          <span class="badge badge-success">Installation Risk: LOW</span>
+          <span class="badge badge-success">Risk: LOW</span>
         </div>
-        <h1 style="font-size: 2.2rem; color: var(--text-heading);">TP-Link Archer C7 OpenWrt Installation Guide</h1>
-        <p style="color: var(--text-muted);">Architecture: <code>mips_24kc</code> | Target: <code>ath79/generic/generic</code> | Profile: <code>tplink_archer-c7-v5</code></p>
+        <h1 style="font-size: 2.2rem; color: var(--text-heading);">TP-Link Archer C7 Installation Guide</h1>
+        <p style="color: var(--text-muted);">Method: <strong>OEM Web GUI Flash</strong> | Target Architecture: <code>ath79/generic</code></p>
       </div>
-    </div>
-
-    <div class="callout callout-warning">
-      <strong>MANDATORY FACTORY CALIBRATION BACKUP:</strong>
-      Before installing OpenWrt, backup all factory partition data (including ART, Factory, and EEPROM partitions). These contain factory RF calibration parameters, Wi-Fi MAC addresses, and regulatory domain constraints unique to your unit.
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">1. Hardware & Platform Prerequisites</h2>
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">1. Hardware Profile Summary</h2>
       <table class="spec-table">
-        <tr><th>Device Model</th><td>TP-Link Archer C7 (Rev: <code>v5</code>)</td></tr>
-        <tr><th>Processor (SoC)</th><td>Qualcomm QCA9563 (1 Cores @ 775 MHz)</td></tr>
-        <tr><th>RAM / Flash Storage</th><td>128 MB RAM / 16 MB SPI-NOR Flash</td></tr>
-        <tr><th>OpenWrt Target</th><td><code>ath79/generic/generic</code></td></tr>
-        <tr><th>Target Profile</th><td><code>tplink_archer-c7-v5</code></td></tr>
+        <tr><th>Device Model</th><td>TP-Link Archer C7 (v5)</td></tr>
+        <tr><th>SoC Platform</th><td>Qualcomm QCA9563 (Dragonfly)</td></tr>
+        <tr><th>RAM / Flash</th><td>128 MB DDR / 16 MB SPI-NOR</td></tr>
+        <tr><th>OpenWrt Target</th><td><code>ath79/generic</code> (tplink_archer-c7-v5)</td></tr>
         <tr><th>First Supported Version</th><td>18.06.0</td></tr>
-        <tr><th>Flashing Method</th><td><strong>OEM Web GUI Flash</strong></td></tr>
       </table>
-      <div style="margin-top: 1.25rem;">
-        <a href="https://firmware-selector.openwrt.org/?target=ath79%2Fgeneric&id=tplink_archer-c7-v5" target="_blank" rel="noopener" class="btn btn-primary">Download Official Firmware from OpenWrt &rarr;</a>
-      </div>
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
       <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">2. Step-by-Step Installation Procedure</h2>
       
+        <div class="callout callout-warning" style="margin-bottom: 1.5rem;">
+          <strong>IMPORTANT IMAGE SELECTION NOTICE:</strong>
+          Always download the <strong>factory</strong> image (e.g. <code>...-factory.bin</code>) for initial conversion from OEM vendor firmware.
+          <strong>NEVER attempt to flash a <code>sysupgrade</code> image from OEM web interface</strong> — sysupgrade images lack the OEM header required by vendor bootloaders and will be rejected or cause boot loops.
+        </div>
         <ol style="margin-left: 1.5rem; line-height: 1.8;">
-          <li><strong>Download Official Image:</strong> Download the official OpenWrt <strong>factory</strong> image (e.g. <code>openwrt-ath79/generic-generic-tp-link-archer-c7-v5-squashfs-factory.bin</code>) from <a href="https://firmware-selector.openwrt.org/?target=ath79%2Fgeneric&id=tplink_archer-c7-v5" target="_blank" rel="noopener">OpenWrt Firmware Selector</a>.</li>
-          <li><strong>Verify Checksum:</strong> Verify SHA256 checksum of downloaded firmware image against official release manifests before proceeding.</li>
-          <li><strong>Log into OEM Web Interface:</strong> Connect PC via Ethernet cable to LAN port. Open browser to vendor gateway (e.g. <code>http://192.168.1.1</code> or <code>http://192.168.0.1</code>) and log into management portal.</li>
-          <li><strong>Upload OpenWrt Factory Image:</strong> Navigate to <em>System Tools &rarr; Firmware Upgrade</em>. Select the OpenWrt <code>factory.bin</code> file and initiate upgrade.</li>
-          <li><strong>Flash Process & Wait:</strong> The router will verify the image, flash internal storage, and reboot. This takes 2 to 4 minutes. <strong>Do not unplug power or disconnect Ethernet during this process!</strong></li>
-          <li><strong>Access OpenWrt:</strong> Once status LED stabilizes, navigate to <code>http://192.168.1.1</code> to access LuCI web interface.</li>
+          <li><strong>Download Official Factory Image:</strong> Download the official OpenWrt <strong>factory</strong> binary from the <a href="https://firmware-selector.openwrt.org/?target=ath79%2Fgeneric&id=tplink_archer-c7-v5" target="_blank" rel="noopener">OpenWrt Firmware Selector</a>.</li>
+          <li><strong>Verify SHA256 Checksum:</strong> Calculate the SHA256 hash of your downloaded file and confirm it matches the official OpenWrt release manifest.</li>
+          <li><strong>Connect via Wired Ethernet:</strong> Connect your PC via Cat5e/Cat6 cable to LAN Port 1. <strong>Do NOT flash over Wi-Fi.</strong></li>
+          <li><strong>Log into OEM Management Interface:</strong> Open browser to vendor gateway (e.g. <code>http://192.168.1.1</code> or <code>http://192.168.0.1</code>) and log in.</li>
+          <li><strong>Upload Factory Image:</strong> Navigate to <em>System Tools &rarr; Firmware Upgrade</em>. Browse to select your downloaded <code>factory.bin</code> file and proceed.</li>
+          <li><strong>Flashing Duration & First Boot:</strong> Flash write and automated reboot takes 2 to 4 minutes. <strong>Do not disconnect power or Ethernet!</strong> Once the power LED turns solid, navigate to <code>http://192.168.1.1</code> to access LuCI.</li>
         </ol>
         
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">3. First Boot & Initial Configuration</h2>
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">3. Post-Installation Initial Configuration</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">After successfully flashing OpenWrt, complete these essential configuration steps:</p>
       <ol style="margin-left: 1.5rem; line-height: 1.8;">
-        <li>Connect your computer to LAN Port 1 using a Cat6 Ethernet patch cable.</li>
-        <li>Verify computer receives IP address in subnet <code>192.168.1.0/24</code> via DHCP (e.g. <code>192.168.1.150</code>).</li>
-        <li>Open terminal and verify ping to router gateway: <code>ping 192.168.1.1</code>.</li>
-        <li>SSH into router: <code>ssh root@192.168.1.1</code> (no password initially required).</li>
-        <li>Set secure administrator password immediately:
-          <pre><code>passwd</code></pre>
-        </li>
-        <li>Open web browser and navigate to <code>http://192.168.1.1</code> to log into LuCI Web Interface.</li>
+        <li>Connect your PC to any LAN port. Verify IP assignment via DHCP in subnet <code>192.168.1.0/24</code>.</li>
+        <li>Open browser to <code>http://192.168.1.1</code>. Stock OpenWrt boots with username <code>root</code> and <strong>no password set</strong>.</li>
+        <li>Immediately assign a strong root administrative password under <em>System &rarr; Administration</em>.</li>
+        <li>Connect WAN port to upstream ISP or modem. Navigate to <em>Network &rarr; Interfaces &rarr; WAN</em> to confirm DHCP or PPPoE connection.</li>
+        <li>Enable wireless radios under <em>Network &rarr; Wireless</em>. (Wi-Fi radios boot disabled by default for regulatory compliance).</li>
       </ol>
-    </div>
-
-    <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">4. Post-Installation Verification & Troubleshooting</h2>
-      <table class="spec-table">
-        <thead>
-          <tr><th>Symptom / Check</th><th>Probable Cause</th><th>Resolution Action</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>No DHCP lease on computer</td>
-            <td>Computer connected to WAN port instead of LAN port</td>
-            <td>Connect cable to LAN Port 1; assign static IP <code>192.168.1.50</code> on host PC.</td>
-          </tr>
-          <tr>
-            <td>Status LED pulsing continuously</td>
-            <td>Router booting into failsafe or storage expanding</td>
-            <td>Wait up to 3 minutes; if still pulsing, power cycle while holding reset for 2 sec to trigger failsafe.</td>
-          </tr>
-          <tr>
-            <td>LuCI web interface not loading</td>
-            <td>Minimal image installed without uhttpd/luci packages</td>
-            <td>Connect WAN port to upstream internet, SSH in, and run: <code>opkg update && opkg install luci</code>.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="guide-pagination">
-      <a href="../../../devices/tp-link-archer-c7-v5/index.html" class="guide-nav-link">
-        <span>&larr; Hardware Profile</span>
-        <strong>TP-Link Archer C7 Profile</strong>
-      </a>
-      <a href="../../recovery/tp-link-archer-c7-v5/index.html" class="guide-nav-link" style="text-align: right;">
-        <span>Recovery Guide &rarr;</span>
-        <strong>Disaster Recovery for Archer C7</strong>
-      </a>
     </div>
 
     
@@ -232,11 +188,11 @@
         </div>
       </div>
       <div class="contribution-actions">
-        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/blob/main/data/devices/tp/tp-link-archer-c7-v5.json" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/blob/main/data/devices/tp-link/tp-link-archer-c7-v5.json" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           Edit this page on GitHub
         </a>
-        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=08_documentation_improvement.yml&page_url=data/devices/tp/tp-link-archer-c7-v5.json&title=%5BDocs%5D%3A%20Feedback%20on%20TP-Link%20Archer%20C7%20Installation%20Guide&labels=documentation,enhancement" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=08_documentation_improvement.yml&page_url=data/devices/tp-link/tp-link-archer-c7-v5.json&title=%5BDocs%5D%3A%20Feedback%20on%20TP-Link%20Archer%20C7%20Installation%20Guide&labels=documentation,enhancement" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
           Report an Error or Typo
         </a>
         <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=05_recovery_unbrick_report.yml&title=%5BRecovery%5D%3A%20Unbrick%20Verification%20for%20TP-Link%20Archer%20C7%20Installation%20Guide&labels=recovery-guide,unbrick-verified" target="_blank" rel="noopener" class="btn btn-sm btn-outline">

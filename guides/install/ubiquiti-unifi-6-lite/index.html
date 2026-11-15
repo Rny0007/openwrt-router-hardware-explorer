@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ubiquiti UniFi 6 Lite (U6-Lite) Installation Guide — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Step-by-step OpenWrt installation guide for Ubiquiti UniFi 6 Lite (U6-Lite). Flashing instructions, prerequisites, sysupgrade, and initial network configuration.">
+  <meta name="description" content="Verified OpenWrt installation guide, flashing instructions, and prerequisites for Ubiquiti UniFi 6 Lite (U6-Lite).">
   <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-6-lite/">
   <meta property="og:title" content="Ubiquiti UniFi 6 Lite (U6-Lite) Installation Guide — OpenWrt Router Hardware Knowledge Base">
-  <meta property="og:description" content="Step-by-step OpenWrt installation guide for Ubiquiti UniFi 6 Lite (U6-Lite). Flashing instructions, prerequisites, sysupgrade, and initial network configuration.">
+  <meta property="og:description" content="Verified OpenWrt installation guide, flashing instructions, and prerequisites for Ubiquiti UniFi 6 Lite (U6-Lite).">
   <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/install/ubiquiti-unifi-6-lite/">
   <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ubiquiti UniFi 6 Lite (U6-Lite) Installation Guide">
-  <meta name="twitter:description" content="Step-by-step OpenWrt installation guide for Ubiquiti UniFi 6 Lite (U6-Lite). Flashing instructions, prerequisites, sysupgrade, and initial network configuration.">
+  <meta name="twitter:description" content="Verified OpenWrt installation guide, flashing instructions, and prerequisites for Ubiquiti UniFi 6 Lite (U6-Lite).">
   <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
   <link rel="manifest" href="../../../manifest.webmanifest">
   <link rel="stylesheet" href="../../../assets/css/style.css">
@@ -127,100 +127,53 @@
       <div>
         <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
           <span class="badge badge-success">OFFICIALLY SUPPORTED</span>
-          <span class="badge badge-success">Installation Risk: LOW</span>
+          <span class="badge badge-success">Risk: LOW</span>
         </div>
-        <h1 style="font-size: 2.2rem; color: var(--text-heading);">Ubiquiti UniFi 6 Lite (U6-Lite) OpenWrt Installation Guide</h1>
-        <p style="color: var(--text-muted);">Architecture: <code>mips_1004kc</code> | Target: <code>ramips/mt7621/generic</code> | Profile: <code>ubnt_unifi-6-lite</code></p>
+        <h1 style="font-size: 2.2rem; color: var(--text-heading);">Ubiquiti UniFi 6 Lite (U6-Lite) Installation Guide</h1>
+        <p style="color: var(--text-muted);">Method: <strong>Vendor CLI / Telnet / SSH</strong> | Target Architecture: <code>ramips/mt7621</code></p>
       </div>
-    </div>
-
-    <div class="callout callout-warning">
-      <strong>MANDATORY FACTORY CALIBRATION BACKUP:</strong>
-      Before installing OpenWrt, backup all factory partition data (including ART, Factory, and EEPROM partitions). These contain factory RF calibration parameters, Wi-Fi MAC addresses, and regulatory domain constraints unique to your unit.
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">1. Hardware & Platform Prerequisites</h2>
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">1. Hardware Profile Summary</h2>
       <table class="spec-table">
-        <tr><th>Device Model</th><td>Ubiquiti UniFi 6 Lite (U6-Lite) (Rev: <code>v1</code>)</td></tr>
-        <tr><th>Processor (SoC)</th><td>MediaTek MT7621AT (2 Cores @ 880 MHz)</td></tr>
-        <tr><th>RAM / Flash Storage</th><td>256 MB RAM / 64 MB SPI-NOR Flash</td></tr>
-        <tr><th>OpenWrt Target</th><td><code>ramips/mt7621/generic</code></td></tr>
-        <tr><th>Target Profile</th><td><code>ubnt_unifi-6-lite</code></td></tr>
+        <tr><th>Device Model</th><td>Ubiquiti UniFi 6 Lite (U6-Lite) (v1)</td></tr>
+        <tr><th>SoC Platform</th><td>MediaTek MT7621AT (MT7621)</td></tr>
+        <tr><th>RAM / Flash</th><td>256 MB DDR / 64 MB SPI-NOR</td></tr>
+        <tr><th>OpenWrt Target</th><td><code>ramips/mt7621</code> (ubnt_unifi-6-lite)</td></tr>
         <tr><th>First Supported Version</th><td>22.03.0</td></tr>
-        <tr><th>Flashing Method</th><td><strong>Vendor CLI / Telnet / SSH</strong></td></tr>
       </table>
-      <div style="margin-top: 1.25rem;">
-        <a href="https://firmware-selector.openwrt.org/?target=ramips%2Fmt7621&id=ubnt_unifi-6-lite" target="_blank" rel="noopener" class="btn btn-primary">Download Official Firmware from OpenWrt &rarr;</a>
-      </div>
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
       <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">2. Step-by-Step Installation Procedure</h2>
       
         <ol style="margin-left: 1.5rem; line-height: 1.8;">
-          <li><strong>Access Vendor Debug Shell:</strong> Connect via Telnet or SSH using vendor administrative or engineering credentials.</li>
-          <li><strong>Transfer OpenWrt Firmware:</strong> Transfer OpenWrt factory image to <code>/tmp</code> using SCP, TFTP, or curl:
+          <li><strong>Access Vendor Shell:</strong> Connect via SSH using administrative credentials (e.g. <code>ssh ubnt@192.168.1.20</code>).</li>
+          <li><strong>Download OpenWrt Factory Image:</strong> Transfer the official OpenWrt factory image to router <code>/tmp</code> directory:
             <pre><code>cd /tmp
-tftp -g -r openwrt-factory.bin 192.168.1.2</code></pre>
+curl -O https://firmware-selector.openwrt.org/?target=ramips%2Fmt7621&id=ubnt_unifi-6-lite
+# Or transfer via SCP from your PC</code></pre>
           </li>
-          <li><strong>Write to Flash Partition:</strong> Identify active kernel/rootfs partition and write firmware:
-            <pre><code>mtd -r write openwrt-factory.bin firmware</code></pre>
+          <li><strong>Verify Partition & Write:</strong> Inspect <code>cat /proc/mtd</code> to confirm kernel partition mapping. Execute flash write:
+            <pre><code>mtd write /tmp/openwrt-factory.bin kernel0
+sync && reboot</code></pre>
           </li>
-          <li><strong>Reboot into OpenWrt:</strong> Allow router to complete writing and automatically reboot. Access LuCI web interface at <code>http://192.168.1.1</code>.</li>
+          <li><strong>First Boot:</strong> Allow 2 minutes for initial flash formatting. Access LuCI web portal at <code>http://192.168.1.1</code>.</li>
         </ol>
         
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">3. First Boot & Initial Configuration</h2>
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">3. Post-Installation Initial Configuration</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">After successfully flashing OpenWrt, complete these essential configuration steps:</p>
       <ol style="margin-left: 1.5rem; line-height: 1.8;">
-        <li>Connect your computer to LAN Port 1 using a Cat6 Ethernet patch cable.</li>
-        <li>Verify computer receives IP address in subnet <code>192.168.1.0/24</code> via DHCP (e.g. <code>192.168.1.150</code>).</li>
-        <li>Open terminal and verify ping to router gateway: <code>ping 192.168.1.1</code>.</li>
-        <li>SSH into router: <code>ssh root@192.168.1.1</code> (no password initially required).</li>
-        <li>Set secure administrator password immediately:
-          <pre><code>passwd</code></pre>
-        </li>
-        <li>Open web browser and navigate to <code>http://192.168.1.1</code> to log into LuCI Web Interface.</li>
+        <li>Connect your PC to any LAN port. Verify IP assignment via DHCP in subnet <code>192.168.1.0/24</code>.</li>
+        <li>Open browser to <code>http://192.168.1.1</code>. Stock OpenWrt boots with username <code>root</code> and <strong>no password set</strong>.</li>
+        <li>Immediately assign a strong root administrative password under <em>System &rarr; Administration</em>.</li>
+        <li>Connect WAN port to upstream ISP or modem. Navigate to <em>Network &rarr; Interfaces &rarr; WAN</em> to confirm DHCP or PPPoE connection.</li>
+        <li>Enable wireless radios under <em>Network &rarr; Wireless</em>. (Wi-Fi radios boot disabled by default for regulatory compliance).</li>
       </ol>
-    </div>
-
-    <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">4. Post-Installation Verification & Troubleshooting</h2>
-      <table class="spec-table">
-        <thead>
-          <tr><th>Symptom / Check</th><th>Probable Cause</th><th>Resolution Action</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>No DHCP lease on computer</td>
-            <td>Computer connected to WAN port instead of LAN port</td>
-            <td>Connect cable to LAN Port 1; assign static IP <code>192.168.1.50</code> on host PC.</td>
-          </tr>
-          <tr>
-            <td>Status LED pulsing continuously</td>
-            <td>Router booting into failsafe or storage expanding</td>
-            <td>Wait up to 3 minutes; if still pulsing, power cycle while holding reset for 2 sec to trigger failsafe.</td>
-          </tr>
-          <tr>
-            <td>LuCI web interface not loading</td>
-            <td>Minimal image installed without uhttpd/luci packages</td>
-            <td>Connect WAN port to upstream internet, SSH in, and run: <code>opkg update && opkg install luci</code>.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="guide-pagination">
-      <a href="../../../devices/ubiquiti-unifi-6-lite/index.html" class="guide-nav-link">
-        <span>&larr; Hardware Profile</span>
-        <strong>Ubiquiti UniFi 6 Lite (U6-Lite) Profile</strong>
-      </a>
-      <a href="../../recovery/ubiquiti-unifi-6-lite/index.html" class="guide-nav-link" style="text-align: right;">
-        <span>Recovery Guide &rarr;</span>
-        <strong>Disaster Recovery for UniFi 6 Lite (U6-Lite)</strong>
-      </a>
     </div>
 
     

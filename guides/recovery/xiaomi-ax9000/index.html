@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Xiaomi Mi Router AX9000 Disaster Recovery Guide — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Complete disaster recovery and unbricking instructions for Xiaomi Mi Router AX9000. TFTP recovery, 3.3V UART serial unbricking, and bootloader restoration.">
+  <meta name="description" content="Verified unbricking procedure, TFTP restoration, and 3.3V UART serial recovery for Xiaomi Mi Router AX9000.">
   <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/xiaomi-ax9000/">
   <meta property="og:title" content="Xiaomi Mi Router AX9000 Disaster Recovery Guide — OpenWrt Router Hardware Knowledge Base">
-  <meta property="og:description" content="Complete disaster recovery and unbricking instructions for Xiaomi Mi Router AX9000. TFTP recovery, 3.3V UART serial unbricking, and bootloader restoration.">
+  <meta property="og:description" content="Verified unbricking procedure, TFTP restoration, and 3.3V UART serial recovery for Xiaomi Mi Router AX9000.">
   <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/guides/recovery/xiaomi-ax9000/">
   <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Xiaomi Mi Router AX9000 Disaster Recovery Guide">
-  <meta name="twitter:description" content="Complete disaster recovery and unbricking instructions for Xiaomi Mi Router AX9000. TFTP recovery, 3.3V UART serial unbricking, and bootloader restoration.">
+  <meta name="twitter:description" content="Verified unbricking procedure, TFTP restoration, and 3.3V UART serial recovery for Xiaomi Mi Router AX9000.">
   <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
   <link rel="manifest" href="../../../manifest.webmanifest">
   <link rel="stylesheet" href="../../../assets/css/style.css">
@@ -130,16 +130,18 @@
           <span class="badge badge-danger">High Risk Hardware Operations</span>
         </div>
         <h1 style="font-size: 2.2rem; color: var(--text-heading);">Xiaomi Mi Router AX9000 Disaster Recovery & Unbricking</h1>
-        <p style="color: var(--text-muted);">Primary Recovery Protocol: <strong>TFTP Push (Automated)</strong> | UART Serial: <strong>Available</strong> @ 115200 baud</p>
+        <p style="color: var(--text-muted);">Primary Recovery Protocol: <strong>TFTP Push (Automated)</strong> | UART Serial: <strong>Available / Header Present</strong> @ 115200 baud</p>
       </div>
     </div>
 
     <!-- CRITICAL ELECTRICAL WARNING -->
-    <div class="callout callout-danger">
-      <strong>CRITICAL SAFETY MANDATE — NEVER CONNECT VCC (RED WIRE):</strong>
-      When connecting a USB-to-TTL serial adapter to the Mi Router AX9000 PCB, connect <strong>ONLY GND, TX, and RX</strong>.
-      The router provides its own 3.3V/1.8V power rail when plugged into its AC adapter. Connecting the red VCC wire from your USB adapter will backfeed voltage into the power management IC and <strong>permanently destroy the SoC and flash chips</strong>!
-      Ensure your USB adapter logic level is set to <strong>3.3V TTL</strong> (never 5V, never RS-232 +/-12V).
+    <div class="callout callout-danger" style="margin-bottom: 2rem;">
+      <h3 style="color: var(--danger); font-size: 1.15rem; margin-bottom: 0.5rem;">CRITICAL SAFETY MANDATE — NEVER CONNECT VCC (RED WIRE)</h3>
+      <p style="line-height: 1.7;">
+        When connecting a USB-to-TTL serial adapter to the Mi Router AX9000 PCB, connect <strong>ONLY GND, TX, and RX</strong>.
+        The router provides its own power rail when plugged into its AC adapter. Connecting the red VCC wire from your USB adapter backfeeds 5V/3.3V into the power management IC and <strong>permanently destroys the SoC and flash chips</strong>!
+        Ensure your USB adapter logic level is strictly set to <strong>3.3V TTL</strong> (never 5V, never RS-232 +/-12V).
+      </p>
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
@@ -178,88 +180,32 @@
       </table>
     </div>
 
-    <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">2. Tier 1: OpenWrt Failsafe Mode</h2>
-      <ol style="margin-left: 1.5rem; line-height: 1.8;">
-        <li>Disconnect all cables from router except power and LAN Port 1 to your computer.</li>
-        <li>Set computer network interface to static IP: <code>192.168.1.2</code>, netmask: <code>255.255.255.0</code>, gateway: <code>192.168.1.1</code>.</li>
-        <li>Power on the router. As soon as the status or power LED begins blinking, press the <strong>WPS / Reset</strong> button repeatedly.</li>
-        <li>The status LED will begin blinking extremely rapidly (10 Hz), indicating Failsafe mode is active.</li>
-        <li>Connect via Telnet: <code>telnet 192.168.1.1</code>. No password is required.</li>
-        <li>Reset configuration to factory defaults:
-          <pre><code>mount_root
-firstboot -y
-sync && reboot</code></pre>
-        </li>
-      </ol>
-    </div>
+    
+        <div class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Bootloader TFTP Recovery Settings</h2>
+          <table class="spec-table" style="margin-bottom: 1rem;">
+            <tr><th>Router Recovery IP</th><td><code>192.168.31.1</code></td></tr>
+            <tr><th>Host PC TFTP Server IP</th><td><code>192.168.1.2</code></td></tr>
+            <tr><th>Subnet Mask</th><td><code>255.255.255.0</code></td></tr>
+            <tr><th>Expected TFTP Filename</th><td>Device-specific filename (observe UART serial console or consult vendor manual)</td></tr>
+          </table>
+          <ol style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>Download official OpenWrt factory firmware image from the repository.</li>
+            <li>Configure TFTP server on host PC with static IP <code>192.168.1.2</code>.</li>
+            <li>Hold Reset button while powering on router to trigger bootloader recovery request.</li>
+            <li>Monitor TFTP server logs to verify firmware transfer. Allow 3 to 5 minutes for automated flash write. <strong>Never interrupt power!</strong></li>
+          </ol>
+        </div>
+        
 
     <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">3. Tier 2: Bootloader TFTP Restoration</h2>
-      <table class="spec-table" style="margin-bottom: 1rem;">
-        <tr><th>Router Recovery IP</th><td><code>192.168.1.1</code></td></tr>
-        <tr><th>Host PC TFTP Server IP</th><td><code>192.168.1.2</code></td></tr>
-        <tr><th>Subnet Mask</th><td><code>255.255.255.0</code></td></tr>
-        <tr><th>Expected TFTP Filename</th><td><code>xiaomi-ax9000.bin</code></td></tr>
+      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">UART Serial Console Pinout & Baudrate</h2>
+      <table class="spec-table">
+        <tr><th>Serial Availability</th><td>Available / Header Present</td></tr>
+        <tr><th>Logic Voltage</th><td><strong>3.3V TTL</strong> (Do NOT use 5V or RS-232)</td></tr>
+        <tr><th>Baud Rate</th><td><code>115200</code> 8-N-1</td></tr>
+        <tr><th>Wiring Rules</th><td>Connect <strong>GND &rarr; GND</strong>, <strong>TX &rarr; RX</strong>, <strong>RX &rarr; TX</strong>. <strong>Leave VCC disconnected!</strong></td></tr>
       </table>
-      <ol style="margin-left: 1.5rem; line-height: 1.8;">
-        <li>Download official OpenWrt factory firmware image from the repository.</li>
-        <li>Rename image file to <code>xiaomi-ax9000.bin</code> and place in TFTP server root directory.</li>
-        <li>Configure host PC Ethernet to static IP <code>192.168.1.2</code>.</li>
-        <li>Power off router. Hold Reset button down and power on. Hold for 10-15 seconds until TFTP request is detected.</li>
-        <li>Observe file transfer in TFTP server logs. Allow 3-5 minutes for flash write and reboot.</li>
-      </ol>
-    </div>
-
-    <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">4. Tier 3: 3.3V TTL Serial UART Console</h2>
-      <table class="spec-table" style="margin-bottom: 1rem;">
-        <thead>
-          <tr><th>Adapter Pin</th><th>Router Header</th><th>Mandatory Instruction</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>GND (Black)</strong></td><td>GND Pad / Pin</td><td>Connect securely to establish common ground reference.</td></tr>
-          <tr><td><strong>RX (White)</strong></td><td>TX Pad / Pin</td><td>Connect adapter RX to router TX.</td></tr>
-          <tr><td><strong>TX (Green)</strong></td><td>RX Pad / Pin</td><td>Connect adapter TX to router RX.</td></tr>
-          <tr><td><strong>VCC (Red)</strong></td><td><span style="color: var(--danger); font-weight: bold;">DISCONNECTED</span></td><td><strong>DO NOT CONNECT!</strong> Router powers itself from AC barrel jack.</td></tr>
-        </tbody>
-      </table>
-      <p style="font-size: 0.92rem; margin-bottom: 1rem;">Configure your terminal emulator (PuTTY, Minicom, Picocom, or Screen):</p>
-      <pre><code># Linux / macOS screen command
-screen /dev/ttyUSB0 115200 8N1
-
-# Picocom command
-picocom -b 115200 -d 8 -p n -f n /dev/ttyUSB0</code></pre>
-      <p style="font-size: 0.92rem; margin-top: 1rem;">Power on router and observe U-Boot bootlog. Press Enter/Space to enter U-Boot shell:</p>
-      <pre><code># Check environment variables
-printenv
-
-# Boot kernel via TFTP
-setenv ipaddr 192.168.1.1
-setenv serverip 192.168.1.2
-tftpboot 0x46000000 xiaomi-ax9000.bin
-bootm 0x46000000</code></pre>
-    </div>
-
-    <div class="card" style="margin-bottom: 2rem;">
-      <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">5. Calibration & Partition Preservation</h2>
-      <div class="callout callout-note">
-        If you previously dumped your <code>Factory</code>, <code>ART</code>, or <code>MFG</code> partitions prior to bricking, you can restore them via serial console or OpenWrt shell:
-        <pre><code>mtd write /tmp/mtd_Factory.bin Factory
-mtd write /tmp/mtd_ART.bin art</code></pre>
-        <strong>Never flash another router's calibration partition!</strong> Each contains unique physical RF power calibration values and factory MAC addresses.
-      </div>
-    </div>
-
-    <div class="guide-pagination">
-      <a href="../../install/xiaomi-ax9000/index.html" class="guide-nav-link">
-        <span>&larr; Installation Guide</span>
-        <strong>Install OpenWrt on Mi Router AX9000</strong>
-      </a>
-      <a href="../../../devices/xiaomi-ax9000/index.html" class="guide-nav-link" style="text-align: right;">
-        <span>Hardware Profile &rarr;</span>
-        <strong>Xiaomi Mi Router AX9000 Specifications</strong>
-      </a>
     </div>
 
     
