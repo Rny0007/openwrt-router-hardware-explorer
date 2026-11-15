@@ -4,38 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Broadcom BCM4908 / BCM4906 — OpenWrt Router Hardware Knowledge Base</title>
-  <meta name="description" content="Architectural and driver profile for Broadcom BCM4908 / BCM4906 (StrataGX BCM4908) in OpenWrt Linux.">
+  <meta name="description" content="Verified architectural specifications and OpenWrt driver integration for Broadcom BCM4908 / BCM4906.">
   <link rel="canonical" href="https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/broadcom-bcm4908/">
   <meta property="og:title" content="Broadcom BCM4908 / BCM4906 — OpenWrt Router Hardware Knowledge Base">
-  <meta property="og:description" content="Architectural and driver profile for Broadcom BCM4908 / BCM4906 (StrataGX BCM4908) in OpenWrt Linux.">
+  <meta property="og:description" content="Verified architectural specifications and OpenWrt driver integration for Broadcom BCM4908 / BCM4906.">
   <meta property="og:url" content="https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/broadcom-bcm4908/">
   <meta property="og:site_name" content="OpenWrt Router Hardware Knowledge Base">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Broadcom BCM4908 / BCM4906">
-  <meta name="twitter:description" content="Architectural and driver profile for Broadcom BCM4908 / BCM4906 (StrataGX BCM4908) in OpenWrt Linux.">
+  <meta name="twitter:description" content="Verified architectural specifications and OpenWrt driver integration for Broadcom BCM4908 / BCM4906.">
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
   <link rel="manifest" href="../../manifest.webmanifest">
   <link rel="stylesheet" href="../../assets/css/style.css">
-
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Broadcom BCM4908 / BCM4906 Silicon Architecture & OpenWrt Driver Integration",
+  "description": "Verified SoC architecture, CPU cores, hardware offload engines, and OpenWrt support for Broadcom BCM4908 / BCM4906.",
+  "author": {
+    "@type": "Person",
+    "name": "Rny0007"
+  },
+  "url": "https://rny0007.github.io/openwrt-router-hardware-explorer/chipsets/broadcom-bcm4908/"
+}
+  </script>
 </head>
 <body>
-  <header class="site-header">
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+  <header class="site-header" role="banner">
     <div class="header-inner">
-      <a href="../../index.html" class="brand">
-        <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="32" height="32" rx="8" fill="#1e293b"/>
+      <a href="../../index.html" class="brand" aria-label="OpenWrt Hardware Knowledge Base Homepage">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#111927"/>
           <path d="M6 16C6 10.4772 10.4772 6 16 6C21.5228 6 26 10.4772 26 16" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
           <path d="M10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
           <circle cx="16" cy="16" r="2.5" fill="#f8fafc"/>
-          <rect x="8" y="21" width="16" height="5" rx="2" fill="#334155"/>
+          <rect x="8" y="21" width="16" height="5" rx="2" fill="#1e2c47"/>
           <circle cx="12" cy="23.5" r="1" fill="#10b981"/>
           <circle cx="16" cy="23.5" r="1" fill="#06b6d4"/>
           <circle cx="20" cy="23.5" r="1" fill="#f59e0b"/>
         </svg>
-        <span class="brand-text">OpenWrt<strong>HardwareKB</strong></span>
+        <span class="brand-text">OpenWrt<strong>HardwareKB</strong> <span class="version-tag">v2.1</span></span>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" id="desktop-nav" aria-label="Main Navigation">
         <a href="../../index.html">Home</a>
 <a href="../../explorer/index.html">Explorer</a>
 <a href="../../devices/index.html">Devices</a>
@@ -49,18 +62,63 @@
 
       </nav>
       <div class="header-actions">
-        <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
-          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          Source Repo
+        <a href="../../explorer/index.html" class="header-search-btn" aria-label="Search hardware database" title="Quick Search (Press /)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span class="search-hint">Search</span>
+          <kbd class="kbd-hint">/</kbd>
         </a>
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide" target="_blank" rel="noopener" class="btn btn-sm btn-outline source-btn" aria-label="View source repository on GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span class="source-text">Source</span>
+        </a>
+        <button id="mobile-menu-toggle" class="btn-icon mobile-menu-btn" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <svg class="menu-open-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="menu-close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
       </div>
     </div>
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation Drawer">
+      <div class="mobile-drawer-inner">
+        <div class="mobile-drawer-header">
+          <span class="drawer-title">Navigation Menu</span>
+          <button id="mobile-drawer-close" class="btn-icon" aria-label="Close navigation menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="mobile-drawer-search">
+          <a href="../../explorer/index.html" class="btn btn-primary" style="width: 100%; justify-content: center; gap: 0.5rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Launch Hardware Explorer
+          </a>
+        </div>
+        <nav class="mobile-nav-links" aria-label="Mobile Navigation Links">
+          <a href="../../index.html">Home</a>
+<a href="../../explorer/index.html">Explorer</a>
+<a href="../../devices/index.html">Devices</a>
+<a href="../../chipsets/index.html" class="active">Chipsets</a>
+<a href="../../diagrams/index.html">Diagrams</a>
+<a href="../../guides/installation/index.html">Installation</a>
+<a href="../../guides/recovery/index.html">Recovery</a>
+<a href="../../guides/multi-wan/index.html">Failover</a>
+<a href="../../methodology/index.html">Methodology</a>
+<a href="../../about/index.html">About</a>
+
+        </nav>
+        <div class="mobile-drawer-footer">
+          <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide" target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%; justify-content: center; gap: 0.5rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub Source Repository &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
   </header>
-  <main class="main-content">
+  <main id="main-content" class="main-content" role="main">
 
     <div class="breadcrumbs">
       <a href="../../index.html">Home</a> <span>/</span>
@@ -68,55 +126,88 @@
       <strong>Broadcom BCM4908 / BCM4906</strong>
     </div>
 
-    <div class="section-header">
-      <div>
-        <h1 style="font-size: 2.2rem; color: var(--text-heading);">Broadcom BCM4908 / BCM4906</h1>
-        <p style="color: var(--text-muted);">Commercial Designation: <strong>StrataGX BCM4908</strong> | Process Node: 28nm</p>
+    <!-- Silicon HUD Banner -->
+    <div class="hud-banner">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); font-weight: 700;">Silicon Architecture Profile</span>
+          <h1 style="font-size: 2.3rem; color: var(--text-heading); margin-top: 0.25rem;">Broadcom BCM4908 / BCM4906</h1>
+          <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 0.35rem;">
+            Marketing Name: <strong>StrataGX BCM4908</strong> | Architecture: <code>aarch64</code>
+          </p>
+        </div>
+        <div>
+          <span class="badge badge-info" style="font-size: 0.92rem; padding: 0.45rem 0.95rem;">TIER_4_UNSUPPORTED_PROPRIETARY</span>
+        </div>
       </div>
-      <div>
-        <span class="badge badge-info" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">TIER_4_UNSUPPORTED_PROPRIETARY</span>
+
+      <div class="hud-grid">
+        <div class="hud-stat-item">
+          <span class="hud-stat-label">CPU Cores</span>
+          <span class="hud-stat-val">4x @ 1800 MHz</span>
+        </div>
+        <div class="hud-stat-item">
+          <span class="hud-stat-label">Core Type</span>
+          <span class="hud-stat-val">ARM Cortex-A53</span>
+        </div>
+        <div class="hud-stat-item">
+          <span class="hud-stat-label">Target Driver</span>
+          <span class="hud-stat-val"><code>bcm4908</code></span>
+        </div>
+        <div class="hud-stat-item">
+          <span class="hud-stat-label">Hardware Acceleration</span>
+          <span class="hud-stat-val">None</span>
+        </div>
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 2rem;">
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 2rem;" class="device-detail-grid">
       <div>
         <div class="card" style="margin-bottom: 2rem;">
-          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">CPU & Hardware Architecture</h2>
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">CPU & Hardware Accelerators</h2>
           <table class="spec-table">
-            <tr><th>Instruction Set</th><td><code>aarch64</code></td></tr>
-            <tr><th>Microarchitecture</th><td>ARM Cortex-A53</td></tr>
-            <tr><th>CPU Cores</th><td>4 Physical Cores</td></tr>
-            <tr><th>Peak Frequency</th><td>1800 MHz</td></tr>
-            <tr><th>Hardware Flow Offloading</th><td>Software Only</td></tr>
-            <tr><th>Hardware Cryptography</th><td>Yes (AES-NI / Cryptographic Engine)</td></tr>
+            <tr><th>Microarchitecture</th><td>aarch64 (ARM Cortex-A53)</td></tr>
+            <tr><th>Core Count / Max Clock</th><td>4 Cores @ 1800 MHz</td></tr>
+            <tr><th>L1 / L2 Cache</th><td>L1: N/A KB | L2: N/A KB</td></tr>
+            <tr><th>Crypto Acceleration</th><td>None</td></tr>
+            <tr><th>Hardware Flow Offload</th><td>Software flow offloading</td></tr>
           </table>
         </div>
 
         <div class="card" style="margin-bottom: 2rem;">
-          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Upstream Linux & OpenWrt Kernel Drivers</h2>
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Ethernet & Wireless Subsystems</h2>
           <table class="spec-table">
-            <tr><th>Wireless Module</th><td><code>brcmfmac / b43 (Proprietary Broadcom SDK required for full Wi-Fi 6 operation)</code></td></tr>
-            <tr><th>Ethernet Driver</th><td><code>bcm4908_enet</code></td></tr>
-            <tr><th>Switch / DSA Driver</th><td><code>b53 (DSA)</code></td></tr>
-            <tr><th>OpenWrt Target</th><td><code>bcm4908 / generic</code></td></tr>
+            <tr><th>Ethernet MAC / Interfaces</th><td>Integrated MAC</td></tr>
+            <tr><th>Max Network PHY Speed</th><td>1000 Mbps</td></tr>
+            <tr><th>Distributed Switch Architecture</th><td>Traditional SWCONFIG</td></tr>
+            <tr><th>Integrated Wi-Fi</th><td>Discrete Radios (N/A)</td></tr>
           </table>
         </div>
 
         <div class="card">
-          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Verified Devices Powered by this Chipset</h2>
-          <ul style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; color: var(--text);">
-            <li><a href='../../devices/asus-gt-ax11000/index.html'>ASUS ROG Rapture GT-AX11000</a> (PARTIALLY_VERIFIED)</li>
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Cataloged Retail Hardware Powered by BCM4908 / BCM4906</h2>
+          <ul style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; line-height: 1.8;">
+            <li>No retail devices cataloged yet for this silicon platform.</li>
           </ul>
         </div>
       </div>
 
       <div>
+        <div class="card" style="margin-bottom: 2rem;">
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">OpenWrt Integration</h2>
+          <table class="spec-table">
+            <tr><th>Target</th><td><code>bcm4908</code></td></tr>
+            <tr><th>Subtarget</th><td><code>generic</code></td></tr>
+            <tr><th>Kernel Version</th><td>Linux 6.6</td></tr>
+            <tr><th>Support Tier</th><td>TIER_4_UNSUPPORTED_PROPRIETARY</td></tr>
+          </table>
+        </div>
+
         <div class="card">
-          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Silicon Classification</h2>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
-            Powers high-end consumer routers like ASUS GT-AX11000 and Netgear RAX80. While the Linux CPU and DSA Ethernet switch work under OpenWrt bcm4908, the wireless transceivers require closed-source proprietary Broadcom binary blobs ('wl.ko') not redistributable in mainline OpenWrt, leaving wireless non-functional or severely degraded on pure open-source builds.
-          </p>
-          <a href="../../explorer/index.html" class="btn btn-sm btn-outline" style="width: 100%; justify-content: center;">Filter in Device Explorer &rarr;</a>
+          <h2 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 1rem;">Evidentiary Citations</h2>
+          <ul style="margin: 0.5rem 0 0 1.5rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;">
+            <li><a href='https://git.openwrt.org/?p=openwrt/openwrt.git;a=tree;f=target/linux/bcm4908' target='_blank' rel='noopener'>OpenWrt Target Definition: bcm4908</a> (None)</li><li><a href='https://openwrt.org/docs/techref/instructionset/broadcom_bcm47xx#broadcom_wireless' target='_blank' rel='noopener'>OpenWrt Broadcom Wi-Fi Driver Limitations</a> (None)</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -125,7 +216,7 @@
     <section class="contribution-panel" aria-label="Contribution and Community Verification">
       <div class="contribution-header">
         <div class="contribution-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         </div>
         <div>
           <h3>Community Verification & Improvement Panel</h3>
@@ -134,16 +225,16 @@
       </div>
       <div class="contribution-actions">
         <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/blob/main/data/chipsets/broadcom-bcm4908.json" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           Edit this page on GitHub
         </a>
-        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=08_documentation_improvement.yml&page_url=data/chipsets/broadcom-bcm4908.json&title=%5BDocs%5D%3A%20Feedback%20on%20Broadcom%20BCM4908%20/%20BCM4906&labels=documentation,enhancement" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=08_documentation_improvement.yml&page_url=data/chipsets/broadcom-bcm4908.json&title=%5BDocs%5D%3A%20Feedback%20on%20Broadcom%20BCM4908%20/%20BCM4906%20Profile&labels=documentation,enhancement" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
           Report an Error or Typo
         </a>
-        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=05_recovery_unbrick_report.yml&title=%5BRecovery%5D%3A%20Unbrick%20Verification%20for%20Broadcom%20BCM4908%20/%20BCM4906&labels=recovery-guide,unbrick-verified" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=05_recovery_unbrick_report.yml&title=%5BRecovery%5D%3A%20Unbrick%20Verification%20for%20Broadcom%20BCM4908%20/%20BCM4906%20Profile&labels=recovery-guide,unbrick-verified" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
           Submit Unbrick Tutorial
         </a>
-        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=02_hardware_revision_verification.yml&title=%5BVerification%5D%3A%20Tested%20Hardware%20on%20Broadcom%20BCM4908%20/%20BCM4906&labels=hardware-verified,testing-report" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+        <a href="https://github.com/Rny0007/mt7986-openwrt-router-guide/issues/new?template=02_hardware_revision_verification.yml&title=%5BVerification%5D%3A%20Tested%20Hardware%20on%20Broadcom%20BCM4908%20/%20BCM4906%20Profile&labels=hardware-verified,testing-report" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
           Verified on My Device
         </a>
         <a href="../../contributing/index.html" class="btn btn-sm btn-primary">
@@ -154,34 +245,48 @@
     
     
   </main>
-  <footer class="site-footer">
+  <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
-      <div class="footer-col">
-        <h3>OpenWrt Hardware Knowledge Base</h3>
+      <div class="footer-col footer-col-wide">
+        <div class="footer-brand">
+          <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="#111927"/>
+            <path d="M6 16C6 10.4772 10.4772 6 16 6C21.5228 6 26 10.4772 26 16" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="2.5" fill="#f8fafc"/>
+          </svg>
+          <span class="brand-text">OpenWrt<strong>HardwareKB</strong></span>
+        </div>
         <p>An independent, evidence-based hardware taxonomy, reverse-engineering repository, and operational deployment guide for open-source router hardware.</p>
-        <p class="copyright">Docs: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
+        <p class="copyright">Documentation: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></p>
         <div class="visitor-telemetry" style="margin-top: 1rem;">
           <span class="telemetry-badge" id="telemetry-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            Cookie-Free Analytics: <strong>Privacy-First / No Trackers Active</strong>
+            <span class="pulse-dot"></span>
+            <strong>48 Devices Cataloged</strong> &bull; 15 Silicon Platforms &bull; 100% Citations Verified
           </span>
         </div>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
+        <h4>Hardware Intelligence</h4>
         <ul>
           <li><a href="../../explorer/index.html">Hardware Explorer</a></li>
-          <li><a href="../../devices/index.html">Device Directory</a></li>
-          <li><a href="../../chipsets/index.html">Silicon Architectures</a></li>
+          <li><a href="../../devices/index.html">Device Directory (48)</a></li>
+          <li><a href="../../chipsets/index.html">Silicon Architectures (15)</a></li>
           <li><a href="../../diagrams/index.html">Interactive Diagrams</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Operational Guides</h4>
+        <ul>
           <li><a href="../../guides/installation/index.html">Two-Stage Installation</a></li>
           <li><a href="../../guides/recovery/index.html">TFTP & UART Recovery</a></li>
+          <li><a href="../../guides/multi-wan/index.html">Multi-WAN Failover Blueprint</a></li>
+          <li><a href="../../methodology/index.html">Evidentiary Methodology</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Community & Standards</h4>
         <ul>
-          <li><a href="../../methodology/index.html">Research Methodology</a></li>
           <li><a href="../../contributing/index.html">Contributor Handbook</a></li>
           <li><a href="../../about/index.html">Project Governance</a></li>
           <li><a href="../../licensing/index.html">Licensing & Attribution</a></li>
@@ -190,7 +295,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Independent research project. Not affiliated with or endorsed by OpenWrt, Reliance Jio, MediaTek, Arcadyan, Qualcomm, Broadcom, or ASUS.</p>
+      <p>Independent research platform. Not affiliated with or endorsed by OpenWrt, Reliance Jio, MediaTek, Arcadyan, Qualcomm, Broadcom, or ASUS.</p>
     </div>
   </footer>
   <script src="../../assets/js/main.js"></script>

@@ -1,36 +1,126 @@
-/* OpenWrt Hardware Knowledge Base — Zero Dependency Frontend Logic */
+/* OpenWrt Hardware Knowledge Base — Zero Dependency Futuristic Frontend Logic */
 document.addEventListener('DOMContentLoaded', () => {
-  // Theme Toggle with LocalStorage
+  // Theme Toggle with LocalStorage & Meta Theme Sync
   const themeToggle = document.getElementById('theme-toggle');
-  const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  const currentTheme = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', currentTheme);
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+      const theme = isDark ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
     });
   }
 
-  // Interactive Live Filter for Directory & Explorer
-  const searchInput = document.getElementById('search-input');
-  const cards = document.querySelectorAll('.filter-card');
-  if (searchInput && cards.length > 0) {
-    searchInput.addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase().trim();
-      cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        if (text.includes(query)) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
+  // Mobile Navigation Drawer Toggle
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const drawerClose = document.getElementById('mobile-drawer-close');
+  const backdrop = document.getElementById('mobile-drawer-backdrop');
+  const drawer = document.getElementById('mobile-nav-drawer');
+
+  function openDrawer() {
+    document.body.classList.add('drawer-open');
+    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
+    if (drawer) drawer.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeDrawer() {
+    document.body.classList.remove('drawer-open');
+    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+    if (drawer) drawer.setAttribute('aria-hidden', 'true');
+  }
+
+  if (mobileToggle) mobileToggle.addEventListener('click', () => {
+    if (document.body.classList.contains('drawer-open')) closeDrawer();
+    else openDrawer();
+  });
+  if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+  if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('drawer-open')) {
+      closeDrawer();
+    }
+  });
+
+  document.querySelectorAll('.mobile-nav-links a').forEach(a => {
+    a.addEventListener('click', closeDrawer);
+  });
+
+  // Global Keyboard Shortcut: Pressing '/' focuses search input
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      const heroSearch = document.getElementById('hero-search-input');
+      const searchInput = document.getElementById('search-input');
+      if (heroSearch) {
+        heroSearch.focus();
+      } else if (searchInput) {
+        searchInput.focus();
+      } else {
+        const searchBtn = document.querySelector('.header-search-btn');
+        if (searchBtn) window.location.href = searchBtn.getAttribute('href');
+      }
+    }
+  });
+
+  // Homepage Hero Search & Suggestion Pills
+  const heroSearchInput = document.getElementById('hero-search-input');
+  if (heroSearchInput) {
+    heroSearchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = heroSearchInput.value.trim();
+        if (val) {
+          window.location.href = `explorer/index.html?q=${encodeURIComponent(val)}`;
         }
+      }
+    });
+
+    document.querySelectorAll('.suggestion-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        const q = pill.getAttribute('data-query');
+        if (q) window.location.href = `explorer/index.html?q=${encodeURIComponent(q)}`;
       });
     });
   }
 
-  // Code Copy Buttons
+  // Homepage Filter Tabs Interactivity
+  const filterTabs = document.querySelectorAll('.filter-tab-btn');
+  const featuredCards = document.querySelectorAll('.featured-device-card');
+  if (filterTabs.length > 0 && featuredCards.length > 0) {
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.getAttribute('data-filter');
+        featuredCards.forEach(card => {
+          const cardStatus = card.getAttribute('data-status');
+          if (filter === 'ALL' || cardStatus === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // Directory Search Filter
+  const directorySearch = document.getElementById('search-input');
+  const filterRows = document.querySelectorAll('.filter-card');
+  if (directorySearch && filterRows.length > 0) {
+    directorySearch.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      filterRows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  }
+
+  // Code Copy Buttons with Toast Notification
   document.querySelectorAll('pre').forEach((pre) => {
     const wrapper = document.createElement('div');
     wrapper.className = 'code-block-wrapper';
@@ -56,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Table of Contents Active Spy
+  // Table of Contents Active Spy for Documentation Layout
   const tocLinks = document.querySelectorAll('.docs-sidebar a');
   const sections = [];
   tocLinks.forEach(link => {
@@ -72,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let current = '';
       sections.forEach(s => {
         const top = s.target.getBoundingClientRect().top;
-        if (top <= 120) current = s.link.getAttribute('href');
+        if (top <= 140) current = s.link.getAttribute('href');
       });
       tocLinks.forEach(l => {
         if (l.getAttribute('href') === current) {
